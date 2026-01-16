@@ -37,6 +37,6 @@ return Application::configure(basePath: dirname(__DIR__))
                 return redirect()->guest(route('superadmin.login'));
             }
 
-            return redirect()->guest(route('login'));
+            return redirect()->guest(route('superadmin.login'));
         });
     })->create();

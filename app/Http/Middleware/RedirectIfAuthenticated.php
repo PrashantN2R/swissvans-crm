@@ -27,9 +27,8 @@ class RedirectIfAuthenticated
 
                 if (Auth::guard($guard)->name == "superadmin") {
                     return redirect("superadmin");
-                } else {
-                    return redirect()->route('customer.home');
                 }
+                return redirect("superadmin");
             }
         }
 

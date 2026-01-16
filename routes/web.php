@@ -22,27 +22,4 @@ use App\Http\Controllers\Guest\TermsAndConditionsController;
 */
 
 # Homepage
-Route::get('/', [IndexController::class, 'index'])->name('index');
-
-# Services Page
-Route::get('services', [ServiceController::class, 'index'])->name('services');
-
-# About Us Page
-Route::get('about-us', [AboutUsController::class, 'index'])->name('about-us');
-
-# Contact Us Page
-Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
-
-Route::post('contact-us', [ContactUsController::class, 'store'])->name('contact-us.save');
-
-# Cookies Policy Page
-Route::get('cookies-policy', [CookiesController::class, 'index'])->name('cookies-policy');
-
-# Privacy Policy Page
-Route::get('privacy-policy', [PrivacyController::class, 'index'])->name('privacy-policy');
-
-# Frequently Asked Questions Page
-Route::get('frequently-asked-questions', [FaqController::class, 'index'])->name('frequently-asked-questions');
-
-# Terms and Conditions Page
-Route::get('terms-and-conditions', [TermsAndConditionsController::class, 'index'])->name('terms-and-conditions');
+Route::redirect('/', '/superadmin')->name('index');

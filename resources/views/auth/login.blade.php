@@ -1,13 +1,16 @@
 @extends('layouts.guest')
-@section('title', 'Hyper Login | Access Your IT Solutions Account')
-@section('og-title', 'Hyper Login | Access Your IT Solutions Account')
-@section('meta-desc', 'Securely log in to your Hyper account to access your personalized IT solutions dashboard, manage
+@section('title', 'Swiss Van Login | Access Your IT Solutions Account')
+@section('og-title', 'Swiss Van Login | Access Your IT Solutions Account')
+@section('meta-desc',
+    'Securely log in to your Swiss Van account to access your personalized IT solutions dashboard, manage
     services, and monitor your projects.')
-@section('og-desc', 'Securely log in to your Hyper account to access your personalized IT solutions dashboard, manage
+@section('og-desc',
+    'Securely log in to your Swiss Van account to access your personalized IT solutions dashboard, manage
     services, and monitor your projects.')
 @section('og-type', 'website')
-@section('meta-keywords', 'Hyper login, IT account access, software development account, cloud solutions login,
-    cybersecurity dashboard, Hyper IT services account')
+@section('meta-keywords',
+    'Swiss Van login, IT account access, software development account, cloud solutions login,
+    cybersecurity dashboard, Swiss Van IT services account')
 @section('content')
     <section class="hero-section">
         <div class="container">

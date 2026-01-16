@@ -96,7 +96,7 @@
     </div>
 
     <footer class="footer footer-alt text-white">
-        {{ __('Copyright © 2025 Event Dynamics India Pvt Ltd. All rights reserved.') }}
+        {{ __('Copyright © 2026 Swiss Vans. All rights reserved.') }}
     </footer>
 
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>

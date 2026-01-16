@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <a href="{{ route('superadmin.dashboard') }}" class="logo text-center logo-light">
         <span class="logo-lg">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="" height="44">
+            <img src="{{ asset('assets/images/logos/logo.png') }}" alt="" height="44">
         </span>
         <span class="logo-sm">
             <img src="{{ asset('assets/images/logo_sm.png') }}" alt="" height="44">
@@ -12,7 +12,7 @@
     <!-- LOGO -->
     <a href="{{ route('superadmin.dashboard') }}" class="logo text-center logo-dark">
         <span class="logo-lg">
-            <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="44">
+            <img src="{{ asset('assets/images/logos/logo.png') }}" alt="" height="44">
         </span>
         <span class="logo-sm">
             <img src="{{ asset('assets/images/logo_sm_dark.png') }}" alt="" height="44">
