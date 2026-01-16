@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('lead_id')->nullable();
+            $table->foreign('lead_id')->references('id')->on('leads')->onUpdate('cascade')->onDelete('cascade');
+            $table->enum('type', ['Call', 'Email', 'Meeting', 'Follow Up', 'General', 'Visit'])->default('General')->nullable();
+            $table->text('task')->nullable();
+            $table->date('due_date')->nullable();
+            $table->enum('priority', ['Low', 'Medium', 'High'])->default('Medium')->nullable();
+            $table->enum('status', ['Pending', 'In Progress', 'Completed', 'Cancelled'])->default('Pending')->nullable();
+            $table->enum('created_by', ['Administrator', 'Manager', 'Sales Executive'])->default('Administrator')->nullable();
+            $table->unsignedBigInteger('created_by_id')->nullable();
+            $table->foreign('created_by_id')->references('id')->on('superadmins')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('assigned_to')->nullable();
+            $table->foreign('assigned_to')->references('id')->on('superadmins')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('tasks');
+    }
+};

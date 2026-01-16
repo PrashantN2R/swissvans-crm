@@ -1,0 +1,12 @@
+{
+    "permissions": [
+        {
+            "name": "Dashboard",
+            "roles": [
+                "Administrator",
+                "Manager",
+                "Sales Executive"
+            ]
+        }
+    ]
+}

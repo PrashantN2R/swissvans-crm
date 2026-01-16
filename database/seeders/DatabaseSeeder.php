@@ -1,0 +1,33 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\User;
+use Database\Seeders\Superadmin\LeadSeeder;
+use Database\Seeders\Superadmin\PermissionSeeder;
+use Database\Seeders\Superadmin\QuotationSeeder;
+use Database\Seeders\Superadmin\RoleSeeder;
+use Database\Seeders\Superadmin\SuperadminSeeder;
+use Database\Seeders\Superadmin\TaskSeeder;
+use Database\Seeders\User\UserSeeder;
+use Database\Seeders\Utility\CountrySeeder;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        $this->call(CountrySeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(SuperadminSeeder::class);
+        $this->call(LeadSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(TaskSeeder::class);
+        $this->call(QuotationSeeder::class);
+    }
+}

@@ -1,0 +1,2061 @@
+{
+    "leads": [
+        {
+            "name": "Tarini Doshi",
+            "designation": "Higher",
+            "company": "Kibe and Sons",
+            "email": "tarini@yahoo.com",
+            "phone": "2656118252",
+            "budget": "128792",
+            "event_type": "Engagement",
+            "event_date": "2026-01-12",
+            "source": "website",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Anand",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Zeeshan Chopra",
+            "designation": "Programmer,",
+            "company": "Jayaraman, Bava and Dugal",
+            "email": "zeeshan@gmail.com",
+            "phone": "3257108142",
+            "budget": "291490",
+            "event_type": "Wedding",
+            "event_date": "2026-02-06",
+            "source": "crm",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Pondicherry",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Chirag Batta",
+            "designation": "Structural",
+            "company": "Yadav, Bhatt and Doshi",
+            "email": "chirag@hotmail.com",
+            "phone": "6414970508",
+            "budget": "324872",
+            "event_type": "Funeral",
+            "event_date": "2025-11-28",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Bangalore",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Rati Ahluwalia",
+            "designation": "Engineer,",
+            "company": "Sarna, Grover and Ray",
+            "email": "rati@gmail.com",
+            "phone": "9915584056",
+            "budget": "334733",
+            "event_type": "Baby Shower",
+            "event_date": "2025-10-26",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "South Dumdum",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Anya Salvi",
+            "designation": "Editor,",
+            "company": "Jani-Khosla",
+            "email": "anya@gmail.com",
+            "phone": "3387866709",
+            "budget": "32838",
+            "event_type": "Baby Shower",
+            "event_date": "2025-10-06",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Suryapet",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Kaira Chowdhury",
+            "designation": "Editor,",
+            "company": "Sridhar-Wagle",
+            "email": "ahluwalianirvi@gmail.com",
+            "phone": "8058252219",
+            "budget": "422899",
+            "event_type": "Wedding",
+            "event_date": "2025-09-19",
+            "source": "crm",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Rajahmundry",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Mehul Kala",
+            "designation": "Analytical",
+            "company": "Dewan-Wali",
+            "email": "mehul@gmail.com",
+            "phone": "6377167969",
+            "budget": "224870",
+            "event_type": "Wedding",
+            "event_date": "2026-01-12",
+            "source": "website",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Darbhanga",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Gatik Singh",
+            "designation": "Operational",
+            "company": "Chaudhari Inc",
+            "email": "amirabehl@hotmail.com",
+            "phone": "8897617420",
+            "budget": "181634",
+            "event_type": "Baby Shower",
+            "event_date": "2026-01-31",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Phusro",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Nitya Dass",
+            "designation": "Horticulturist,",
+            "company": "Mand, Dewan and Saha",
+            "email": "hbhatti@ghose.com",
+            "phone": "6797985267",
+            "budget": "187716",
+            "event_type": "Baby Shower",
+            "event_date": "2026-02-16",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Unnao",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Anahita Vig",
+            "designation": "Research",
+            "company": "Uppal-Rout",
+            "email": "cswaminathan@yahoo.com",
+            "phone": "7707850857",
+            "budget": "490234",
+            "event_type": "Housewarming",
+            "event_date": "2026-02-22",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Vellore",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Sahil Loyal",
+            "designation": "Seismic",
+            "company": "Saraf, Koshy and Chandran",
+            "email": "fvirk@yahoo.com",
+            "phone": "1375957487",
+            "budget": "122951",
+            "event_type": "College Fest",
+            "event_date": "2025-12-24",
+            "source": "crm",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Ozhukarai",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Prerak Rao",
+            "designation": "Therapist,",
+            "company": "Sengupta, Shetty and Srivastava",
+            "email": "osachdev@mallick-gopal.com",
+            "phone": "611920254",
+            "budget": "414558",
+            "event_type": "Engagement",
+            "event_date": "2026-01-11",
+            "source": "website",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Jabalpur",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Ranbir Shetty",
+            "designation": "Planning",
+            "company": "Sood-Salvi",
+            "email": "alia42@lata.com",
+            "phone": "971847718",
+            "budget": "450900",
+            "event_type": "Baby Shower",
+            "event_date": "2026-02-22",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Haridwar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Riaan Ramaswamy",
+            "designation": "Television",
+            "company": "Bahri, Badami and Devan",
+            "email": "waliapriyansh@gmail.com",
+            "phone": "9491976557",
+            "budget": "337608",
+            "event_type": "Funeral",
+            "event_date": "2026-02-05",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Sirsa",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Elakshi Bora",
+            "designation": "Biomedical",
+            "company": "Varghese, Chaudhary and Dar",
+            "email": "renee82@sant-aggarwal.com",
+            "phone": "6452419882",
+            "budget": "144464",
+            "event_type": "Baby Shower",
+            "event_date": "2025-11-18",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Uluberia",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Kartik Lad",
+            "designation": "Personnel",
+            "company": "Gola Group",
+            "email": "lrao@gmail.com",
+            "phone": "2018080775",
+            "budget": "195421",
+            "event_type": "Funeral",
+            "event_date": "2025-12-17",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Srinagar",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Anya Taneja",
+            "designation": "Paramedic",
+            "company": "Johal Ltd",
+            "email": "mannat52@hotmail.com",
+            "phone": "5996661834",
+            "budget": "202979",
+            "event_type": "Housewarming",
+            "event_date": "2026-03-03",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Nellore",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Taimur Saran",
+            "designation": "Arboriculturist",
+            "company": "Ratti-Sura",
+            "email": "shanayagour@gmail.com",
+            "phone": "6090072475",
+            "budget": "192112",
+            "event_type": "Engagement",
+            "event_date": "2026-02-18",
+            "source": "website",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Singrauli",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Nakul Rao",
+            "designation": "Teacher,",
+            "company": "Hans, Halder and Bal",
+            "email": "srivastavadivit@bakshi.info",
+            "phone": "3569803877",
+            "budget": "403388",
+            "event_type": "Baby Shower",
+            "event_date": "2025-11-08",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Naihati",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Inaaya  Kumar",
+            "designation": "Recycling",
+            "company": "Bala Ltd",
+            "email": "neelofar25@hotmail.com",
+            "phone": "4994726803",
+            "budget": "97041",
+            "event_type": "College Fest",
+            "event_date": "2026-02-08",
+            "source": "website",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Saharsa",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Ehsaan Sami",
+            "designation": "Astronomer",
+            "company": "Boase and Sons",
+            "email": "ddhillon@srinivas.com",
+            "phone": "7877261952",
+            "budget": "469204",
+            "event_type": "College Fest",
+            "event_date": "2026-02-08",
+            "source": "website",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Sambhal",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Mishti Dada",
+            "designation": "Engineer,",
+            "company": "Lad, Raja and Chakrabarti",
+            "email": "veerdayal@shah.com",
+            "phone": "5928000909",
+            "budget": "436181",
+            "event_type": "Funeral",
+            "event_date": "2025-10-17",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Bidar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Veer Sankar",
+            "designation": "Corporate",
+            "company": "Ramaswamy-Dhar",
+            "email": "vardaniya85@gupta-malhotra.com",
+            "phone": "9285790673",
+            "budget": "351784",
+            "event_type": "Corporate Event",
+            "event_date": "2026-01-22",
+            "source": "website",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Gandhidham",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Azad Hayre",
+            "designation": "Magazine",
+            "company": "Apte LLC",
+            "email": "jaggiuthkarsh@yahoo.com",
+            "phone": "9969460142",
+            "budget": "305861",
+            "event_type": "Freshers Party",
+            "event_date": "2025-11-24",
+            "source": "website",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Thoothukudi",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Yuvraj  Bala",
+            "designation": "Museum/gallery",
+            "company": "Bassi-Jhaveri",
+            "email": "riaan75@sabharwal.com",
+            "phone": "2812843078",
+            "budget": "130164",
+            "event_type": "College Fest",
+            "event_date": "2026-01-01",
+            "source": "crm",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Pudukkottai",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Vanya Varkey",
+            "designation": "Mechanical",
+            "company": "Thakur, Rajagopal and Magar",
+            "email": "hridaan65@rau-mani.info",
+            "phone": "6230842465",
+            "budget": "291448",
+            "event_type": "Freshers Party",
+            "event_date": "2025-11-23",
+            "source": "website",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Bhalswa Jahangir Pur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Pranay Balasubramanian",
+            "designation": "Education",
+            "company": "Bhavsar, Dutt and Vyas",
+            "email": "hiranjha@arora.com",
+            "phone": "6294600806",
+            "budget": "229004",
+            "event_type": "Corporate Event",
+            "event_date": "2025-12-16",
+            "source": "crm",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Meerut",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Manjari Master",
+            "designation": "Scientist,",
+            "company": "Jha-Bahl",
+            "email": "tooranya@gmail.com",
+            "phone": "6072315555",
+            "budget": "148803",
+            "event_type": "Conference",
+            "event_date": "2025-11-21",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Chandigarh",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Tanya Upadhyay",
+            "designation": "Librarian,",
+            "company": "Bakshi Group",
+            "email": "shettytrisha@borra.info",
+            "phone": "645755635",
+            "budget": "222981",
+            "event_type": "Funeral",
+            "event_date": "2025-12-02",
+            "source": "crm",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Pudukkottai",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Himmat Mammen",
+            "designation": "Psychologist,",
+            "company": "Anne, Konda and Srinivasan",
+            "email": "priyanshmalhotra@yahoo.com",
+            "phone": "1633268424",
+            "budget": "189378",
+            "event_type": "Housewarming",
+            "event_date": "2025-09-26",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Nangloi Jat",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Krish Tata",
+            "designation": "Secretary,",
+            "company": "Aggarwal Group",
+            "email": "tkrishnan@hotmail.com",
+            "phone": "7651326496",
+            "budget": "314615",
+            "event_type": "Baby Shower",
+            "event_date": "2025-12-20",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Thanjavur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Aarav Sengupta",
+            "designation": "Engineer,",
+            "company": "Maharaj-Sen",
+            "email": "riaan11@hotmail.com",
+            "phone": "9833821915",
+            "budget": "313997",
+            "event_type": "Funeral",
+            "event_date": "2026-02-08",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Begusarai",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Bhamini Mangal",
+            "designation": "Archaeologist",
+            "company": "Kunda-Date",
+            "email": "bramanathan@raja.info",
+            "phone": "4422204748",
+            "budget": "190769",
+            "event_type": "Conference",
+            "event_date": "2025-11-19",
+            "source": "website",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Gandhidham",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Lavanya Kuruvilla",
+            "designation": "Sports",
+            "company": "Loyal PLC",
+            "email": "dassalisha@subramaniam.com",
+            "phone": "2307512121",
+            "budget": "47952",
+            "event_type": "Conference",
+            "event_date": "2026-01-20",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Singrauli",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Advik Kaur",
+            "designation": "Loss",
+            "company": "Hegde-Bera",
+            "email": "ivanasarraf@hotmail.com",
+            "phone": "7416245881",
+            "budget": "313833",
+            "event_type": "Wedding",
+            "event_date": "2025-10-10",
+            "source": "crm",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Kumbakonam",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Eshani Dara",
+            "designation": "Community",
+            "company": "Korpal-Vasa",
+            "email": "wkhare@yahoo.com",
+            "phone": "914087244",
+            "budget": "386909",
+            "event_type": "Baby Shower",
+            "event_date": "2025-10-04",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Surat",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Ritvik Ramakrishnan",
+            "designation": "Designer,",
+            "company": "Raj Inc",
+            "email": "azad61@hotmail.com",
+            "phone": "1382045378",
+            "budget": "121333",
+            "event_type": "Freshers Party",
+            "event_date": "2026-02-08",
+            "source": "website",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Amroha",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Rhea Sampath",
+            "designation": "Communications",
+            "company": "Mahal Inc",
+            "email": "rhea@yahoo.com",
+            "phone": "6768914855",
+            "budget": "154931",
+            "event_type": "Housewarming",
+            "event_date": "2025-11-02",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Mirzapur",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Eva Sura",
+            "designation": "Ergonomist",
+            "company": "Bandi Inc",
+            "email": "nsachdev@gmail.com",
+            "phone": "7567496221",
+            "budget": "231954",
+            "event_type": "College Fest",
+            "event_date": "2025-10-04",
+            "source": "website",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Mirzapur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Advik Sarkar",
+            "designation": "Clothing/textile",
+            "company": "Salvi Group",
+            "email": "lsalvi@bajwa-issac.com",
+            "phone": "3413884977",
+            "budget": "45149",
+            "event_type": "Conference",
+            "event_date": "2026-01-09",
+            "source": "website",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Chennai",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Trisha Koshy",
+            "designation": "Curator",
+            "company": "Yadav-Jaggi",
+            "email": "akarshsankaran@devan.com",
+            "phone": "1738128206",
+            "budget": "459478",
+            "event_type": "Engagement",
+            "event_date": "2026-02-13",
+            "source": "website",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Bhiwani",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Kavya Malhotra",
+            "designation": "Customer",
+            "company": "Roy, Karan and Sinha",
+            "email": "ejain@zachariah-srinivas.com",
+            "phone": "3260525176",
+            "budget": "188670",
+            "event_type": "Wedding",
+            "event_date": "2025-10-23",
+            "source": "website",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Vijayawada",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Vivaan Mani",
+            "designation": "Ambulance",
+            "company": "Chauhan, Butala and Vig",
+            "email": "dchacko@yahoo.com",
+            "phone": "5110491161",
+            "budget": "112398",
+            "event_type": "Baby Shower",
+            "event_date": "2026-01-29",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Rampur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Nakul Ramachandran",
+            "designation": "Best",
+            "company": "Dutta, Devi and Gara",
+            "email": "bhattadira@yahoo.com",
+            "phone": "5034790543",
+            "budget": "39008",
+            "event_type": "Housewarming",
+            "event_date": "2025-10-16",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Ujjain",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Aaina Kale",
+            "designation": "Veterinary",
+            "company": "Kumer-Walla",
+            "email": "hjain@yahoo.com",
+            "phone": "7456631639",
+            "budget": "495516",
+            "event_type": "Housewarming",
+            "event_date": "2025-12-03",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Jaunpur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Divij Ratta",
+            "designation": "Archaeologist",
+            "company": "Reddy-Baral",
+            "email": "ishaanmani@mangal.net",
+            "phone": "7670939701",
+            "budget": "483724",
+            "event_type": "Corporate Event",
+            "event_date": "2026-01-25",
+            "source": "website",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Avadi",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Hunar Singh",
+            "designation": "Sports",
+            "company": "Sanghvi, Ramesh and Divan",
+            "email": "ramakrishnansamiha@dayal.com",
+            "phone": "4339330188",
+            "budget": "11638",
+            "event_type": "Corporate Event",
+            "event_date": "2026-03-13",
+            "source": "website",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Raebareli",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Shaan Thakur",
+            "designation": "Printmaker",
+            "company": "Koshy and Sons",
+            "email": "navyabalakrishnan@gmail.com",
+            "phone": "1247262896",
+            "budget": "329559",
+            "event_type": "Corporate Event",
+            "event_date": "2025-10-28",
+            "source": "website",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Muzaffarnagar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Hazel Saha",
+            "designation": "Commercial",
+            "company": "Sood PLC",
+            "email": "ekoshy@hotmail.com",
+            "phone": "3590377487",
+            "budget": "373470",
+            "event_type": "Funeral",
+            "event_date": "2025-11-16",
+            "source": "crm",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Alappuzha",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Samaira Bhakta",
+            "designation": "Animal",
+            "company": "Bumb-Manne",
+            "email": "kismattalwar@buch-manne.com",
+            "phone": "6788763664",
+            "budget": "305131",
+            "event_type": "Wedding",
+            "event_date": "2025-12-25",
+            "source": "website",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Kota",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Rati Wason",
+            "designation": "Ophthalmologist",
+            "company": "Tank-Bahl",
+            "email": "jghose@shenoy.info",
+            "phone": "6489420571",
+            "budget": "357761",
+            "event_type": "Corporate Event",
+            "event_date": "2026-03-14",
+            "source": "website",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Kanpur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Ayesha Dash",
+            "designation": "Administrator,",
+            "company": "Sridhar LLC",
+            "email": "kjayaraman@hotmail.com",
+            "phone": "9304590515",
+            "budget": "155885",
+            "event_type": "Conference",
+            "event_date": "2025-11-22",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Korba",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Ayesha Sachdev",
+            "designation": "Health",
+            "company": "Shroff, Barad and Thaker",
+            "email": "ayesha@gmail.com",
+            "phone": "9969019758",
+            "budget": "194190",
+            "event_type": "Wedding",
+            "event_date": "2025-12-05",
+            "source": "website",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Warangal",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Divij Aurora",
+            "designation": "Accountant,",
+            "company": "Hayre, Comar and Chatterjee",
+            "email": "kbhat@yahoo.com",
+            "phone": "8378074557",
+            "budget": "54848",
+            "event_type": "Baby Shower",
+            "event_date": "2025-09-27",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Ghaziabad",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Mamooty Bansal",
+            "designation": "Communications",
+            "company": "Master Ltd",
+            "email": "vritika62@gmail.com",
+            "phone": "20037755",
+            "budget": "142676",
+            "event_type": "Baby Shower",
+            "event_date": "2025-10-19",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Miryalaguda",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Adah Bhasin",
+            "designation": "Theatre",
+            "company": "Barman, Dasgupta and Gokhale",
+            "email": "bainsrohan@yahoo.com",
+            "phone": "7529899520",
+            "budget": "413102",
+            "event_type": "Baby Shower",
+            "event_date": "2025-10-24",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Bilaspur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Anaya Borde",
+            "designation": "Patent",
+            "company": "Srivastava-Randhawa",
+            "email": "ukapur@yahoo.com",
+            "phone": "2044307665",
+            "budget": "292432",
+            "event_type": "College Fest",
+            "event_date": "2026-02-06",
+            "source": "crm",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Bulandshahr",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Nakul Chandra",
+            "designation": "Chemist,",
+            "company": "Borah, Bajwa and Chhabra",
+            "email": "sthakur@varty.com",
+            "phone": "870141238",
+            "budget": "202733",
+            "event_type": "Funeral",
+            "event_date": "2026-01-23",
+            "source": "crm",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Phusro",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Arnav Jayaraman",
+            "designation": "Education",
+            "company": "Acharya, Uppal and De",
+            "email": "venkataramanoorja@hotmail.com",
+            "phone": "4141088251",
+            "budget": "246087",
+            "event_type": "Housewarming",
+            "event_date": "2025-11-09",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Aizawl",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Dharmajan Tak",
+            "designation": "Animal",
+            "company": "Biswas and Sons",
+            "email": "riya75@borde.org",
+            "phone": "9574801207",
+            "budget": "363916",
+            "event_type": "Baby Shower",
+            "event_date": "2026-03-16",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Ghaziabad",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Diya Dalal",
+            "designation": "Medical",
+            "company": "Bhavsar-Solanki",
+            "email": "diya34@gmail.com",
+            "phone": "5963526057",
+            "budget": "474029",
+            "event_type": "Baby Shower",
+            "event_date": "2026-01-02",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Tirunelveli",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Lakshay Thaker",
+            "designation": "Web",
+            "company": "Ravi-Kuruvilla",
+            "email": "sainizain@gmail.com",
+            "phone": "1972511790",
+            "budget": "311321",
+            "event_type": "Baby Shower",
+            "event_date": "2025-10-03",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Bhind",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Anay Krishna",
+            "designation": "Armed",
+            "company": "Kale Ltd",
+            "email": "somaneshani@gmail.com",
+            "phone": "3847913144",
+            "budget": "265207",
+            "event_type": "Wedding",
+            "event_date": "2026-01-05",
+            "source": "crm",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Ahmednagar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Rasha Apte",
+            "designation": "Administrator,",
+            "company": "Lal, Rattan and Badami",
+            "email": "ykaur@yahoo.com",
+            "phone": "5913527354",
+            "budget": "319161",
+            "event_type": "Housewarming",
+            "event_date": "2025-09-23",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Morena",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Dhanush Kapur",
+            "designation": "Conservator,",
+            "company": "Sahota-Barad",
+            "email": "vritika54@brahmbhatt-hari.com",
+            "phone": "3554150514",
+            "budget": "239125",
+            "event_type": "Conference",
+            "event_date": "2025-11-12",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Gangtok",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Ojas Sahota",
+            "designation": "Building",
+            "company": "Dasgupta-Barad",
+            "email": "manimanjari@hotmail.com",
+            "phone": "6995035570",
+            "budget": "367729",
+            "event_type": "Housewarming",
+            "event_date": "2025-11-26",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Rohtak",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Jayesh Gill",
+            "designation": "Biomedical",
+            "company": "Aurora and Sons",
+            "email": "sulezoya@gmail.com",
+            "phone": "6364918147",
+            "budget": "154574",
+            "event_type": "Corporate Event",
+            "event_date": "2025-11-30",
+            "source": "crm",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Ichalkaranji",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Ayesha Mannan",
+            "designation": "Call",
+            "company": "Kale-Dayal",
+            "email": "chawlanehmat@savant.com",
+            "phone": "4006392146",
+            "budget": "365936",
+            "event_type": "Engagement",
+            "event_date": "2025-12-07",
+            "source": "crm",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Ballia",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Ishita Rastogi",
+            "designation": "Psychotherapist,",
+            "company": "Brahmbhatt, Gala and Yohannan",
+            "email": "gokul60@gmail.com",
+            "phone": "23841822",
+            "budget": "129388",
+            "event_type": "Funeral",
+            "event_date": "2026-01-18",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Nagercoil",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Onkar Gara",
+            "designation": "Engineer,",
+            "company": "Sarin Inc",
+            "email": "drishyasur@mallick.biz",
+            "phone": "7254366988",
+            "budget": "176453",
+            "event_type": "Birthday Party",
+            "event_date": "2025-10-08",
+            "source": "crm",
+            "description": "A fun-filled birthday celebration with cake, decorations, and friends.",
+            "location": "Nagpur",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Divyansh Kari",
+            "designation": "Editor,",
+            "company": "Dixit LLC",
+            "email": "gmandal@batra.com",
+            "phone": "4279272316",
+            "budget": "46580",
+            "event_type": "College Fest",
+            "event_date": "2025-11-14",
+            "source": "crm",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Naihati",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Eva Kapadia",
+            "designation": "Academic",
+            "company": "Lalla PLC",
+            "email": "anahita23@gmail.com",
+            "phone": "9497810693",
+            "budget": "45075",
+            "event_type": "Engagement",
+            "event_date": "2026-01-24",
+            "source": "crm",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Bhavnagar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Purab Choudhry",
+            "designation": "Travel",
+            "company": "Anne, Yadav and Kala",
+            "email": "hkapoor@sachdeva.biz",
+            "phone": "4581614295",
+            "budget": "77341",
+            "event_type": "Corporate Event",
+            "event_date": "2025-10-03",
+            "source": "crm",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Kanpur",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Ehsaan Ravi",
+            "designation": "Product",
+            "company": "Saini Group",
+            "email": "rohankaul@gmail.com",
+            "phone": "5255911864",
+            "budget": "226991",
+            "event_type": "Conference",
+            "event_date": "2025-10-17",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Patiala",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Aaina Halder",
+            "designation": "Loss",
+            "company": "Ray Group",
+            "email": "aina@raygroup.com",
+            "phone": "1023973844",
+            "budget": "312043",
+            "event_type": "Engagement",
+            "event_date": "2026-02-18",
+            "source": "website",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Kakinada",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Miraya Dua",
+            "designation": "Midwife",
+            "company": "Chahal, Bir and Subramaniam",
+            "email": "aanne@hotmail.com",
+            "phone": "8955193903",
+            "budget": "474185",
+            "event_type": "Conference",
+            "event_date": "2026-03-05",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Bahraich",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Kiaan Rajagopal",
+            "designation": "Research",
+            "company": "Mammen-Gala",
+            "email": "kiaan@gmail.com",
+            "phone": "5632231914",
+            "budget": "285249",
+            "event_type": "Freshers Party",
+            "event_date": "2026-01-24",
+            "source": "crm",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Gopalpur",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Drishya Lad",
+            "designation": "Curator",
+            "company": "Rajan-Hora",
+            "email": "drishya@gmail.com",
+            "phone": "6417576661",
+            "budget": "208897",
+            "event_type": "College Fest",
+            "event_date": "2025-12-17",
+            "source": "website",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Mangalore",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Rhea Loke",
+            "designation": "Dispensing",
+            "company": "Taneja-Sankaran",
+            "email": "rhealok@yahoo.com",
+            "phone": "4166324674",
+            "budget": "160060",
+            "event_type": "Birthday Party",
+            "event_date": "2025-12-21",
+            "source": "crm",
+            "description": "A fun-filled birthday celebration with cake, decorations, and friends.",
+            "location": "Chandigarh",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Aarav Khosla",
+            "designation": "Special",
+            "company": "Kakar and Sons",
+            "email": "aaravkho@yahoo.com",
+            "phone": "7133542188",
+            "budget": "218782",
+            "event_type": "Engagement",
+            "event_date": "2025-11-28",
+            "source": "website",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Jalgaon",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Renee Mani",
+            "designation": "Research",
+            "company": "Mandal, Balasubramanian and Agate",
+            "email": "reyansh81@sunder.com",
+            "phone": "3484200712",
+            "budget": "469884",
+            "event_type": "Baby Shower",
+            "event_date": "2025-09-30",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Patna",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Nirvi Chand",
+            "designation": "Diagnostic",
+            "company": "Anne-Rau",
+            "email": "nirvi@gmail.com",
+            "phone": "1797851723",
+            "budget": "456191",
+            "event_type": "Housewarming",
+            "event_date": "2025-11-22",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Tadipatri",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Elakshi Virk",
+            "designation": "Scientist,",
+            "company": "Lall, Sinha and Lall",
+            "email": "elakshi@hotmail.com",
+            "phone": "8540851089",
+            "budget": "22333",
+            "event_type": "Housewarming",
+            "event_date": "2026-01-30",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Gandhinagar",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Akarsh Mand",
+            "designation": "Secretary,",
+            "company": "Mall-Kala",
+            "email": "chiragdutta@bera-ahluwalia.org",
+            "phone": "6708558369",
+            "budget": "53173",
+            "event_type": "Conference",
+            "event_date": "2025-11-09",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Karaikudi",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Miraya Varma",
+            "designation": "Educational",
+            "company": "Din, Ramachandran and Kala",
+            "email": "stuvankrishnan@yahoo.com",
+            "phone": "3838672146",
+            "budget": "427708",
+            "event_type": "Funeral",
+            "event_date": "2026-01-31",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Chapra",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Riaan Dora",
+            "designation": "Mental",
+            "company": "Basak-Bhat",
+            "email": "kavya00@arya-thaman.com",
+            "phone": "7179514932",
+            "budget": "164008",
+            "event_type": "Corporate Event",
+            "event_date": "2025-11-06",
+            "source": "crm",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Etawah",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Biju Kota",
+            "designation": "Private",
+            "company": "Mani-Chaudry",
+            "email": "tarakohli@yahoo.com",
+            "phone": "6954281987",
+            "budget": "445897",
+            "event_type": "College Fest",
+            "event_date": "2025-11-29",
+            "source": "crm",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Thiruvananthapuram",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Devansh Ghose",
+            "designation": "Financial",
+            "company": "Sabharwal Inc",
+            "email": "daminikari@trivedi-roy.net",
+            "phone": "6658912355",
+            "budget": "147717",
+            "event_type": "Funeral",
+            "event_date": "2025-10-18",
+            "source": "crm",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Tumkur",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Charvi Kothari",
+            "designation": "Administrator,",
+            "company": "Srivastava, Badami and Desai",
+            "email": "inaaya-dhaliwal@hotmail.com",
+            "phone": "111213521",
+            "budget": "284108",
+            "event_type": "Baby Shower",
+            "event_date": "2025-12-08",
+            "source": "crm",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Khora ",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Jhanvi Apte",
+            "designation": "Museum/gallery",
+            "company": "Bir Group",
+            "email": "aaina56@bhakta-chad.com",
+            "phone": "6897018192",
+            "budget": "334504",
+            "event_type": "Conference",
+            "event_date": "2025-09-21",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Pondicherry",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Madhav Deo",
+            "designation": "Podiatrist",
+            "company": "Dora Inc",
+            "email": "mannadira@yahoo.com",
+            "phone": "4132917934",
+            "budget": "351695",
+            "event_type": "Baby Shower",
+            "event_date": "2026-01-18",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Rewa",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Nitara Borde",
+            "designation": "Clinical",
+            "company": "Khatri-Verma",
+            "email": "banerjeeindrans@yahoo.com",
+            "phone": "1823401562",
+            "budget": "21708",
+            "event_type": "Corporate Event",
+            "event_date": "2026-02-28",
+            "source": "crm",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Bongaigaon",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Jhanvi Keer",
+            "designation": "Surveyor,",
+            "company": "Lall-Anne",
+            "email": "chatterjeeparinaaz@gmail.com",
+            "phone": "1794411208",
+            "budget": "382708",
+            "event_type": "Corporate Event",
+            "event_date": "2026-02-27",
+            "source": "website",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Fatehpur",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Indrans Agarwal",
+            "designation": "Investment",
+            "company": "Deo Inc",
+            "email": "zain81@yahoo.com",
+            "phone": "7467535187",
+            "budget": "327767",
+            "event_type": "Freshers Party",
+            "event_date": "2026-02-21",
+            "source": "crm",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Ghaziabad",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Aarav Devi",
+            "designation": "Manufacturing",
+            "company": "Sha Inc",
+            "email": "ritvik54@hotmail.com",
+            "phone": "7862470980",
+            "budget": "415283",
+            "event_type": "Housewarming",
+            "event_date": "2025-11-16",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Allahabad",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Rania Dash",
+            "designation": "Psychologist,",
+            "company": "Rout, Kurian and Bhagat",
+            "email": "fateh76@sridhar.com",
+            "phone": "9408142156",
+            "budget": "82555",
+            "event_type": "Engagement",
+            "event_date": "2025-12-29",
+            "source": "website",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Vijayanagaram",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Anvi Ganesh",
+            "designation": "Statistician",
+            "company": "Bava-Sen",
+            "email": "lavanya46@garg.net",
+            "phone": "637657862",
+            "budget": "367531",
+            "event_type": "Wedding",
+            "event_date": "2026-01-31",
+            "source": "website",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Vasai-Virar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Hazel Agarwal",
+            "designation": "Field",
+            "company": "Agarwal PLC",
+            "email": "heersami@gmail.com",
+            "phone": "3810154573",
+            "budget": "460049",
+            "event_type": "Conference",
+            "event_date": "2025-11-20",
+            "source": "website",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Rajkot",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Neysa Dyal",
+            "designation": "Illustrator",
+            "company": "Sunder, Boase and Mani",
+            "email": "samarthchandra@gmail.com",
+            "phone": "5579653324",
+            "budget": "289610",
+            "event_type": "Housewarming",
+            "event_date": "2025-10-31",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Jalandhar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Anaya Wali",
+            "designation": "Teacher,",
+            "company": "Bawa-Tata",
+            "email": "fverma@singhal.com",
+            "phone": "952642782",
+            "budget": "288954",
+            "event_type": "Freshers Party",
+            "event_date": "2025-12-03",
+            "source": "website",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Bhimavaram",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Anaya Jayaraman",
+            "designation": "Journalist,",
+            "company": "Bail, Mahajan and Gade",
+            "email": "kaulaaryahi@yahoo.com",
+            "phone": "5457612487",
+            "budget": "271365",
+            "event_type": "Birthday Party",
+            "event_date": "2025-11-21",
+            "source": "website",
+            "description": "A fun-filled birthday celebration with cake, decorations, and friends.",
+            "location": "Sikar",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Ivan Yadav",
+            "designation": "Teacher,",
+            "company": "Raja-Basu",
+            "email": "mehul25@ben.org",
+            "phone": "9973683793",
+            "budget": "308892",
+            "event_type": "Birthday Party",
+            "event_date": "2025-10-20",
+            "source": "crm",
+            "description": "A fun-filled birthday celebration with cake, decorations, and friends.",
+            "location": "Pune",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Rasha Dube",
+            "designation": "Production",
+            "company": "Dass and Sons",
+            "email": "borrasahil@sankaran.com",
+            "phone": "1878112591",
+            "budget": "119029",
+            "event_type": "Wedding",
+            "event_date": "2025-10-08",
+            "source": "website",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Panvel",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Anay Chatterjee",
+            "designation": "Sound",
+            "company": "Ratta LLC",
+            "email": "anay@gmail.com",
+            "phone": "8932216448",
+            "budget": "73328",
+            "event_type": "Engagement",
+            "event_date": "2026-01-29",
+            "source": "crm",
+            "description": "Ceremony to announce the couple’s engagement with rings, rituals, and family celebration.",
+            "location": "Allahabad",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Sumer Chopra",
+            "designation": "Industrial",
+            "company": "Jha and Sons",
+            "email": "diyavala@yahoo.com",
+            "phone": "6421469925",
+            "budget": "267443",
+            "event_type": "Wedding",
+            "event_date": "2025-12-21",
+            "source": "website",
+            "description": "Traditional Indian wedding ceremony with rituals, family gatherings, and reception.",
+            "location": "Gwalior",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Suhana Singh",
+            "designation": "Building",
+            "company": "Badal-Bava",
+            "email": "shamik32@yahoo.com",
+            "phone": "9553040852",
+            "budget": "147951",
+            "event_type": "Housewarming",
+            "event_date": "2026-01-22",
+            "source": "crm",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Panihati",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Miraya Malhotra",
+            "designation": "Public",
+            "company": "Swaminathan, Cherian and Char",
+            "email": "miraya@gmail.com",
+            "phone": "5433438207",
+            "budget": "459024",
+            "event_type": "Funeral",
+            "event_date": "2025-12-31",
+            "source": "website",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Aizawl",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Ivan Shan",
+            "designation": "Occupational",
+            "company": "Ramanathan, Dube and Bassi",
+            "email": "borahvaibhav@hotmail.com",
+            "phone": "8055844559",
+            "budget": "356956",
+            "event_type": "Corporate Event",
+            "event_date": "2026-01-23",
+            "source": "website",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Amravati",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Stuvan Mahal",
+            "designation": "Chief",
+            "company": "Sarin, Iyer and Sheth",
+            "email": "walizaina@gmail.com",
+            "phone": "2466737031",
+            "budget": "477426",
+            "event_type": "Conference",
+            "event_date": "2026-01-28",
+            "source": "website",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Thoothukudi",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Nirvi Subramaniam",
+            "designation": "Paediatric",
+            "company": "Ramesh, Keer and Mallick",
+            "email": "nirvi@gmail.com",
+            "phone": "3021352569",
+            "budget": "148951",
+            "event_type": "Funeral",
+            "event_date": "2025-11-13",
+            "source": "crm",
+            "description": "Ceremony to pay respect and bid farewell to the departed soul.",
+            "location": "Ambarnath",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Vivaan Mangal",
+            "designation": "Fish",
+            "company": "Karan-Sandal",
+            "email": "tyadav@khurana-bir.com",
+            "phone": "8152375186",
+            "budget": "168358",
+            "event_type": "Housewarming",
+            "event_date": "2025-12-02",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Ongole",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Nishith Borra",
+            "designation": "Systems",
+            "company": "Kannan, Shan and Issac",
+            "email": "voravardaniya@yahoo.com",
+            "phone": "7854878912",
+            "budget": "182255",
+            "event_type": "Conference",
+            "event_date": "2025-09-22",
+            "source": "crm",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Khargone",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Vanya Gara",
+            "designation": "Production",
+            "company": "Edwin, Bhat and Mandal",
+            "email": "qbalay@kapadia.com",
+            "phone": "6648566487",
+            "budget": "170113",
+            "event_type": "Corporate Event",
+            "event_date": "2026-02-13",
+            "source": "crm",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Sanawad",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Ivana Venkataraman",
+            "designation": "Training",
+            "company": "Chada-Korpal",
+            "email": "hmani@tandon.com",
+            "phone": "7428428541",
+            "budget": "333327",
+            "event_type": "Freshers Party",
+            "event_date": "2025-10-10",
+            "source": "website",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Bhikangaon",
+            "meta": {
+                "priority": "high"
+            },
+            "status": "Lost"
+        },
+        {
+            "name": "Vanya Bal",
+            "designation": "Bookseller",
+            "company": "Dhaliwal-Sridhar",
+            "email": "khalsajhanvi@amble.com",
+            "phone": "1610641356",
+            "budget": "157821",
+            "event_type": "Conference",
+            "event_date": "2025-12-19",
+            "source": "website",
+            "description": "Professional conference with keynote speakers, panel discussions, and networking sessions.",
+            "location": "Kasrawad",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "New"
+        },
+        {
+            "name": "Arnav Kadakia",
+            "designation": "Scientist,",
+            "company": "Ganesh, Dugal and Madan",
+            "email": "sarkarzoya@yahoo.com",
+            "phone": "8895884853",
+            "budget": "374375",
+            "event_type": "Corporate Event",
+            "event_date": "2025-12-11",
+            "source": "crm",
+            "description": "Company-organized event for employees, including awards and team-building activities.",
+            "location": "Gogawa",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Contacted"
+        },
+        {
+            "name": "Yasmin Bansal",
+            "designation": "Programme",
+            "company": "Dalal-Chhabra",
+            "email": "yasmin@gmail.net",
+            "phone": "4954732636",
+            "budget": "89763",
+            "event_type": "Housewarming",
+            "event_date": "2025-11-05",
+            "source": "website",
+            "description": "Celebration of moving into a new house with guests, food, and rituals.",
+            "location": "Segaon",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "Quoted"
+        },
+        {
+            "name": "Dhanuk Kohli",
+            "designation": "Research",
+            "company": "Chawla-Sodhi",
+            "email": "emirtaneja@mall-tella.biz",
+            "phone": "3497540895",
+            "budget": "172455",
+            "event_type": "Freshers Party",
+            "event_date": "2025-11-04",
+            "source": "website",
+            "description": "Welcome event for new students with games, music, and interaction sessions.",
+            "location": "Pandhana",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Negotiation"
+        },
+        {
+            "name": "Tanya Malhotra",
+            "designation": "Information",
+            "company": "Sachar, Madan and Swamy",
+            "email": "tanya@gmail.com",
+            "phone": "5438087464",
+            "budget": "53249",
+            "event_type": "Baby Shower",
+            "event_date": "2025-11-18",
+            "source": "website",
+            "description": "Traditional Indian baby shower with blessings, gifts, and fun activities.",
+            "location": "Oon",
+            "meta": {
+                "priority": "low"
+            },
+            "status": "Won"
+        },
+        {
+            "name": "Khushi Anand",
+            "designation": "Engineer,",
+            "company": "Batra-Acharya",
+            "email": "khushi@gmail.com",
+            "phone": "4452875497",
+            "budget": "499659",
+            "event_type": "College Fest",
+            "event_date": "2026-03-15",
+            "source": "website",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Borgaon Buzurg",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "New"
+        },
+         {
+            "name": "Vidhi Verma",
+            "designation": "Marketing Analyst,",
+            "company": "Infosys",
+            "email": "vidhi@gmail.com",
+            "phone": "9999577865",
+            "budget": "235700",
+            "event_type": "Marriage Anniversary",
+            "event_date": "2025-11-15",
+            "source": "website",
+            "description": "Annual cultural fest with competitions, dance, music, and drama performances.",
+            "location": "Seagaon",
+            "meta": {
+                "priority": "medium"
+            },
+            "status": "New"
+        }
+    ]
+}
