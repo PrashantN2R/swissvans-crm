@@ -1,61 +1,60 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SwissVans CRM - Foundation Blueprint (2027 Reset)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📌 Project Overview
+This repository contains the architectural specifications for the SwissVans CRM. The system is built on **vehicle-first logic**, prioritizing clean data structures and long-term asset tracking over temporary sales features.
 
-## About Laravel
+## 🏗 Core Architectural Principles
+- **Vehicle-First:** The `Vehicle` is the permanent asset and the center of the CRM.
+- **Immutable Transactions:** A `Sale` is a point-in-time event. Once marked "Completed," it cannot be edited.
+- **Relationship Persistence:** Customers are long-lived entities independent of individual sales.
+- **Lead Isolation:** Leads are temporary entry points and never "own" a vehicle.
+- **No Automation/AI:** This phase focuses strictly on clean structure.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠 Module Specifications
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1. Customer/Company Module
+- **Purpose:** Independent long-lived relationship records.
+- **List View:** Name/Company, Primary Contact, Linked Vehicles (derived), Linked Sales (derived).
+- **Detail Page:** Summary, contact info, notes, and read-only history.
+- **Rule:** Customers are never deleted. No lifecycle or tiering logic.
 
-## Learning Laravel
+### 2. Vehicle Module (Core)
+- **Purpose:** The permanent "Source of Truth" for every asset.
+- **List View:** Reg, VIN, Model, Status, Current Owner (derived).
+- **Detail Page:** Reg, VIN, CAP, Model, Year. Shows derived Current Owner and a read-only ownership timeline.
+- **Rule:** Ownership is derived from the latest completed sale. No stock list or pricing logic.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 3. Sale / Deal Module
+- **Purpose:** Immutable link between one Customer and one Vehicle.
+- **List View:** Deal ID, Customer, Vehicle, Type, Status, Salesperson.
+- **Detail Page:** Financials (Price, Margin, Commission) and Status.
+- **Rule:** Completed deals are locked (Immutable).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 4. Lead Intake & Conversion
+- **Purpose:** Gateway for enquiries.
+- **Flow:** Convert Lead → Select/Create Customer → Select/Create Vehicle → Draft Deal.
+- **Rule:** Leads become read-only post-conversion.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 5. Sales Pipeline (View Only)
+- **Stages:** Enquiry → Quoted → Negotiation → Ready → Completed.
+- **Rule:** Displays links to leads/draft deals only. No data creation here.
 
-## Laravel Sponsors
+### 6. Vehicle Transfer & Post-Sales
+- **Function:** Reassigns a vehicle to a new customer via a new sale record.
+- **Post-Sales:** Read-only historical context (ownership changes, past sales, notes).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🚫 Strictly Out of Scope (Do Not Implement)
+- AI features or Forecasting.
+- Customer Portals or Automated Workflows.
+- Used vehicle tools or Part-Exchange (PX) logic.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🚀 Implementation Steps for Laravel
+1. **Schema:** Design `vehicles`, `customers`, and `deals` tables. Use a `uuid` for deals.
+2. **Models:** Implement `getCurrentOwnerAttribute()` on the `Vehicle` model querying the latest `completed` deal.
+3. **Immutability:** Create a `DealPolicy` to prevent `update` or `delete` actions once `status == 'completed'`.
+4. **Service:** Build a `LeadConversionService` to handle the data transition logic cleanly.
+5. **UI:** Create the 5 key screens: Vehicle Detail, Deal Flow, Completed Deal, Lead Conversion, and Customer Detail.
