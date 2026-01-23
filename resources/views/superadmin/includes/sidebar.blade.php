@@ -47,7 +47,27 @@
                 </a>
             </li>
 
-
+<li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#vehicle-management" aria-expanded="false"
+                    aria-controls="vehicle-management" class="side-nav-link">
+                    <i class="bi bi-person-workspace"></i>
+                    <span>Vehicle Settings</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="vehicle-management">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ route('superadmin.manufacturers.index') }}" class="dropdown-item">Manufacturers</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('superadmin.models.index') }}" class="dropdown-item">Models</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('superadmin.derivatives.index') }}" class="dropdown-item">Variants</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#user-management" aria-expanded="false"
                     aria-controls="user-management" class="side-nav-link">

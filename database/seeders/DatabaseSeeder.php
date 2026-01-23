@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Manufacturer;
 use App\Models\User;
+use Database\Seeders\Superadmin\DerivativeSeeder;
 use Database\Seeders\Superadmin\LeadSeeder;
+use Database\Seeders\Superadmin\ManufacturerSeeder;
+use Database\Seeders\Superadmin\ModelSeeder;
 use Database\Seeders\Superadmin\PermissionSeeder;
 use Database\Seeders\Superadmin\QuotationSeeder;
 use Database\Seeders\Superadmin\RoleSeeder;
@@ -29,5 +33,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(TaskSeeder::class);
         $this->call(QuotationSeeder::class);
+        $this->call(ManufacturerSeeder::class);
+        $this->call(ModelSeeder::class);
+        $this->call(DerivativeSeeder::class);
     }
 }

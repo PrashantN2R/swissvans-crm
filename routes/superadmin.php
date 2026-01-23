@@ -13,6 +13,9 @@ use App\Http\Controllers\Superadmin\TaskManagement\TaskController;
 use App\Http\Controllers\Superadmin\UserManagement\PermissionController;
 use App\Http\Controllers\Superadmin\UserManagement\RoleController;
 use App\Http\Controllers\Superadmin\UserManagement\UserController;
+use App\Http\Controllers\Superadmin\VehicleManagement\DerivativeController;
+use App\Http\Controllers\Superadmin\VehicleManagement\ManufacturerController;
+use App\Http\Controllers\Superadmin\VehicleManagement\ModelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -124,6 +127,70 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
 
     Route::post('quotation-management/quotations/bulk-delete', [QuotationController::class, 'bulkDelete'])->name('quotations.bulk-delete');
 
+    /*
+    |--------------------------------------------------------------------------
+    | Vehicle Management > Manufacturers Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('vehicle-management/manufacturers', ManufacturerController::class, [
+        'names' => [
+            'index'         => 'manufacturers.index',
+            'create'        => 'manufacturers.create',
+            'update'        => 'manufacturers.update',
+            'edit'          => 'manufacturers.edit',
+            'store'         => 'manufacturers.store',
+            'show'          => 'manufacturers.show',
+            'destroy'       => 'manufacturers.destroy',
+        ]
+    ]);
+    Route::post('vehicle-management/manufacturers/bulk-delete', [ManufacturerController::class, 'bulkDelete'])->name('manufacturers.bulk-delete');
+    Route::get('vehicle-management/manufacturers/change-status/{id}', [ManufacturerController::class, 'changeStatus'])->name('manufacturers.change-status');
+    Route::post('vehicle-management/manufacturers/update-delivery-charge/{id}', [ManufacturerController::class, 'updateDeliveryCharge'])->name('manufacturers.update-delivery-charge');
+
+
+      /*
+    |--------------------------------------------------------------------------
+    | Vehicle Management > Models Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('vehicle-management/models', ModelController::class, [
+        'names' => [
+            'index'         => 'models.index',
+            'create'        => 'models.create',
+            'update'        => 'models.update',
+            'edit'          => 'models.edit',
+            'store'         => 'models.store',
+            'show'          => 'models.show',
+            'destroy'       => 'models.destroy',
+        ]
+    ]);
+
+    Route::post('vehicle-management/models/bulk-delete', [ModelController::class, 'bulkDelete'])->name('models.bulk-delete');
+    Route::get('vehicle-management/models/change-status/{id}', [ModelController::class, 'changeStatus'])->name('models.change-status');
+    Route::post('vehicle-management/models/update-discount/{id}', [ModelController::class, 'updateDiscount'])->name('models.update-discount');
+    Route::post('vehicle-management/models/update-profit/{id}', [ModelController::class, 'updateProfit'])->name('models.update-profit');
+    Route::get('vehicle-management/models/hpi/models',      [ModelController::class, 'hpiModels'])->name('models.hpi-models');
+      /*
+    |--------------------------------------------------------------------------
+    | Vehicle Management > Derivatives Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('vehicle-management/derivatives', DerivativeController::class, [
+        'names' => [
+            'index'         => 'derivatives.index',
+            'create'        => 'derivatives.create',
+            'update'        => 'derivatives.update',
+            'edit'          => 'derivatives.edit',
+            'store'         => 'derivatives.store',
+            'show'          => 'derivatives.show',
+            'destroy'       => 'derivatives.destroy',
+        ]
+    ]);
+
+    Route::get('vehicle-management/derivatives/change-status/{id}', [DerivativeController::class, 'changeStatus'])->name('derivatives.change-status');
+    Route::post('vehicle-management/derivatives/update-discount/{id}', [DerivativeController::class, 'updateDiscount'])->name('derivatives.update-discount');
+    Route::post('vehicle-management/derivatives/update-profit/{id}', [DerivativeController::class, 'updateProfit'])->name('derivatives.update-profit');
+    Route::get('vehicle-management/derivatives/hpi/derivatives', [DerivativeController::class, 'hpiDerivatives'])->name('derivatives.hpi-derivatives');
     /*
     |--------------------------------------------------------------------------
     | User Management > Users Route
