@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('iso2')->nullable();
             $table->string('dialcode')->nullable();
             $table->string('phone')->nullable();
+             $table->timestamp('phone_verified_at')->nullable();
             $table->string('password');
             $table->string('gender')->nullable();
             $table->string('avatar')->nullable();

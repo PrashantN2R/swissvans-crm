@@ -47,17 +47,26 @@
                 </a>
             </li>
 
-<li class="side-nav-item">
+            <li class="side-nav-item">
+                <a href="{{ route('superadmin.vehicles.index') }}" class="side-nav-link">
+                    <i class="bi bi-car-front"></i><span>Vehicle Management</span>
+                </a>
+            </li>
+
+
+
+            <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#vehicle-management" aria-expanded="false"
                     aria-controls="vehicle-management" class="side-nav-link">
-                    <i class="bi bi-person-workspace"></i>
+                    <i class="bi bi-sliders"></i>
                     <span>Vehicle Settings</span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="vehicle-management">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('superadmin.manufacturers.index') }}" class="dropdown-item">Manufacturers</a>
+                            <a href="{{ route('superadmin.manufacturers.index') }}"
+                                class="dropdown-item">Manufacturers</a>
                         </li>
                         <li>
                             <a href="{{ route('superadmin.models.index') }}" class="dropdown-item">Models</a>

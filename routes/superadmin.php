@@ -16,6 +16,7 @@ use App\Http\Controllers\Superadmin\UserManagement\UserController;
 use App\Http\Controllers\Superadmin\VehicleManagement\DerivativeController;
 use App\Http\Controllers\Superadmin\VehicleManagement\ManufacturerController;
 use App\Http\Controllers\Superadmin\VehicleManagement\ModelController;
+use App\Http\Controllers\Superadmin\VehicleManagement\VehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,7 +148,22 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::get('vehicle-management/manufacturers/change-status/{id}', [ManufacturerController::class, 'changeStatus'])->name('manufacturers.change-status');
     Route::post('vehicle-management/manufacturers/update-delivery-charge/{id}', [ManufacturerController::class, 'updateDeliveryCharge'])->name('manufacturers.update-delivery-charge');
 
-
+          /*
+    |--------------------------------------------------------------------------
+    | Vehicle Management > Models Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('vehicle-management/vehicles', VehicleController::class, [
+        'names' => [
+            'index'         => 'vehicles.index',
+            'create'        => 'vehicles.create',
+            'update'        => 'vehicles.update',
+            'edit'          => 'vehicles.edit',
+            'store'         => 'vehicles.store',
+            'show'          => 'vehicles.show',
+            'destroy'       => 'vehicles.destroy',
+        ]
+    ]);
       /*
     |--------------------------------------------------------------------------
     | Vehicle Management > Models Route
