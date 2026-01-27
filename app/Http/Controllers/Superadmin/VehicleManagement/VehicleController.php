@@ -36,7 +36,7 @@ class VehicleController extends Controller
             ->when($request->manufacturer,fn($q) => $q->where('hpi_mancode',$request->manufacturer))
             ->when($request->model,fn($q) => $q->where('hpi_modcode',$request->model))
             ->orderBy('id', 'desc')
-            ->paginate(20);
+            ->paginate(100);
 
         $manufacturers  = Manufacturer::orderBy('name')->get();
         $models         = Model::orderBy('name')->get();

@@ -224,3 +224,37 @@ table.dataTable.table-sm>thead>tr>th :not(.sorting_disabled) {
 .table{
     box-shadow: 0 0 35px 0 rgba(154, 161, 171, .15) !important;
 }
+  .uk-plate {
+           display: inline-block;
+  background: #ffd400;
+  color: #000;
+  font-family: "Charles Wright", Arial, sans-serif;
+  min-width: 100%;
+  margin-bottom: 8px !important;
+  font-size: 13px;
+    letter-spacing: 3px;
+  padding: 10px 20px;
+  text-align: center !important;
+  font-weight: 700;
+  box-shadow: inset 0 1px 2px rgba(250, 153, 153, 0.7), inset 0 -1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.25);
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+        }
+.vin-plate {
+    display: inline-block;
+    background: linear-gradient(145deg, #f2f2f2, #cfcfcf);
+    color: #111;
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border: 1px solid #888;
+    border-radius: 50px;
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.7),
+        inset 0 -1px 2px rgba(0,0,0,0.2),
+        0 1px 3px rgba(0,0,0,0.25);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
