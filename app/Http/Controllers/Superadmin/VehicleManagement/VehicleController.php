@@ -109,13 +109,24 @@ class VehicleController extends Controller
         ]);
 
         if ($request->filled('thumbnail')) {
-            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/thumbnails');
+            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/'.$vehicle->id.'/thumbnails');
             $vehicle->update(['thumbnail' => $upload['destinationPath']]);
         }
 
         $this->processGalleryImages($request, $vehicle);
 
         return redirect()->route('superadmin.vehicles.index')->with('success', 'Vehicle created!');
+    }
+
+     /**
+     * Show the form for editing the specified vehicle.
+     */
+    public function show($id)
+    {
+        // Load with images relationship to show them in the edit gallery
+        $vehicle = Vehicle::with('images')->findOrFail($id);
+
+        return view('superadmin.vehicles.show', compact('vehicle'));
     }
 
     /**
@@ -146,7 +157,7 @@ class VehicleController extends Controller
 
         if ($request->filled('thumbnail')) {
             if ($vehicle->thumbnail) Storage::disk('public')->delete($vehicle->thumbnail);
-            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/thumbnails');
+            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/'.$id.'/thumbnails');
             $vehicle->thumbnail = $upload['destinationPath'];
         }
 

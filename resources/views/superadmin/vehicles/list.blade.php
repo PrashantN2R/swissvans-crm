@@ -29,195 +29,217 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('superadmin.vehicles.index') }}" method="GET">
-                    <input type="hidden" name="is_delete" value="{{ request()->get('is_delete') }}">
-                    <div class="card">
-                        <div class="card-body">
-
-                            <div class="row g-3">
-
-                                {{-- Product Title --}}
-                                <div class="col-md-3">
-                                    <label class="col-form-label">Product Title</label>
-                                    <input type="text" name="title" class="form-control form-control-sm"
-                                        value="{{ request('title') }}" placeholder="Search title...">
-                                </div>
-
-                                 {{-- Registration --}}
-                                <div class="col-md-3">
-                                    <label class="col-form-label">Registration No</label>
-                                    <input type="text" name="registration" class="form-control form-control-sm"
-                                        value="{{ request('registration') }}" placeholder="Search By Registration No">
-                                </div>
-
-                                 {{-- Year --}}
-                                <div class="col-md-3">
-                                    <label class="col-form-label">Year</label>
-                                    <input type="text" name="year" class="form-control form-control-sm"
-                                        value="{{ request('year') }}" placeholder="Search By Year">
-                                </div>
-
-                                 {{-- Status --}}
-                                <div class="col-md-3">
-                                    <label class="col-form-label">Status</label>
-                                    <select name="status" class="form-select form-select-sm">
-                                        <option value="">All</option>
-                                        <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Active
-                                        </option>
-                                        <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Inactive
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <!-- Manufacturer -->
-                                <div class="col-md-3">
-                                    <label class="col-form-label">Manufacturer</label>
-                                    <select name="manufacturer" id="filter_manufacturer" class="form-select form-select-sm">
-                                        <option value="">All</option>
-                                        @foreach ($manufacturers as $man)
-                                            <option value="{{ $man->cap_id }}" data-cap-id="{{ $man->cap_id }}"
-                                                @selected((request('manufacturer') ?? '') == $man->cap_id)>
-                                                {{ $man->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <!-- Model -->
-                                <div class="col-md-3">
-                                    <label class="col-form-label">Model</label>
-                                    <select name="model" id="filter_model" class="form-select form-select-sm">
-                                        <option value="">All</option>
-
-                                        @if (count($fillmodels) > 0)
-                                            @foreach ($fillmodels as $fmod)
-                                                <option value="{{ $fmod->capmod_id }}" @selected((request('model') ?? '') == $fmod->capmod_id)>
-                                                    {{ $fmod->name }}</option>
-                                            @endforeach
-                                        @endif
-
-                                    </select>
-                                </div>
-
-
-
-                                {{-- Lease Type --}}
-                                <div class="col-md-3">
-                                    <label class="col-form-label">Lease Type</label>
-                                    <select name="lease" class="form-select form-select-sm">
-                                        <option value="">All</option>
-                                        <option value="business" {{ request('lease') == 'business' ? 'selected' : '' }}>
-                                            Business Lease
-                                        </option>
-                                        <option value="hp" {{ request('lease') == 'hp' ? 'selected' : '' }}>Hire
-                                            Purchase</option>
-                                    </select>
-                                </div>
-
-
-
-                                {{-- Buttons --}}
-                                <div class="col-md-3 text-end">
-                                    <label class="col-form-label d-block text-white">&nbsp;</label>
-                                    <button type="submit" class="btn btn-sm btn-secondary">
-                                        <i class="mdi mdi-magnify search-icon"></i> Search
-                                    </button>
-
-                                    <a href="{{ route('superadmin.vehicles.index') }}"
-                                        class="btn btn-sm btn-dark">Reset</a>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </form>
+                @include('superadmin.vehicles.filter')
             </div>
         </div>
-    </div>
-@endsection
+        <div class="row">
+            <div class="col-12">
+                <div class="col-12">
+                    <table id="basic-datatable" class="table table-sm align-middle table-row-dashed fs-6 gy-5 dataTable">
+                        <thead>
+                            <tr>
+                                <th class="all th-primary" width="1%">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="all-rows">
+                                        <label class="form-check-label">&nbsp;</label>
+                                    </div>
+                                </th>
+                                <th class="th-primary">Vehicle Details</th>
+                                <th class="th-primary">Registration</th>
+                                <th class="th-primary">VIN</th>
+                                <th class="th-primary">Pricing</th>
+                                <th class="th-primary">Stock Status</th>
+                                <th class="th-primary">Status</th>
+                                 <th class="th-primary">Added On</th>
+                                <th class="th-primary"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="fw-semibold text-gray-600">
+                            @foreach ($vehicles as $vehicle)
+                                <tr>
+                                    <td width="1%">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input checkbox-row" name="rows"
+                                                id="customCheck{{ $vehicle->id }}" value="{{ $vehicle->id }}">
+                                            <label class="form-check-label"
+                                                for="customCheck{{ $vehicle->id }}">&nbsp;</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span
+                                            class="badge badge-primary-lighten rounded-pill mb-1">{{ $vehicle->manufacturerData->name }}</span>
+                                        <br>
+                                            <span
+                                            class="badge badge-secondary-lighten rounded-pill mb-1">{{ $vehicle->modelData->name }}</span>
+                                        <br>
+                                            <span
+                                            class="badge badge-success-lighten rounded-pill">{{ $vehicle->variantData->name }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-body fw-semibold">{{ $vehicle->registration }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-body fw-semibold">{{ $vehicle->vin }}</span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column gap-1">
 
-@push('scripts')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('assets/js/vendor/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/dataTables.bootstrap4.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
+                                            @if ($vehicle->is_business_lease)
+                                                <span class="badge bg-primary rounded-pill d-block mb-1">
+                                                    Business Lease
+                                                </span>
+                                            @endif
 
-    <script>
-        $("#basic-datatable").DataTable({
-            paging: false,
-            searching: false,
-            info: false,
-            responsive: true,
-            ordering: true,
-            autoWidth: false,
-            order: [
-                [0, "asc"]
-            ],
-            columnDefs: [{
-                    orderable: false,
-                    targets: 5
-                }, // actions column
-            ]
-        });
+                                            @if ($vehicle->is_hire_purchase)
+                                                <span class="badge bg-success rounded-pill d-block mb-1">
+                                                    Hire Purchase
+                                                </span>
+                                            @endif
 
-        function confirmDelete(id, msg = false) {
-            Swal.fire({
-                title: "Are you sure?",
-                text: msg == false ? 'This product will be deleted permanently.' :
-                    'You want to recover this vehicle.',
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: msg == false ? "Delete" : "Recover",
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById("delete-form" + id).submit();
-                }
+                                            @if (!$vehicle->is_business_lease && !$vehicle->is_hire_purchase)
+                                                <span class="badge bg-warning rounded-pill d-block mb-1">
+                                                    None
+                                                </span>
+                                            @endif
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @if ($vehicle->stock_status == 'in_stock')
+                                            <span class="badge bg-success rounded-pill d-block mb-1">
+                                                In Stock
+                                            </span>
+                                        @else
+                                            <span class="badge bg-danger rounded-pill d-block mb-1">
+                                                Out Of Stock
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $vehicle->status }}</td>
+
+                                    <td>
+                                        <i class="uil-calender me-1"></i>
+                                        {{ \Carbon\Carbon::parse($vehicle->created_at)->format('M d Y') }}<br>
+                                        <i class="uil-clock me-1"></i>
+                                        {{ \Carbon\Carbon::parse($vehicle->created_at)->format('h:i A') }}
+                                    </td>
+                                    <td class="text-end">
+                                        <a href="#" class="dropdown-toggle arrow-none card-drop"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical fs-4"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end">
+
+                                            <a href="{{ route('superadmin.quotations.show', $vehicle->id) }}"
+                                                class="dropdown-item"><i class="uil uil-eye me-1"></i>
+                                                View
+                                                Quotation</a>
+                                            <a href="{{ route('superadmin.quotations.edit', $vehicle->id) }}"
+                                                class="dropdown-item"><i class="uil-pen me-1"></i>
+                                                Edit
+                                                Quotation</a>
+                                            <a href="javascript:void(0);" onclick="confirmDelete({{ $vehicle->id }})"
+                                                class="dropdown-item"><i class="uil-trash-alt me-1"></i>
+                                                Delete
+                                                Quotation</a>
+                                            <form id='delete-form{{ $vehicle->id }}'
+                                                action='{{ route('superadmin.quotations.destroy', $vehicle->id) }}'
+                                                method='POST'>
+                                                <input type='hidden' name='_token' value='{{ csrf_token() }}'>
+                                                <input type='hidden' name='_method' value='DELETE'>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    @endsection
+
+    @push('scripts')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{{ asset('assets/js/vendor/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/dataTables.bootstrap4.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
+
+        <script>
+            $("#basic-datatable").DataTable({
+                paging: false,
+                searching: false,
+                info: false,
+                responsive: true,
+                ordering: true,
+                autoWidth: false,
+                order: [
+                    [0, "asc"]
+                ],
+                columnDefs: [{
+                        orderable: false,
+                        targets: 5
+                    }, // actions column
+                ]
             });
-        }
-    </script>
-    <script>
-        $(document).ready(function() {
 
-            $("#filter_manufacturer").change(function() {
+            function confirmDelete(id, msg = false) {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: msg == false ? 'This product will be deleted permanently.' :
+                        'You want to recover this vehicle.',
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: msg == false ? "Delete" : "Recover",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById("delete-form" + id).submit();
+                    }
+                });
+            }
+        </script>
+        <script>
+            $(document).ready(function() {
 
-                let capId = $("#filter_manufacturer option:selected").data("cap-id");
-                let selectedModel = "{{ $filter['model'] ?? '' }}";
+                $("#filter_manufacturer").change(function() {
 
-                $("#filter_model").html('<option value="">Loading...</option>');
+                    let capId = $("#filter_manufacturer option:selected").data("cap-id");
+                    let selectedModel = "{{ $filter['model'] ?? '' }}";
 
-                // If Manufacturer = All
-                if (!capId) {
-                    $("#filter_model").html('<option value="">All</option>');
-                    return;
-                }
+                    $("#filter_model").html('<option value="">Loading...</option>');
 
-                $.ajax({
-                    url: "{{ route('superadmin.models.hpi-models') }}",
-                    type: "GET",
-                    data: {
-                        manCode: capId
-                    },
-                    success: function(response) {
-
+                    // If Manufacturer = All
+                    if (!capId) {
                         $("#filter_model").html('<option value="">All</option>');
+                        return;
+                    }
 
-                        response.forEach(function(item) {
+                    $.ajax({
+                        url: "{{ route('superadmin.models.hpi-models') }}",
+                        type: "GET",
+                        data: {
+                            manCode: capId
+                        },
+                        success: function(response) {
 
-                            // MODEL NAME comes from item.name
-                            $("#filter_model").append(`
+                            $("#filter_model").html('<option value="">All</option>');
+
+                            response.forEach(function(item) {
+
+                                // MODEL NAME comes from item.name
+                                $("#filter_model").append(`
                         <option value="${item.capmod_id}"
                             ${item.name === selectedModel ? 'selected' : ''}>
                             ${item.name}
                         </option>
                     `);
 
-                        });
-                    }
+                            });
+                        }
+                    });
+
                 });
 
             });
-
-        });
-    </script>
-@endpush
+        </script>
+    @endpush

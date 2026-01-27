@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Vehicle extends Model
 {
+    use HasSlug;
     protected $appends = ['thumbnail_path'];
     protected $fillable = [
         'user_id', 'title', 'slug', 'registration', 'vin', 'model', 'year',
@@ -26,6 +29,38 @@ class Vehicle extends Model
         'price' => 'decimal:2',
         'sale_price' => 'decimal:2',
     ];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
+    }
+
+    /**
+     * Get the manufacturer that owns the Vehicle
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function manufacturerData(): BelongsTo
+    {
+        return $this->belongsTo(Manufacturer::class, 'hpi_mancode', 'cap_id');
+    }
+
+     /**
+     * Get the model that owns the Vehicle
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function modelData(): BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Model::class, 'hpi_modcode', 'capmod_id');
+    }
+
+    public function variantData(): BelongsTo
+    {
+        return $this->belongsTo(Derivative::class, 'hpi_derivative', 'derivative_id');
+    }
 
     /**
      * Get the user that owns the vehicle.

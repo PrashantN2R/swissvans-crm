@@ -13,6 +13,8 @@ use Database\Seeders\Superadmin\QuotationSeeder;
 use Database\Seeders\Superadmin\RoleSeeder;
 use Database\Seeders\Superadmin\SuperadminSeeder;
 use Database\Seeders\Superadmin\TaskSeeder;
+use Database\Seeders\Superadmin\VanTypeSeeder;
+use Database\Seeders\Superadmin\VehicleSeeder;
 use Database\Seeders\User\UserSeeder;
 use Database\Seeders\Utility\CountrySeeder;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -25,6 +27,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(ManufacturerSeeder::class);
+        $this->call(ModelSeeder::class);
+        $this->call(DerivativeSeeder::class);
+        $this->call(VanTypeSeeder::class);
+        $this->call(VehicleSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
@@ -33,8 +40,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(TaskSeeder::class);
         $this->call(QuotationSeeder::class);
-        $this->call(ManufacturerSeeder::class);
-        $this->call(ModelSeeder::class);
-        $this->call(DerivativeSeeder::class);
+
     }
 }
