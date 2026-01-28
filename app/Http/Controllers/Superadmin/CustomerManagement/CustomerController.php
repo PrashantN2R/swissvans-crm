@@ -51,7 +51,7 @@ class CustomerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('superadmin.customer-management.create');
     }
@@ -101,6 +101,13 @@ class CustomerController extends Controller
             ]);
         }
 
+        if ($request->redirect == "vehicle") {
+            if ($request->vehicle_id) {
+                return redirect()->route('superadmin.vehicles.edit', $request->vehicle_id)->with('success', 'Customer created successfully!');
+            } else {
+                return redirect()->route('superadmin.vehicles.create')->with('success', 'Customer created successfully!');
+            }
+        }
         return redirect()->route('superadmin.customers.index')->with('success', 'Customer created successfully!');
     }
 

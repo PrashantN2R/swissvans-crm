@@ -30,6 +30,8 @@
                 <form id="superadminForm" method="POST" action="{{ route('superadmin.customers.store') }}"
                     enctype="multipart/form-data" autocomplete="off">
                     @csrf
+                    <input type="hidden" name="redirect" value="{{ request('redirect') }}">
+                    <input type="hidden" name="vehicle_id" value="{{ request('vehicle_id') }}">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">

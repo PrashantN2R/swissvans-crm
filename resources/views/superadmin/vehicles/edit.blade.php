@@ -51,15 +51,22 @@
                 </div>
             </div>
         </div>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul class="list-unstyled">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+        <div class="row">
+            <div class="col-12">
+                @include('superadmin.includes.flash-message')
             </div>
-        @endif
+            <div class="col-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
 
         <form action="{{ route('superadmin.vehicles.update', $vehicle->id) }}" method="POST" id="vehicleForm"
             enctype="multipart/form-data">
@@ -262,7 +269,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                     <label for="owner" class="form-label">Current Owner </label>
+                                    <label for="owner" class="form-label">Current Owner </label>
                                     <div class="input-group">
                                         <select name="owner" id="owner"
                                             class="form-select form-select-sm @error('owner') is-invalid @enderror">
@@ -274,7 +281,8 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                                        <a class="btn btn-outline-secondary"
+                                            href="{{ route('superadmin.customers.create', ['redirect' => 'vehicle', 'vehicle_id' => $vehicle->id]) }}">Add</a>
                                     </div>
                                     @error('owner')
                                         <div class="invalid-feedback">{{ $message }}</div>

@@ -51,15 +51,23 @@
                 </div>
             </div>
         </div>
-@if ($errors->any())
-            <div class="alert alert-danger">
-                <ul class="list-unstyled">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+        <div class="row">
+            <div class="col-12">
+                @include('superadmin.includes.flash-message')
             </div>
-        @endif
+            <div class="col-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+        </div>
+
         <form action="{{ route('superadmin.vehicles.store') }}" method="POST" id="vehicleForm"
             enctype="multipart/form-data">
             @csrf
@@ -271,7 +279,8 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                                        <a class="btn btn-outline-secondary"
+                                            href="{{ route('superadmin.customers.create', ['redirect' => 'vehicle']) }}">Add</a>
                                     </div>
                                     @error('owner')
                                         <div class="invalid-feedback">{{ $message }}</div>
