@@ -140,8 +140,6 @@
                             </th>
                             <th class="th-primary d-none">ID</th>
                             <th class="th-primary">Customer</th>
-                            <th class="th-primary">Event Type</th>
-                            <th class="th-primary">Event Date</th>
                             <th class="th-primary">Budget</th>
                             <th class="th-primary">Source</th>
                             <th class="th-primary">Status</th>
@@ -169,9 +167,6 @@
                                     <small style="font-size:0.7rem;"><i class="uil-envelope me-1"></i>{{ $lead->email }}</small>
                                     <br>
                                     <small style="font-size:0.7rem;"><i class="uil-mobile-android me-1"></i>{{ $lead->phone }}</small>
-                                </td>
-                                <td>{{ $lead->event_type }}</td>
-                                <td>{{ \Carbon\Carbon::parse($lead->event_date)->format('d-m-Y') }}
                                 </td>
                                 <td>₹ {{ number_format($lead->budget) }}</td>
                                 <td>{{ ucfirst($lead->source) }}</td>
