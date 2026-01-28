@@ -152,10 +152,10 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end">
 
-                                            <a href="{{ route('superadmin.vehicles.show', $vehicle->id) }}"
+                                            {{-- <a href="{{ route('superadmin.vehicles.show', $vehicle->id) }}"
                                                 class="dropdown-item"><i class="uil uil-eye me-1"></i>
                                                 View
-                                                Vehicle</a>
+                                                Vehicle</a> --}}
                                             <a href="{{ route('superadmin.vehicles.edit', $vehicle->id) }}"
                                                 class="dropdown-item"><i class="uil-pen me-1"></i>
                                                 Edit
