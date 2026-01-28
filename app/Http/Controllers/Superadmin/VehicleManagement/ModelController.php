@@ -156,7 +156,7 @@ class ModelController extends Controller
     {
         $request->validate(['manCode' => 'required|string']);
 
-        Artisan::call('app:sync-models-for ' . $request->manCode);
+        // Artisan::call('app:sync-models-for ' . $request->manCode);
 
         return response()->json(
             Model::where('cap_id', $request->manCode)

@@ -155,7 +155,7 @@ class DerivativeController extends Controller
     {
         $request->validate(['modCode' => 'required|string']);
 
-        Artisan::call('app:sync-derivatives-for ' . $request->modCode);
+        // Artisan::call('app:sync-derivatives-for ' . $request->modCode);
 
         return response()->json(
             Derivative::where('capmod_id', $request->modCode)

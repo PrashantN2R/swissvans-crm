@@ -50,7 +50,7 @@ return new class extends Migration
             // SEO
             $table->string('meta_title')->nullable();
             $table->longText('meta_description')->nullable();
-            $table->string('meta_keywords')->nullable();
+            $table->longText('meta_keywords')->nullable();
             $table->boolean('status')->default(true);
             $table->enum('stock_status', ['in_stock', 'out_of_stock'])->default('in_stock');
             $table->timestamps();

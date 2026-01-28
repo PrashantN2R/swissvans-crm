@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Superadmin\VehicleManagement;
 use App\Http\Controllers\Controller;
 use App\Models\Manufacturer;
 use App\Models\Model;
+use App\Models\User;
+use App\Models\VanType;
 use App\Models\Vehicle;
 use App\Models\VehicleImage;
 use Illuminate\Http\Request;
@@ -24,17 +26,17 @@ class VehicleController extends Controller
     /**
      * Display a listing of the vehicles.
      */
-     public function index(Request $request)
+    public function index(Request $request)
     {
         $vehicles = Vehicle::when($request->title, fn($q) => $q->where('title', 'LIKE', "%{$request->title}%"))
             ->when($request->status !== null && $request->status !== '', fn($q) => $q->where('status', $request->status))
             ->when($request->registration, fn($q) => $q->where('registration', $request->registration))
-             ->when($request->year, fn($q) => $q->where('year', $request->year))
+            ->when($request->year, fn($q) => $q->where('year', $request->year))
             ->when($request->min_price, fn($q) => $q->where('price', '>=', $request->min_price))
             ->when($request->max_price, fn($q) => $q->where('price', '<=', $request->max_price))
             ->when($request->stock_status, fn($q) => $q->where('stock_status', $request->stock_status))
-            ->when($request->manufacturer,fn($q) => $q->where('hpi_mancode',$request->manufacturer))
-            ->when($request->model,fn($q) => $q->where('hpi_modcode',$request->model))
+            ->when($request->manufacturer, fn($q) => $q->where('hpi_mancode', $request->manufacturer))
+            ->when($request->model, fn($q) => $q->where('hpi_modcode', $request->model))
             ->orderBy('id', 'desc')
             ->paginate(100);
 
@@ -43,7 +45,7 @@ class VehicleController extends Controller
 
         $fillmodels     =  $request->manufacturer ? Model::where('cap_id', $request->manufacturer)->get() : collect([]);
 
-        return view('superadmin.vehicles.list', compact('vehicles','manufacturers','models','fillmodels'));
+        return view('superadmin.vehicles.list', compact('vehicles', 'manufacturers', 'models', 'fillmodels'));
     }
 
     /**
@@ -51,8 +53,10 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        // Add any data needed for dropdowns here, e.g., $categories = Category::all();
-        return view('superadmin.vehicles.create');
+        $customers          = User::get(['id', 'firstname', 'lastname']);
+        $manufacturers      = Manufacturer::orderBy('name')->get(['cap_id', 'name']);
+        $van_type           = VanType::get(['name']);
+        return view('superadmin.vehicles.create', compact('manufacturers', 'van_type', 'customers'));
     }
 
     /**
@@ -109,7 +113,7 @@ class VehicleController extends Controller
         ]);
 
         if ($request->filled('thumbnail')) {
-            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/'.$vehicle->id.'/thumbnails');
+            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $vehicle->id . '/thumbnails');
             $vehicle->update(['thumbnail' => $upload['destinationPath']]);
         }
 
@@ -118,7 +122,7 @@ class VehicleController extends Controller
         return redirect()->route('superadmin.vehicles.index')->with('success', 'Vehicle created!');
     }
 
-     /**
+    /**
      * Show the form for editing the specified vehicle.
      */
     public function show($id)
@@ -135,9 +139,11 @@ class VehicleController extends Controller
     public function edit($id)
     {
         // Load with images relationship to show them in the edit gallery
-        $vehicle = Vehicle::with('images')->findOrFail($id);
-
-        return view('superadmin.vehicles.edit', compact('vehicle'));
+        $vehicle            = Vehicle::with('images')->findOrFail($id);
+        $manufacturers      = Manufacturer::orderBy('name')->get(['cap_id', 'name']);
+        $van_type           = VanType::get(['name']);
+        $customers          = User::get(['id', 'firstname', 'lastname']);
+        return view('superadmin.vehicles.edit', compact('vehicle', 'manufacturers', 'van_type', 'customers'));
     }
 
     /**
@@ -157,7 +163,7 @@ class VehicleController extends Controller
 
         if ($request->filled('thumbnail')) {
             if ($vehicle->thumbnail) Storage::disk('public')->delete($vehicle->thumbnail);
-            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/'.$id.'/thumbnails');
+            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $id . '/thumbnails');
             $vehicle->thumbnail = $upload['destinationPath'];
         }
 
@@ -190,7 +196,7 @@ class VehicleController extends Controller
         return back()->with('success', 'Vehicle deleted.');
     }
 
-     /**
+    /**
      * Bulk Delete
      */
     public function bulkDelete(Request $request)
@@ -202,6 +208,31 @@ class VehicleController extends Controller
         Vehicle::whereIn('id', $request->ids)->delete();
 
         return response()->json(['success' => true]);
+    }
+
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'file' => 'required',
+        ]);
+
+        if ($request->hasFile('file')) {
+            $file       = $request->file('file');
+            $filename   = time() . '_' . $file->getClientOriginalName();
+            $path       = $file->storeAs('uploads/vehicles/content', $filename, 'public');
+
+            return response()->json([
+                'success'   => true,
+                'location'  => asset('storage/' . $path),
+                'filename'  => $filename,
+                'path'      => $path
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'No file uploaded'
+        ], 400);
     }
 
     /**

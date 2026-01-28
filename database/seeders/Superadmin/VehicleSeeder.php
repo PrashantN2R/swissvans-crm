@@ -50,6 +50,8 @@ class VehicleSeeder extends Seeder
                     'vin'               => strtoupper(Str::random(17)),
                     'model'             => $derivative->model,
                     'year'              => $year,
+                    'short_description'                 => '<h1>Manufacturer: '.$derivative->manufacturer.'</h1><h2>Model: '.$derivative->model.'</h2><h3>Variant: '.$derivative->name.'</h3><h4>Introduced: '.$derivative->introduced.'</h4>',
+                    'description'                       => '<h1>Manufacturer: '.$derivative->manufacturer.'</h1><h2>Model: '.$derivative->model.'</h2><h3>Variant: '.$derivative->name.'</h3><h4>Introduced: '.$derivative->introduced.'</h4>',
                     // Base Pricing
                     'price'                         => 40000,
                     'sale_price'                    => 38000,
@@ -65,15 +67,18 @@ class VehicleSeeder extends Seeder
                     'is_hire_purchase'              => 1,
                     'hire_purchase_price'           => 580, // Standard HP installment
                     'hire_purchase_discount_price'  => 540, // Discounted HP installment
-                    'van_type'          => $vanTypeName,
-                    'hpi_mancode'       => $derivative->cap_id,
-                    'hpi_modcode'       => $derivative->capmod_id,
-                    'hpi_derivative'    => $derivative->derivative_id,
-                    'thumbnail'         => 'thumbnail.webp',
-                    'status'            => 1,
-                    'stock_status'      => 'in_stock',
-                    'created_at'        => $now,
-                    'updated_at'        => $now,
+                    'van_type'                      => $vanTypeName,
+                    'hpi_mancode'                   => $derivative->cap_id,
+                    'hpi_modcode'                   => $derivative->capmod_id,
+                    'hpi_derivative'                => $derivative->derivative_id,
+                    'thumbnail'                     => 'thumbnail.webp',
+                    'status'                        => 1,
+                    'stock_status'                  => 'in_stock',
+                    'meta_title'                    => "{$derivative->manufacturer} {$derivative->model} {$derivative->name}",
+                    'meta_description'              => "Buy the latest {{$derivative->manufacturer}} {$derivative->model} {{$derivative->name}} with flexible finance options, business lease and hire purchase deals. View full specifications, pricing, images, and availability. Fast approval, trusted dealer, nationwide delivery available.",
+                    "meta_keywords"                 => "swiss vans, swissvans, vans for sale uk, used vans uk, new vans uk, commercial vans uk, business vans, van leasing uk, hire purchase vans, cheap vans uk, panel vans, electric vans uk, pickup trucks uk, fleet vans, company vans, van finance uk, small vans, large vans, automatic vans uk, diesel vans uk",
+                    'created_at'                    => $now,
+                    'updated_at'                    => $now,
                 ];
 
                 $bar->advance();

@@ -12,6 +12,9 @@
                     <div class="page-title-right">
                         <a href="javascript:void(0);" class="btn btn-sm btn-flex btn-danger" style="display: none;"
                             id="delete-all">Delete Selected</a>
+                             <a href="{{ route('superadmin.vehicles.create') }}" class="btn btn-sm btn-primary"><i
+                                class="bi bi-plus-circle me-1"></i>Add
+                            Vehicle</a>
                     </div>
                     <h4 class="page-title">Vehicles</h4>
                     <ol class="breadcrumb m-0">

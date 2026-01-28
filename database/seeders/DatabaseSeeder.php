@@ -26,7 +26,10 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {   $this->call(SuperadminSeeder::class);
+    {
+        $this->call(RoleSeeder::class);
+        $this->call(SuperadminSeeder::class);
+        $this->call(PermissionSeeder::class);
         $this->call(LeadSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(TaskSeeder::class);
@@ -37,9 +40,5 @@ class DatabaseSeeder extends Seeder
         $this->call(VanTypeSeeder::class);
         $this->call(VehicleSeeder::class);
         $this->call(CountrySeeder::class);
-        $this->call(RoleSeeder::class);
-        $this->call(PermissionSeeder::class);
-
-
     }
 }
