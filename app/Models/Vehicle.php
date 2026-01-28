@@ -85,6 +85,6 @@ class Vehicle extends Model
             return $this->path;
         }
 
-        return asset("storage/uploads/vehicles/" .$this->id."/"."thumbnail/" . $this->thumbnail);
+        return asset("storage/uploads/vehicles/" .$this->id."/"."thumbnails/" . $this->thumbnail);
     }
 }

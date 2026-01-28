@@ -67,7 +67,6 @@ class VehicleController extends Controller
         $request->validate([
             'registration'      => 'required|string|max:20',
             'vin'               => 'required|string|max:50',
-            'model'             => 'required|string|max:255',
             'year'              => 'required|string|max:4',
             'hpi_mancode'       => 'required',
             'hpi_modcode'       => 'required',
@@ -81,10 +80,9 @@ class VehicleController extends Controller
             'is_hire_purchase'  => 'required|in:0,1',
         ]);
 
-        $vehicle = Vehicle::create([
+        $vehicle                = Vehicle::create([
             'user_id'           => $request->owner ? $request->owner : null,
             'title'             => $request->title,
-            'slug'              => Str::slug($request->title) . '-' . time(),
             'registration'      => $request->registration,
             'vin'               => $request->vin,
             'model'             => $request->model,
@@ -154,11 +152,19 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
 
         $request->validate([
-            'registration' => 'required|string',
-            'vin'          => 'required|string',
-            'model'        => 'required|string',
-            'year'         => 'required|string',
-            'title'        => 'required|string',
+            'registration'      => 'required|string|max:20',
+            'vin'               => 'required|string|max:50',
+            'year'              => 'required|string|max:4',
+            'hpi_mancode'       => 'required',
+            'hpi_modcode'       => 'required',
+            'hpi_derivative'    => 'required',
+            'title'             => 'required|string|max:255',
+            'short_description' => 'required|string',
+            'description'       => 'required|string',
+            'status'            => 'required|in:0,1',
+            'stock_status'      => 'required|in:in_stock,out_of_stock',
+            'is_business_lease' => 'required|in:0,1',
+            'is_hire_purchase'  => 'required|in:0,1',
         ]);
 
         if ($request->filled('thumbnail')) {
@@ -167,7 +173,35 @@ class VehicleController extends Controller
             $vehicle->thumbnail = $upload['destinationPath'];
         }
 
-        $vehicle->update($request->except(['images', 'thumbnail', 'up_alt_images', 'alt_images']));
+       $vehicle->update([
+            'user_id'           => $request->owner ? $request->owner : null,
+            'title'             => $request->title,
+            'registration'      => $request->registration,
+            'vin'               => $request->vin,
+            'model'             => $request->model,
+            'year'              => $request->year,
+            'short_description' => $request->short_description,
+            'description'       => $request->description,
+            'price'             => $request->price,
+            'sale_price'        => $request->sale_price,
+            'vat'               => $request->vat,
+            'interest_rate'     => $request->interest_rate,
+            'is_business_lease' => $request->is_business_lease,
+            'business_lease_price'          => $request->business_lease_price,
+            'business_lease_discount_price' => $request->business_lease_discount_price,
+            'is_hire_purchase'              => $request->is_hire_purchase,
+            'hire_purchase_price'           => $request->hire_purchase_price,
+            'hire_purchase_discount_price'  => $request->hire_purchase_discount_price,
+            'van_type'          => $request->van_type,
+            'hpi_mancode'       => $request->hpi_mancode,
+            'hpi_modcode'       => $request->hpi_modcode,
+            'hpi_derivative'    => $request->hpi_derivative,
+            'meta_title'        => $request->meta_title,
+            'meta_description'  => $request->meta_description,
+            'meta_keywords'     => $request->meta_keywords,
+            'status'            => $request->status,
+            'stock_status'      => $request->stock_status,
+        ]);
 
         $this->processGalleryImages($request, $vehicle);
 
@@ -238,16 +272,34 @@ class VehicleController extends Controller
     /**
      * Delete a single gallery attachment.
      */
-    public function deleteAttachment($id)
+    public function deleteAttachment(Request $request)
     {
-        $image = VehicleImage::findOrFail($id);
-        if (Storage::disk('public')->exists($image->path)) {
-            Storage::disk('public')->delete($image->path);
-        }
-        $image->delete();
-        return back()->with('success', 'Image removed.');
-    }
+        // Validate that the ID was actually passed in the request body
+        $request->validate([
+            'id' => 'required|exists:vehicle_images,id'
+        ]);
 
+        try {
+            // Access ID via $request->id
+            $image = VehicleImage::findOrFail($request->id);
+
+            if (Storage::disk('public')->exists($image->path)) {
+                Storage::disk('public')->delete($image->path);
+            }
+
+            $image->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Image deleted successfully.'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Processing error: ' . $e->getMessage()
+            ], 500);
+        }
+    }
     /* ============================
      | PRIVATE HELPERS
      ============================ */

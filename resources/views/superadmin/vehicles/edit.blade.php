@@ -51,6 +51,15 @@
                 </div>
             </div>
         </div>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
         <form action="{{ route('superadmin.vehicles.update', $vehicle->id) }}" method="POST" id="vehicleForm"
             enctype="multipart/form-data">
@@ -130,7 +139,8 @@
                                             class="text-danger ms-1">*</span></label>
                                     <input type="text" name="registration" id="registration"
                                         class="form-control form-control-sm @error('registration') is-invalid @enderror"
-                                        value="{{ old('registration', $vehicle->registration) }}" placeholder="Enter Registration Number">
+                                        value="{{ old('registration', $vehicle->registration) }}"
+                                        placeholder="Enter Registration Number">
                                     @error('registration')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -252,8 +262,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <label for="owner" class="form-label">Owner <span
-                                            class="text-danger ms-1">*</span></label>
+                                    <label for="owner" class="form-label">Owner </label>
                                     <div class="input-group">
                                         <select name="owner" id="owner"
                                             class="form-select form-select-sm @error('owner') is-invalid @enderror">
@@ -309,9 +318,11 @@
                                     <select name="status" id="statuses"
                                         class="form-select form-select-sm @error('status') is-invalid @enderror">
                                         <option value="">Select Vehicle Status</option>
-                                        <option value="1" {{ old('status', $vehicle->status) == '1' ? 'selected' : 'selected' }}>
+                                        <option value="1"
+                                            {{ old('status', $vehicle->status) == '1' ? 'selected' : 'selected' }}>
                                             Active</option>
-                                        <option value="0" {{ old('status', $vehicle->status) == '0' ? 'selected' : '' }}>
+                                        <option value="0"
+                                            {{ old('status', $vehicle->status) == '0' ? 'selected' : '' }}>
                                             Inactive</option>
                                     </select>
                                     @error('status')
@@ -324,44 +335,87 @@
 
                         <div class="col-md-12">
                             {{-- Thumbnail Starts Here --}}
-                            <div class="card">
+                            <div class="card shadow-sm border-0">
                                 <div class="card-body">
-                                    <label class="form-label">Main Thumbnail</label>
-                                    <div class="mb-2 text-center border rounded p-1 position-relative"
-                                        style="min-height: 150px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
-                                        <img id="preview-image" src="{{ asset('storage/uploads/vehicles/'.$vehicle->id.'/thumbnails'.'/'.$vehicle->thumbnail) }}" class="img-fluid rounded"
-                                            style="max-height: 150px; display: none;">
-                                        <span id="thumbnail-info" class="info-badge" style="display: none;"></span>
-                                        <div id="preview-text" class="text-muted">No image selected</div>
+                                    <label class="form-label fw-bold text-secondary small">Main Thumbnail</label>
+
+                                    <div class="mb-3 text-center border rounded position-relative" id="preview-container"
+                                        style="height: 180px; display: flex; align-items: center; justify-content: center; background-color: #fbfbfb; overflow: hidden;">
+
+                                        <img id="preview-image"
+                                            src="{{ isset($vehicle->thumbnail) ? $vehicle->thumbnail_path : '' }}"
+                                            class="img-fluid"
+                                            style="max-height: 100%; width: auto; object-fit: contain; {{ isset($vehicle->thumbnail) ? 'display: block;' : 'display: none;' }}">
+
+                                        <span id="thumbnail-info" class="info-badge"
+                                            @if (isset($vehicle->thumbnail)) style="display: none;" @endif></span>
+
+                                        @if (!isset($vehicle->thumbnail))
+                                            <div id="preview-text"
+                                                class="text-muted d-flex flex-column align-items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                                    fill="currentColor" class="bi bi-image mb-2 opacity-50"
+                                                    viewBox="0 0 16 16">
+                                                    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                                    <path
+                                                        d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+                                                </svg>
+                                                <span class="small uppercase">No Thumbnail uploaded</span>
+                                            </div>
+                                        @endif
                                     </div>
-                                    <input class="form-control form-control-sm" type="file" name="thumbnail"
-                                        id="thumbnail" accept="image/*">
+
+                                    <input class="form-control form-control-sm shadow-none" type="file"
+                                        name="thumbnail" id="thumbnail" accept="image/*">
                                 </div>
                             </div>
                             {{-- Thumbnail Ends Here --}}
 
-                            {{-- Main Gallary Starts Here --}}
-                            <div class="card">
+                            {{-- Main Gallery Starts Here --}}
+                            <div class="card shadow-sm border-0">
                                 <div class="card-body">
-                                    <label class="form-label">Vehicle Gallery</label>
+                                    <label class="form-label fw-bold text-secondary small">Vehicle Gallery</label>
 
-                                    <div id="image-slider" class="splide mb-2" style="display: none;">
+                                    <div id="image-slider" class="splide mb-3"
+                                        style="{{ $vehicle->images->count() > 0 ? 'display: block;' : 'display: none;' }}">
                                         <div class="splide__track">
                                             <ul class="splide__list" id="gallery-preview-list">
+                                                @foreach ($vehicle->images as $image)
+                                                    <li class="splide__slide p-1">
+                                                        <div class="position-relative border rounded overflow-hidden shadow-sm"
+                                                            style="height: 120px; background: #f8f9fa;">
+                                                            <img src="{{ $image->full_path }}" class="w-100 h-100"
+                                                                style="object-fit: cover;"
+                                                                alt="{{ $image->alt ?? 'Vehicle Image' }}">
+
+                                                            <div class="position-absolute top-0 end-0 p-1">
+                                                                <button type="button"
+                                                                    class="btn btn-danger btn-sm py-0 px-1 opacity-75 hover-opacity-100"
+                                                                    onclick="removeGalleryImage({{ $image->id }}, this)">
+                                                                    <i class="bi bi-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
+
                                     <div id="gallery-placeholder"
-                                        class="text-center text-muted py-4 mb-2 border rounded bg-light">
-                                        <i class="bi bi-images fs-2 d-block"></i>
-                                        Gallery Preview
+                                        class="text-center text-muted py-5 mb-3 border rounded bg-light"
+                                        style="{{ $vehicle->images->count() > 0 ? 'display: none;' : 'display: block;' }}">
+                                        <i class="bi bi-images fs-1 d-block opacity-25 mb-2"></i>
+                                        <span class="small text-uppercase fw-semibold">No Gallery Images Found</span>
                                     </div>
 
-                                    <input class="form-control form-control-sm mb-3" type="file" name="gallery[]"
-                                        id="gallery-input" accept="image/*" multiple>
+                                    <input class="form-control form-control-sm shadow-none" type="file"
+                                        name="images[]" id="gallery-input" accept="image/*" multiple>
+
+                                    <div class="form-text small text-muted">You can select multiple images to upload.</div>
                                 </div>
                             </div>
-                            {{-- Main Gallary Ends Here --}}
+                            {{-- Main Gallery Ends Here --}}
                         </div>
                     </div>
                 </div>
@@ -376,7 +430,8 @@
                                         <label class="form-label">Regular Price<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="price"
-                                            class="form-control form-control-sm" value="{{ old('price', $vehicle->price) }}">
+                                            class="form-control form-control-sm"
+                                            value="{{ old('price', $vehicle->price) }}">
                                         @error('price')
                                             <span id="price-error" class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -386,7 +441,8 @@
                                         <label class="form-label">Sale Price<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="sale_price"
-                                            class="form-control form-control-sm" value="{{ old('sale_price', $vehicle->sale_price) }}">
+                                            class="form-control form-control-sm"
+                                            value="{{ old('sale_price', $vehicle->sale_price) }}">
                                         @error('sale_price')
                                             <span id="sale_price-error"
                                                 class="error invalid-feedback">{{ $message }}</span>
@@ -407,7 +463,8 @@
                                         <label class="form-label">Interest Rate<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="interest_rate"
-                                            class="form-control form-control-sm" value="{{ old('interest_rate', $vehicle->interest_rate) }}">
+                                            class="form-control form-control-sm"
+                                            value="{{ old('interest_rate', $vehicle->interest_rate) }}">
                                         @error('interest_rate')
                                             <span id="interest-rate-error"
                                                 class="error invalid-feedback">{{ $message }}</span>
@@ -430,10 +487,12 @@
                                         <select name="is_business_lease" id="is_business_lease"
                                             class="form-select form-select-sm @error('is_business_lease') is-invalid @enderror">
                                             <option value="0"
-                                                {{ old('is_business_lease', $vehicle->is_business_lease) == '0' ? 'selected' : '' }}>No
+                                                {{ old('is_business_lease', $vehicle->is_business_lease) == '0' ? 'selected' : '' }}>
+                                                No
                                             </option>
                                             <option value="1"
-                                                {{ old('is_business_lease', $vehicle->is_business_lease) == '1' ? 'selected' : '' }}>Yes
+                                                {{ old('is_business_lease', $vehicle->is_business_lease) == '1' ? 'selected' : '' }}>
+                                                Yes
                                             </option>
                                         </select>
                                         @error('is_business_lease')
@@ -447,8 +506,8 @@
                                             Price</label>
                                         <input type="number" step="0.01" name="business_lease_price"
                                             id="business_lease_price"
-                                            class="form-control form-control-sm @error('business_lease_price', $vehicle->business_lease_price) is-invalid @enderror"
-                                            value="{{ old('business_lease_price') }}">
+                                            class="form-control form-control-sm @error('business_lease_price') is-invalid @enderror"
+                                            value="{{ old('business_lease_price', $vehicle->business_lease_price) }}">
                                         @error('business_lease_price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -461,8 +520,8 @@
                                             Price</label>
                                         <input type="number" step="0.01" name="business_lease_discount_price"
                                             id="business_lease_discount_price"
-                                            class="form-control form-control-sm @error('business_lease_discount_price', $vehicle->business_lease_discount_price) is-invalid @enderror"
-                                            value="{{ old('business_lease_discount_price') }}">
+                                            class="form-control form-control-sm @error('business_lease_discount_price') is-invalid @enderror"
+                                            value="{{ old('business_lease_discount_price', $vehicle->business_lease_discount_price) }}">
                                         @error('business_lease_discount_price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -482,10 +541,12 @@
                                             Purchase<span class="text-danger ms-1">*</span></label>
                                         <select name="is_hire_purchase" id="is_hire_purchase"
                                             class="form-select form-select-sm @error('is_hire_purchase') is-invalid @enderror">
-                                            <option value="0" {{ old('is_hire_purchase', $vehicle->is_hire_purchase) == '0' ? 'selected' : '' }}>
+                                            <option value="0"
+                                                {{ old('is_hire_purchase', $vehicle->is_hire_purchase) == '0' ? 'selected' : '' }}>
                                                 No
                                             </option>
-                                            <option value="1" {{ old('is_hire_purchase', $vehicle->is_hire_purchase) == '1' ? 'selected' : '' }}>
+                                            <option value="1"
+                                                {{ old('is_hire_purchase', $vehicle->is_hire_purchase) == '1' ? 'selected' : '' }}>
                                                 Yes
                                             </option>
                                         </select>
@@ -576,110 +637,150 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        let splideInstance = null;
-        let galleryFiles = [];
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Initialize Splide
+            var elms = document.getElementsByClassName('splide');
+            for (var i = 0, len = elms.length; i < len; i++) {
+                new Splide(elms[i], {
+                    type: 'loop', // Use 'loop' so it doesn't stop at the last slide
+                    perPage: 1,
+                    gap: '10px',
+                    pagination: false,
+                    arrows: true,
+                    autoplay: true, // Enables autoplay
+                    interval: 3000, // Time between transitions (3 seconds)
+                    pauseOnHover: true, // Good UX: stop moving when user hovers
+                    resetProgress: false,
+                    breakpoints: {
+                        640: {
+                            perPage: 1,
+                        },
+                    }
+                }).mount();
+            }
 
-        // Utility to format file size
-        function formatBytes(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
+            // 2. Logic for Thumbnail Preview
+            const thumbnailInput = document.getElementById('thumbnail');
+            const previewImage = document.getElementById('preview-image');
+            const previewText = document.getElementById('preview-text');
 
-        // Utility to get image dimensions
-        function getImageDimensions(file) {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.onload = () => resolve(`${img.width} × ${img.height} px`);
-                img.src = URL.createObjectURL(file);
+            thumbnailInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = 'block';
+                        if (previewText) previewText.style.display = 'none';
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        function removeGalleryImage(imageId, button) {
+            // 1. Trigger SweetAlert2 Confirmation
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                // 2. Only proceed if user clicked "Yes"
+                if (result.isConfirmed) {
+
+                    const $btn = $(button);
+                    $btn.prop('disabled', true); // Disable button
+
+                    $.ajax({
+                        url: '{{ route('superadmin.vehicles.delete-attachment') }}',
+                        type: 'POST',
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            _method: 'PUT',
+                            id: imageId
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                // 3. Success Feedback
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your image has been removed.',
+                                    'success'
+                                );
+
+                                const $slide = $btn.closest('.splide__slide');
+                                $slide.fadeOut(300, function() {
+                                    $(this).remove();
+                                    if (window.mainSplide) window.mainSplide.refresh();
+
+                                    if ($('#gallery-preview-list').children().length === 0) {
+                                        $('#image-slider').hide();
+                                        $('#gallery-placeholder').fadeIn();
+                                    }
+                                });
+                            }
+                        },
+                        error: function(xhr) {
+                            $btn.prop('disabled', false);
+                            Swal.fire(
+                                'Error!',
+                                xhr.responseJSON ? xhr.responseJSON.message : 'Server Error',
+                                'error'
+                            );
+                        }
+                    });
+                }
             });
         }
-
-        // Single Thumbnail Logic
-        document.getElementById('thumbnail').onchange = async function() {
-            const [file] = this.files;
-            const preview = document.getElementById('preview-image');
-            const text = document.getElementById('preview-text');
-            const infoBadge = document.getElementById('thumbnail-info');
-
-            if (file) {
-                const dims = await getImageDimensions(file);
-                preview.src = URL.createObjectURL(file);
-                preview.style.display = 'block';
-                text.style.display = 'none';
-                infoBadge.innerHTML = `${formatBytes(file.size)}<br>${dims}`;
-                infoBadge.style.display = 'block';
-            }
-        };
-
-        // Gallery Logic
-        const galleryInput = document.getElementById('gallery-input');
-
-        galleryInput.onchange = async function() {
-            const newFiles = Array.from(this.files);
-            galleryFiles = galleryFiles.concat(newFiles);
-            await updateGalleryUI();
-        };
-
-        async function updateGalleryUI() {
+    </script>
+    <script>
+        document.getElementById('gallery-input').addEventListener('change', function(event) {
+            const files = event.target.files;
             const list = document.getElementById('gallery-preview-list');
             const sliderDiv = document.getElementById('image-slider');
             const placeholder = document.getElementById('gallery-placeholder');
 
-            list.innerHTML = '';
-
-            if (galleryFiles.length > 0) {
-                placeholder.style.display = 'none';
+            if (files.length > 0) {
+                // Show slider, hide "No Images" placeholder
                 sliderDiv.style.display = 'block';
+                placeholder.style.display = 'none';
 
-                for (let i = 0; i < galleryFiles.length; i++) {
-                    const file = galleryFiles[i];
-                    const url = URL.createObjectURL(file);
-                    const dims = await getImageDimensions(file);
-                    const li = document.createElement('li');
-                    li.className = 'splide__slide';
-                    li.innerHTML = `
-                    <button type="button" class="btn btn-danger btn-xs delete-slide" onclick="removeGalleryImage(${i})">
-                        <i class="bi bi-x"></i>
-                    </button>
-                    <span class="info-badge">${formatBytes(file.size)}<br>${dims}</span>
-                    <img src="${url}" class="img-fluid rounded w-100" style="height:200px; object-fit:cover;">
+                Array.from(files).forEach(file => {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        // Create the HTML for a new Splide slide
+                        const li = document.createElement('li');
+                        li.className = 'splide__slide p-1';
+                        li.innerHTML = `
+                    <div class="position-relative border rounded overflow-hidden shadow-sm" style="height: 120px; background: #f8f9fa;">
+                        <img src="${e.target.result}" class="w-100 h-100" style="object-fit: cover;">
+                        <div class="position-absolute top-0 end-0 p-1">
+                            <span class="badge bg-warning text-dark">New</span>
+                        </div>
+                    </div>
                 `;
-                    list.appendChild(li);
-                }
+                        list.appendChild(li);
 
-                syncInput();
-
-                if (splideInstance) splideInstance.destroy();
-                splideInstance = new Splide('#image-slider', {
-                    type: 'loop',
-                    autoplay: true,
-                    interval: 3000,
-                    arrows: true,
-                    pagination: true,
-                }).mount();
-            } else {
-                placeholder.style.display = 'block';
-                sliderDiv.style.display = 'none';
-                galleryInput.value = '';
+                        // Refresh Splide to recognize the new elements
+                        // Assuming you stored your splide instance in a variable named 'mainSplide'
+                        if (window.mainSplide) {
+                            window.mainSplide.refresh();
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                });
             }
-        }
-
-        function removeGalleryImage(index) {
-            galleryFiles.splice(index, 1);
-            updateGalleryUI();
-        }
-
-        function syncInput() {
-            const dataTransfer = new DataTransfer();
-            galleryFiles.forEach(file => dataTransfer.items.add(file));
-            galleryInput.files = dataTransfer.files;
-        }
+        });
     </script>
-
     <script>
         $(document).ready(function() {
 

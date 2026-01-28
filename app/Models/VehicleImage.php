@@ -28,11 +28,6 @@ class VehicleImage extends Model
 
     public function getFullPathAttribute()
     {
-        // If full path already exists in DB
-        if (filter_var($this->path, FILTER_VALIDATE_URL)) {
-            return $this->path;
-        }
-
-        return str_contains($this->path,'/') ? url('storage',$this->path) : asset("storage/uploads/vehicles/" .$this->id."/"."images/" . $this->attachment);
+        return isset($this->attachment) ? asset("storage/uploads/vehicles/" .$this->vehicle_id."/"."images/" . $this->attachment) : null;
     }
 }

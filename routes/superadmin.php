@@ -148,7 +148,7 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::get('vehicle-management/manufacturers/change-status/{id}', [ManufacturerController::class, 'changeStatus'])->name('manufacturers.change-status');
     Route::post('vehicle-management/manufacturers/update-delivery-charge/{id}', [ManufacturerController::class, 'updateDeliveryCharge'])->name('manufacturers.update-delivery-charge');
 
-          /*
+    /*
     |--------------------------------------------------------------------------
     | Vehicle Management > Models Route
     |--------------------------------------------------------------------------
@@ -165,9 +165,10 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
         ]
     ]);
 
-      Route::post('vehicle-management/vehicles/bulk-delete', [VehicleController::class, 'bulkDelete'])->name('vehicles.bulk-delete');
-      Route::post('vehicle-management/vehicles/content-images/upload', [VehicleController::class, 'upload'])->name('vehicles.content-images-upload');
-
+    Route::post('vehicle-management/vehicles/bulk-delete', [VehicleController::class, 'bulkDelete'])->name('vehicles.bulk-delete');
+    Route::post('vehicle-management/vehicles/content-images/upload', [VehicleController::class, 'upload'])->name('vehicles.content-images-upload');
+    Route::put('vehicle-management/vehicles/attachment/delete', [VehicleController::class, 'deleteAttachment'])
+        ->name('vehicles.delete-attachment');
     /*
     |--------------------------------------------------------------------------
     | Vehicle Management > Models Route
@@ -190,7 +191,7 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::post('vehicle-management/models/update-discount/{id}', [ModelController::class, 'updateDiscount'])->name('models.update-discount');
     Route::post('vehicle-management/models/update-profit/{id}', [ModelController::class, 'updateProfit'])->name('models.update-profit');
     Route::get('vehicle-management/models/hpi/models',      [ModelController::class, 'hpiModels'])->name('models.hpi-models');
-      /*
+    /*
     |--------------------------------------------------------------------------
     | Vehicle Management > Derivatives Route
     |--------------------------------------------------------------------------

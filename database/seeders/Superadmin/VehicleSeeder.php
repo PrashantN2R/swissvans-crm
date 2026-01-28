@@ -14,19 +14,26 @@ class VehicleSeeder extends Seeder
 {
     public function run(): void
     {
-        // --- CLEANUP STEP ---
-        // Delete the entire vehicles folder to ensure a fresh start
+
+        # Delete the entire vehicles folder to ensure a fresh start
         $rootUploadPath = storage_path("app/public/uploads/vehicles");
+
         if (File::isDirectory($rootUploadPath)) {
             $this->command->warn("Cleaning up old vehicle directories...");
             File::deleteDirectory($rootUploadPath);
         }
-        // Re-create the root folder
+
+        # Re-create the root folder
         File::makeDirectory($rootUploadPath, 0755, true);
 
+        # Get All Derivatives Columns: ['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']
         $derivatives = Derivative::all(['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']);
+
+       # Get Random Van Type:
         $vanTypeName = VanType::inRandomOrder()->first()?->name ?? 'Panel Van';
-        $total = $derivatives->count();
+
+        # Total Count Derivatives:
+        $total       = $derivatives->count();
 
         $this->command->info("Seeding {$total} Vehicles...");
         $bar = $this->command->getOutput()->createProgressBar($total);
@@ -42,7 +49,25 @@ class VehicleSeeder extends Seeder
                 $slug = (string)mt_rand(10000000, 99999999) . (string)mt_rand(10000000, 99999999);
                 $registration = strtoupper(Str::random(3)) . rand(1000, 9999);
                 $year = $derivative->model_ref_year ? Carbon::parse($derivative->model_ref_year)->year : $now->year;
-
+                $specs_html = '
+<table style="width: 100%; border-collapse: collapse; font-family: sans-serif;">
+    <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px; font-weight: bold; color: #666;">Manufacturer</td>
+        <td style="padding: 8px;">'.$derivative->manufacturer.'</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px; font-weight: bold; color: #666;">Model</td>
+        <td style="padding: 8px;">'.$derivative->model.'</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px; font-weight: bold; color: #666;">Variant</td>
+        <td style="padding: 8px;">'.$derivative->name.'</td>
+    </tr>
+    <tr>
+        <td style="padding: 8px; font-weight: bold; color: #666;">Introduced</td>
+        <td style="padding: 8px;">'.Carbon::parse($derivative->introduced)->format('d M Y').'</td>
+    </tr>
+</table>';
                 $vehiclesToInsert[] = [
                     'title'             => "{$derivative->manufacturer} {$derivative->model} {$derivative->name}",
                     'slug'              => $slug,
@@ -50,8 +75,8 @@ class VehicleSeeder extends Seeder
                     'vin'               => strtoupper(Str::random(17)),
                     'model'             => $derivative->model,
                     'year'              => $year,
-                    'short_description'                 => '<h1>Manufacturer: '.$derivative->manufacturer.'</h1><h2>Model: '.$derivative->model.'</h2><h3>Variant: '.$derivative->name.'</h3><h4>Introduced: '.$derivative->introduced.'</h4>',
-                    'description'                       => '<h1>Manufacturer: '.$derivative->manufacturer.'</h1><h2>Model: '.$derivative->model.'</h2><h3>Variant: '.$derivative->name.'</h3><h4>Introduced: '.$derivative->introduced.'</h4>',
+                    'short_description'                 => $specs_html,
+                    'description'                       => $specs_html,
                     // Base Pricing
                     'price'                         => 40000,
                     'sale_price'                    => 38000,
