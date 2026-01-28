@@ -263,4 +263,81 @@
 
         });
     </script>
+    <script>
+        $(document).ready(function() {
+
+            const deleteBtn = $('#delete-all');
+            const allRows = $('#all-rows');
+
+            // Toggle delete button visibility
+            function toggleDeleteButton() {
+                let checkedCount = $('.checkbox-row:checked').length;
+                if (checkedCount > 0) {
+                    deleteBtn.fadeIn(200);
+                } else {
+                    deleteBtn.fadeOut(200);
+                }
+            }
+
+            // Select all checkbox logic
+            allRows.on('change', function() {
+                $('.checkbox-row').prop('checked', this.checked);
+                toggleDeleteButton();
+            });
+
+            // Individual checkbox logic (using delegation for reliability)
+            $(document).on('change', '.checkbox-row', function() {
+                let total = $('.checkbox-row').length;
+                let checked = $('.checkbox-row:checked').length;
+
+                allRows.prop('checked', total === checked);
+                toggleDeleteButton();
+            });
+
+            // Bulk delete AJAX
+            deleteBtn.on('click', function() {
+                let ids = [];
+                $('.checkbox-row:checked').each(function() {
+                    ids.push($(this).val());
+                });
+
+                if (ids.length === 0) return;
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: `You are about to delete ${ids.length} selected vehicle(s) permanently.`,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fa5c7c",
+                    confirmButtonText: "Yes, delete them!",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "{{ route('superadmin.vehicles.bulk-delete') }}",
+                            type: "POST", // Using POST with _method spoofing for better compatibility
+                            data: {
+                                ids: ids,
+                                _token: '{{ csrf_token() }}',
+                            },
+                            success: function(response) {
+                                // Fade out and remove rows from DOM
+                                $('.checkbox-row:checked').closest('tr').fadeOut(400, function() {
+                                    $(this).remove();
+                                });
+
+                                allRows.prop('checked', false);
+                                deleteBtn.hide();
+
+                                Swal.fire("Deleted!", "Selected vehicles have been deleted.", "success");
+                            },
+                            error: function(xhr) {
+                                console.error(xhr.responseText);
+                                Swal.fire("Error", "Could not complete bulk deletion. Please try again.", "error");
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endpush

@@ -190,6 +190,20 @@ class VehicleController extends Controller
         return back()->with('success', 'Vehicle deleted.');
     }
 
+     /**
+     * Bulk Delete
+     */
+    public function bulkDelete(Request $request)
+    {
+        $request->validate([
+            'ids' => 'required|array',
+        ]);
+
+        Vehicle::whereIn('id', $request->ids)->delete();
+
+        return response()->json(['success' => true]);
+    }
+
     /**
      * Delete a single gallery attachment.
      */

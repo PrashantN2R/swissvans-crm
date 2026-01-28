@@ -164,6 +164,8 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
             'destroy'       => 'vehicles.destroy',
         ]
     ]);
+
+      Route::post('vehicle-management/vehicles/bulk-delete', [VehicleController::class, 'bulkDelete'])->name('vehicles.bulk-delete');
       /*
     |--------------------------------------------------------------------------
     | Vehicle Management > Models Route
