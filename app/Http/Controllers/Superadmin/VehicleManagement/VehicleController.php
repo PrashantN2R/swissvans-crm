@@ -94,11 +94,11 @@ class VehicleController extends Controller
             'vat'               => $request->vat,
             'interest_rate'     => $request->interest_rate,
             'is_business_lease' => $request->is_business_lease,
-            'business_lease_price'          => $request->business_lease_price,
-            'business_lease_discount_price' => $request->business_lease_discount_price,
+            'business_lease_price'          => $request->is_business_lease ? $request->business_lease_price : null,
+            'business_lease_discount_price' => $request->is_business_lease ?  $request->business_lease_discount_price : null,
             'is_hire_purchase'              => $request->is_hire_purchase,
-            'hire_purchase_price'           => $request->hire_purchase_price,
-            'hire_purchase_discount_price'  => $request->hire_purchase_discount_price,
+            'hire_purchase_price'           => $request->is_hire_purchase ? $request->hire_purchase_price : null,
+            'hire_purchase_discount_price'  => $request->is_hire_purchase ?$request->hire_purchase_discount_price : null,
             'van_type'          => $request->van_type,
             'hpi_mancode'       => $request->hpi_mancode,
             'hpi_modcode'       => $request->hpi_modcode,
@@ -110,9 +110,13 @@ class VehicleController extends Controller
             'stock_status'      => $request->stock_status,
         ]);
 
-        if ($request->filled('thumbnail')) {
+       if ($request->hasFile('thumbnail')) {
             $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $vehicle->id . '/thumbnails');
-            $vehicle->update(['thumbnail' => $upload['destinationPath']]);
+
+            // basename() strips away the directory path and returns just the file name
+            $filename = basename($upload['destinationPath']);
+
+            $vehicle->update(['thumbnail' => $filename]);
         }
 
         $this->processGalleryImages($request, $vehicle);
@@ -167,10 +171,12 @@ class VehicleController extends Controller
             'is_hire_purchase'  => 'required|in:0,1',
         ]);
 
-        if ($request->filled('thumbnail')) {
+        if ($request->hasFile('thumbnail')) {
             if ($vehicle->thumbnail) Storage::disk('public')->delete($vehicle->thumbnail);
             $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $id . '/thumbnails');
-            $vehicle->thumbnail = $upload['destinationPath'];
+              $filename = basename($upload['destinationPath']);
+
+                $vehicle->update(['thumbnail' => $filename]);
         }
 
        $vehicle->update([
@@ -187,11 +193,11 @@ class VehicleController extends Controller
             'vat'               => $request->vat,
             'interest_rate'     => $request->interest_rate,
             'is_business_lease' => $request->is_business_lease,
-            'business_lease_price'          => $request->business_lease_price,
-            'business_lease_discount_price' => $request->business_lease_discount_price,
+            'business_lease_price'          => $request->is_business_lease ? $request->business_lease_price : null,
+            'business_lease_discount_price' => $request->is_business_lease ?  $request->business_lease_discount_price : null,
             'is_hire_purchase'              => $request->is_hire_purchase,
-            'hire_purchase_price'           => $request->hire_purchase_price,
-            'hire_purchase_discount_price'  => $request->hire_purchase_discount_price,
+            'hire_purchase_price'           => $request->is_hire_purchase ? $request->hire_purchase_price : null,
+            'hire_purchase_discount_price'  => $request->is_hire_purchase ?$request->hire_purchase_discount_price : null,
             'van_type'          => $request->van_type,
             'hpi_mancode'       => $request->hpi_mancode,
             'hpi_modcode'       => $request->hpi_modcode,
@@ -205,11 +211,7 @@ class VehicleController extends Controller
 
         $this->processGalleryImages($request, $vehicle);
 
-        if ($request->has('up_alt_images')) {
-            foreach ($request->up_alt_images as $img_id => $alt_text) {
-                VehicleImage::where('id', $img_id)->update(['alt' => $alt_text]);
-            }
-        }
+
 
         return redirect()->route('superadmin.vehicles.index')->with('success', 'Vehicle updated!');
     }
@@ -306,7 +308,7 @@ class VehicleController extends Controller
 
     private function processGalleryImages(Request $request, $vehicle)
     {
-        if ($request->filled('images') && is_array($request->images)) {
+        if ($request->hasFile('images') && is_array($request->images)) {
             foreach ($request->images as $key => $imageFile) {
                 if (empty($imageFile)) continue;
                 $imgUp = $this->handleImageUpload($imageFile, "uploads/vehicles/{$vehicle->id}/images");
@@ -315,7 +317,6 @@ class VehicleController extends Controller
                     'attachment' => $imgUp["uniqueName"],
                     'extension'  => $imgUp["extension"],
                     'path'       => $imgUp["destinationPath"],
-                    'alt'        => $request->alt_images[$key] ?? $vehicle->title,
                     'sort_order' => $key,
                 ]);
             }

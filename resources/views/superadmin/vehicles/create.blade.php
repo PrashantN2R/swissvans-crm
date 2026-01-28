@@ -51,7 +51,15 @@
                 </div>
             </div>
         </div>
-
+@if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="list-unstyled">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('superadmin.vehicles.store') }}" method="POST" id="vehicleForm"
             enctype="multipart/form-data">
             @csrf
@@ -356,7 +364,7 @@
                                         Gallery Preview
                                     </div>
 
-                                    <input class="form-control form-control-sm mb-3" type="file" name="gallery[]"
+                                    <input class="form-control form-control-sm mb-3" type="file" name="images[]"
                                         id="gallery-input" accept="image/*" multiple>
                                 </div>
                             </div>
