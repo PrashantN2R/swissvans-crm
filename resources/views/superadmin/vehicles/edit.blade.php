@@ -262,7 +262,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <label for="owner" class="form-label">Owner </label>
+                                     <label for="owner" class="form-label">Current Owner </label>
                                     <div class="input-group">
                                         <select name="owner" id="owner"
                                             class="form-select form-select-sm @error('owner') is-invalid @enderror">

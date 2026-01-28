@@ -7,6 +7,7 @@ use App\Http\Controllers\Superadmin\Auth\MyAccountController;
 use App\Http\Controllers\Superadmin\Auth\ResetPasswordController;
 use App\Http\Controllers\Superadmin\Auth\ChangePasswordController;
 use App\Http\Controllers\Superadmin\Auth\ForgotPasswordController;
+use App\Http\Controllers\Superadmin\CustomerManagement\CustomerController;
 use App\Http\Controllers\Superadmin\LeadManagement\LeadController;
 use App\Http\Controllers\Superadmin\QuotationManagement\QuotationController;
 use App\Http\Controllers\Superadmin\TaskManagement\TaskController;
@@ -87,6 +88,27 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::put('lead-management/leads/{id}/save-note', [LeadController::class, 'saveNote'])->name('leads.save-note');
 
     Route::put('lead-management/leads/{id}/upload-attachments', [LeadController::class, 'uploadAttachments'])->name('leads.upload-attachments');
+
+     /*
+    |--------------------------------------------------------------------------
+    | Customer Management > Users Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('customer-management/customers', CustomerController::class, [
+        'names' => [
+            'index'         => 'customers.index',
+            'create'        => 'customers.create',
+            'update'        => 'customers.update',
+            'edit'          => 'customers.edit',
+            'store'         => 'customers.store',
+            'show'          => 'customers.show',
+            'destroy'       => 'customers.destroy',
+        ]
+    ]);
+
+    Route::get('customer-management/customers/change-status/{id}', [CustomerController::class, 'changeStatus'])->name('customers.change-status');
+    Route::post('customer-management/customers/reset-password', [CustomerController::class, 'resetPassword'])->name('customers.reset-password');
+    Route::post('customer-management/customers/bulk-delete', [CustomerController::class, 'bulkDelete'])->name('customers.bulk-delete');
 
     /*
     |--------------------------------------------------------------------------

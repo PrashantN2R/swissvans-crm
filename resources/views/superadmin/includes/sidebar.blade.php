@@ -36,6 +36,12 @@
             </li>
 
             <li class="side-nav-item">
+                <a href="{{ route('superadmin.customers.index') }}" class="side-nav-link">
+                    <i class="bi bi-person-circle"></i><span>Customers</span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
                 <a href="{{ route('superadmin.tasks.index') }}" class="side-nav-link">
                     <i class="bi bi-list-task"></i><span>Task Management</span>
                 </a>
