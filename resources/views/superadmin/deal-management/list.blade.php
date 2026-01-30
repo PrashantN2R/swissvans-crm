@@ -36,8 +36,7 @@
             <div class="col-12">
                 <div class="page-title-box">
                     <div class="page-title-right">
-                        <a href="javascript:void(0);" class="btn btn-sm btn-danger" style="display: none;"
-                            id="delete-all">
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger" style="display: none;" id="delete-all">
                             <i class="bi bi-trash me-1"></i> Delete Selected
                         </a>
                         <a href="{{ route('superadmin.deals.create') }}" class="btn btn-sm btn-primary">
@@ -81,13 +80,14 @@
                                         <input type="checkbox" class="form-check-input" id="all-rows">
                                     </div>
                                 </th>
-                                <th class="th-primary" width="10%">Deal No.</th>
-                                <th class="th-primary" width="20%">Vehicle Details</th>
-                                <th class="th-primary text-center">Registration & VIN</th>
-                                <th class="th-primary" width="20%">Customer & Salesperson</th>
-                                <th class="th-primary" width="15%">Financials</th>
-                                <th class="th-primary" width="10%" class="text-center">Status</th>
-                                <th class="th-primary" width="5%"></th>
+                                <th class="th-primary" width="9%">Deal No.</th>
+                                <th class="th-primary" width="15%">Customer</th>
+                                <th class="th-primary" width="22%">Vehicle Details</th>
+                                <th class="th-primary text-center" width="18%">Registration & VIN</th>
+                                <th class="th-primary" width="12%">Salesperson</th>
+                                <th class="th-primary text-center" width="10%">Type</th>
+                                <th class="th-primary text-center" width="10%">Status</th>
+                                <th class="th-primary" width="3%"></th>
                             </tr>
                         </thead>
                         <tbody class="fw-medium">
@@ -101,39 +101,51 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge badge-primary-lighten rounded-pill" style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">
-                                            <i class="uil-angle-right-b me-1"></i><a href="{{ route('superadmin.deals.show', $deal->id) }}">{{ $deal->deal_number }}</a></span>
+                                        <span class="badge badge-primary-lighten rounded-pill"
+                                            style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">
+                                            <i class="uil-angle-right-b me-1"></i><a
+                                                href="{{ route('superadmin.deals.show', $deal->id) }}">{{ $deal->deal_number }}</a></span>
                                         <span class="badge badge-secondary-lighten rounded-pill"
-                                        style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">
+                                            style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">
                                             <i class="bi bi-calendar-event me-1"></i>
                                             {{ $deal->created_at->format('d-m-Y h:i A') }}
-                                    </span>
+                                        </span>
                                     </td>
-                                     <td>
-                                    <span class="badge badge-primary-lighten rounded-pill"
-                                        style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->vehicle->manufacturerData->name }}</span>
-                                    <span class="badge badge-secondary-lighten rounded-pill"
-                                        style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->vehicle->modelData->name }}</span>
-                                    <span class="badge badge-success-lighten rounded-pill"
-                                        style="font-size:0.975em !important; min-width:100%; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->vehicle->variantData->name }}</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="uk-plate rounded-pill">
-                                        {{ $deal->vehicle->registration }}
-                                    </div>
-                                    <div class="vin-plate">
-                                        {{ $deal->vehicle->vin }}
-                                    </div>
-                                </td>
                                     <td>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-dark fw-bold">{{ $deal->user->firstname }}
-                                                {{ $deal->user->lastname }}</span>
-                                            <span class="small text-primary"><i class="bi bi-person-badge me-1"></i>
-                                                {{ $deal->salesperson->name ?? 'Unassigned' }}</span>
+                                        <span class="badge badge-primary-lighten rounded-pill"
+                                            style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->user->name }}</span>
+                                        <span class="badge badge-secondary-lighten rounded-pill"
+                                            style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->user->email }}</span>
+                                        <span class="badge badge-success-lighten rounded-pill"
+                                            style="font-size:0.975em !important; min-width:100%; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->user->phone }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-primary-lighten rounded-pill"
+                                            style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->vehicle->manufacturerData->name }}</span>
+                                        <span class="badge badge-secondary-lighten rounded-pill"
+                                            style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->vehicle->modelData->name }}</span>
+                                        <span class="badge badge-success-lighten rounded-pill"
+                                            style="font-size:0.975em !important; min-width:100%; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->vehicle->variantData->name }}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="uk-plate rounded-pill">
+                                            {{ $deal->vehicle->registration }}
+                                        </div>
+                                        <div class="vin-plate">
+                                            {{ $deal->vehicle->vin }}
                                         </div>
                                     </td>
-                                    {{-- <td>
+                                    <td>
+                                        @isset($deal->salesperson_id)
+                                            <span class="badge badge-secondary-lighten rounded-pill"
+                                                style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:left !important">{{ $deal->salesperson->firstname }}
+                                                {{ $deal->salesperson->lastname }}</span>
+                                        @else
+                                            <button type="button" class="btn btn-sm btn-primary"
+                                                style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:center !important">Assign</button>
+                                @endif
+                                </td>
+                                {{-- <td>
                                         <div class="d-flex flex-column">
                                             <span class="text-dark">{{ $deal->vehicle->manufacturerData->name }}
                                                 {{ $deal->vehicle->modelData->name }}</span>
@@ -142,197 +154,184 @@
                                                 | {{ $deal->vehicle->vin }}</span>
                                         </div>
                                     </td> --}}
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-dark">£{{ number_format($deal->sale_price, 2) }}</span>
-                                            @if ($deal->is_business_lease)
-                                                <span class="badge bg-soft-info text-info rounded-pill small"
-                                                    style="width:fit-content">Business Lease</span>
-                                            @elseif($deal->is_hire_purchase)
-                                                <span class="badge bg-soft-warning text-warning rounded-pill small"
-                                                    style="width:fit-content">Hire Purchase</span>
-                                            @else
-                                                <span class="badge bg-soft-secondary text-secondary rounded-pill small"
-                                                    style="width:fit-content">Standard Sale</span>
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        @php
-                                            $statusClass = match ($deal->status) {
-                                                'Completed' => 'bg-success',
-                                                'Pending' => 'bg-warning',
-                                                'Cancelled' => 'bg-danger',
-                                                default => 'bg-secondary',
-                                            };
-                                        @endphp
-                                        <span
-                                            class="badge {{ $statusClass }} rounded-pill px-3" style="font-size:0.975em !important; min-width:100%; margin-bottom:0px !important; padding: 0.65em 0.65em !important; text-align:center !important">{{ $deal->status }}</span>
-                                    </td>
-                                    <td class="text-end pe-3">
-                                        <div class="dropdown">
-                                            <a href="#" class="dropdown-toggle arrow-none card-drop"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical fs-4"></i>
+                                <td class="text-center">
+
+                                    <span class="badge {{ $deal->type == 'Sale' ? 'bg-primary' : 'bg-warning' }} rounded-pill"
+                                        style="font-size:0.975em !important; min-width:100%; margin-bottom:8px !important; padding: 0.65em 0.65em !important; text-align:center !important">{{ $deal->type }}</span>
+                                </td>
+                                <td class="text-center">
+                                    @php
+                                        $statusClass = match ($deal->status) {
+                                            'Completed' => 'bg-success',
+                                            'Pending' => 'bg-warning',
+                                            'Cancelled' => 'bg-danger',
+                                            default => 'bg-secondary',
+                                        };
+                                    @endphp
+                                    <span class="badge {{ $statusClass }} rounded-pill px-3"
+                                        style="font-size:0.975em !important; min-width:100%; margin-bottom:0px !important; padding: 0.65em 0.65em !important; text-align:center !important">{{ $deal->status }}</span>
+                                </td>
+                                <td class="text-end pe-3">
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical fs-4"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                            <a href="{{ route('superadmin.deals.show', $deal->id) }}" class="dropdown-item">
+                                                <i class="bi bi-eye me-2"></i> View Details
                                             </a>
-                                            <div class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
-                                                <a href="{{ route('superadmin.deals.show', $deal->id) }}"
+
+                                            @if (!$deal->is_immutable)
+                                                <a href="{{ route('superadmin.deals.edit', $deal->id) }}"
                                                     class="dropdown-item">
-                                                    <i class="bi bi-eye me-2"></i> View Details
+                                                    <i class="bi bi-pencil me-2"></i> Edit Deal
                                                 </a>
 
-                                                @if (!$deal->is_immutable)
-                                                    <a href="{{ route('superadmin.deals.edit', $deal->id) }}"
-                                                        class="dropdown-item">
-                                                        <i class="bi bi-pencil me-2"></i> Edit Deal
-                                                    </a>
+                                                <form action="{{ route('superadmin.deals.complete', $deal->id) }}"
+                                                    method="POST" id="complete-form{{ $deal->id }}">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="button" onclick="confirmComplete({{ $deal->id }})"
+                                                        class="dropdown-item text-success">
+                                                        <i class="bi bi-check-circle me-2"></i> Finalize & Lock
+                                                    </button>
+                                                </form>
 
-                                                    <form action="{{ route('superadmin.deals.complete', $deal->id) }}"
-                                                        method="POST" id="complete-form{{ $deal->id }}">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <button type="button"
-                                                            onclick="confirmComplete({{ $deal->id }})"
-                                                            class="dropdown-item text-success">
-                                                            <i class="bi bi-check-circle me-2"></i> Finalize & Lock
-                                                        </button>
-                                                    </form>
+                                                <div class="dropdown-divider"></div>
 
-                                                    <div class="dropdown-divider"></div>
-
-                                                    <a href="javascript:void(0);"
-                                                        onclick="confirmDelete({{ $deal->id }})"
-                                                        class="dropdown-item text-danger">
-                                                        <i class="bi bi-trash me-2"></i> Delete
-                                                    </a>
-                                                    <form id="delete-form{{ $deal->id }}"
-                                                        action="{{ route('superadmin.deals.destroy', $deal->id) }}"
-                                                        method="POST" class="d-none">
-                                                        @csrf @method('DELETE')
-                                                    </form>
-                                                @endif
-                                            </div>
+                                                <a href="javascript:void(0);" onclick="confirmDelete({{ $deal->id }})"
+                                                    class="dropdown-item text-danger">
+                                                    <i class="bi bi-trash me-2"></i> Delete
+                                                </a>
+                                                <form id="delete-form{{ $deal->id }}"
+                                                    action="{{ route('superadmin.deals.destroy', $deal->id) }}"
+                                                    method="POST" class="d-none">
+                                                    @csrf @method('DELETE')
+                                                </form>
+                                            @endif
                                         </div>
-                                    </td>
+                                    </div>
+                                </td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td colspan="7" class="text-center py-5 text-muted">No deals found matching
                                         your criteria.</td>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    {{ $deals->appends(request()->query())->links('pagination::bootstrap-5') }}
+                                @endforelse
+                            </tbody>
+                        </table>
+                        {{ $deals->appends(request()->query())->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
 
-@push('scripts')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        // Toggle Bulk Delete Button
-        $(document).on('change', '#all-rows, .checkbox-row', function() {
-            if ($('#all-rows').is(':checked')) $('.checkbox-row:not(:disabled)').prop('checked', true);
-            const checkedCount = $('.checkbox-row:checked').length;
-            checkedCount > 0 ? $('#delete-all').fadeIn() : $('#delete-all').fadeOut();
-        });
-
-        // Delete Confirmation
-        function confirmDelete(id) {
-            Swal.fire({
-                title: "Delete Deal?",
-                text: "This action cannot be undone. Draft records will be removed.",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#d33",
-                confirmButtonText: "Yes, delete"
-            }).then((result) => {
-                if (result.isConfirmed) document.getElementById("delete-form" + id).submit();
-            });
-        }
-
-        // Completion/Locking Confirmation
-        function confirmComplete(id) {
-            Swal.fire({
-                title: "Finalize Deal?",
-                text: "Once completed, this deal becomes IMMUTABLE. You will not be able to edit these financial details again.",
-                icon: "info",
-                showCancelButton: true,
-                confirmButtonColor: "#198754",
-                confirmButtonText: "Complete & Lock"
-            }).then((result) => {
-                if (result.isConfirmed) document.getElementById("complete-form" + id).submit();
-            });
-        }
-
-        // Bulk Delete Action
-        $('#delete-all').click(function() {
-            let ids = [];
-            $('.checkbox-row:checked').each(function() {
-                ids.push($(this).val());
+    @push('scripts')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            // Toggle Bulk Delete Button
+            $(document).on('change', '#all-rows, .checkbox-row', function() {
+                if ($('#all-rows').is(':checked')) $('.checkbox-row:not(:disabled)').prop('checked', true);
+                const checkedCount = $('.checkbox-row:checked').length;
+                checkedCount > 0 ? $('#delete-all').fadeIn() : $('#delete-all').fadeOut();
             });
 
-            Swal.fire({
-                title: "Bulk Delete?",
-                text: `Delete ${ids.length} selected deals? Completed deals will be skipped automatically.`,
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, delete selected"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.post("{{ route('superadmin.deals.bulk-delete') }}", {
-                        ids: ids,
-                        _token: "{{ csrf_token() }}"
-                    }, () => location.reload());
-                }
+            // Delete Confirmation
+            function confirmDelete(id) {
+                Swal.fire({
+                    title: "Delete Deal?",
+                    text: "This action cannot be undone. Draft records will be removed.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete"
+                }).then((result) => {
+                    if (result.isConfirmed) document.getElementById("delete-form" + id).submit();
+                });
+            }
+
+            // Completion/Locking Confirmation
+            function confirmComplete(id) {
+                Swal.fire({
+                    title: "Finalize Deal?",
+                    text: "Once completed, this deal becomes IMMUTABLE. You will not be able to edit these financial details again.",
+                    icon: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "#198754",
+                    confirmButtonText: "Complete & Lock"
+                }).then((result) => {
+                    if (result.isConfirmed) document.getElementById("complete-form" + id).submit();
+                });
+            }
+
+            // Bulk Delete Action
+            $('#delete-all').click(function() {
+                let ids = [];
+                $('.checkbox-row:checked').each(function() {
+                    ids.push($(this).val());
+                });
+
+                Swal.fire({
+                    title: "Bulk Delete?",
+                    text: `Delete ${ids.length} selected deals? Completed deals will be skipped automatically.`,
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, delete selected"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.post("{{ route('superadmin.deals.bulk-delete') }}", {
+                            ids: ids,
+                            _token: "{{ csrf_token() }}"
+                        }, () => location.reload());
+                    }
+                });
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
+        </script>
+        <script>
+            $(document).ready(function() {
 
-            $("#filter_manufacturer").change(function() {
+                $("#filter_manufacturer").change(function() {
 
-                let capId = $("#filter_manufacturer option:selected").data("cap-id");
-                let selectedModel = "{{ $filter['model'] ?? '' }}";
+                    let capId = $("#filter_manufacturer option:selected").data("cap-id");
+                    let selectedModel = "{{ $filter['model'] ?? '' }}";
 
-                $("#filter_model").html('<option value="">Loading...</option>');
+                    $("#filter_model").html('<option value="">Loading...</option>');
 
-                // If Manufacturer = All
-                if (!capId) {
-                    $("#filter_model").html('<option value="">All</option>');
-                    return;
-                }
-
-                $.ajax({
-                    url: "{{ route('superadmin.models.hpi-models') }}",
-                    type: "GET",
-                    data: {
-                        manCode: capId
-                    },
-                    success: function(response) {
-
+                    // If Manufacturer = All
+                    if (!capId) {
                         $("#filter_model").html('<option value="">All</option>');
+                        return;
+                    }
 
-                        response.forEach(function(item) {
+                    $.ajax({
+                        url: "{{ route('superadmin.models.hpi-models') }}",
+                        type: "GET",
+                        data: {
+                            manCode: capId
+                        },
+                        success: function(response) {
 
-                            // MODEL NAME comes from item.name
-                            $("#filter_model").append(`
+                            $("#filter_model").html('<option value="">All</option>');
+
+                            response.forEach(function(item) {
+
+                                // MODEL NAME comes from item.name
+                                $("#filter_model").append(`
                         <option value="${item.capmod_id}"
                             ${item.name === selectedModel ? 'selected' : ''}>
                             ${item.name}
                         </option>
                     `);
 
-                        });
-                    }
+                            });
+                        }
+                    });
+
                 });
 
             });
-
-        });
-    </script>
-@endpush
+        </script>
+    @endpush

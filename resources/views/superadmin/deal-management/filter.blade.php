@@ -31,7 +31,7 @@
                         <option value="">All Customers</option>
                         @foreach($customers as $customer)
                             <option value="{{ $customer->id }}" @selected(request('user_id') == $customer->id)>
-                                {{ $customer->firstname }} {{ $customer->lastname }}
+                                {{ $customer->name }}
                             </option>
                         @endforeach
                     </select>
@@ -121,7 +121,7 @@
                         <option value="">All Staff</option>
                         @foreach($salespeople as $staff)
                             <option value="{{ $staff->id }}" @selected(request('salesperson_id') == $staff->id)>
-                                {{ $staff->name }}
+                                {{ $staff->firstname }}  {{ $staff->lastname }}
                             </option>
                         @endforeach
                     </select>
