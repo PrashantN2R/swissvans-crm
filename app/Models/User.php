@@ -24,8 +24,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'slug',
-        'firstname',
-        'lastname',
+        'name',
         'email',
         'dialcode',
         'phone',
@@ -68,15 +67,15 @@ class User extends Authenticatable
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom(['firstname', 'lastname'])
+            ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
     }
 
     protected function initials(): Attribute
     {
         return Attribute::get(function () {
-            $firstInitial = $this->firstname ? strtoupper(substr($this->firstname, 0, 1)) : '';
-            $lastInitial  = $this->lastname  ? strtoupper(substr($this->lastname, 0, 1)) : strtoupper(substr($this->firstname, 1, 1));
+            $firstInitial = $this->name ? strtoupper(substr($this->name, 0, 1)) : '';
+            $lastInitial  = $this->name  ? strtoupper(substr($this->name, 1, 1)) : strtoupper(substr($this->name, 1, 1));
 
             // If no last name, just return first initial
             return $firstInitial . $lastInitial;
@@ -86,10 +85,8 @@ class User extends Authenticatable
     protected function fullname(): Attribute
     {
         return Attribute::get(function () {
-            $firstname = $this->firstname ? $this->firstname : '';
-            $lastname  = $this->lastname  ? $this->lastname : '';
-
-            return $firstname . ' ' . $lastname;
+            $name = $this->name ? $this->name : '';
+            return $name;
         });
     }
 

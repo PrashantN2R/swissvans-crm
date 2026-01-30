@@ -23,11 +23,22 @@
 
         <!--- Sidemenu -->
         <ul class="side-nav">
-            <li class="side-nav-item">
+             <li class="side-nav-item">
                 <a href="{{ route('superadmin.dashboard') }}" class="side-nav-link">
                     <i class="bi bi-speedometer2"></i><span>Dashboard</span>
                 </a>
             </li>
+            <li class="side-nav-item">
+                <a href="{{ route('superadmin.customers.index') }}" class="side-nav-link">
+                    <i class="bi bi-person-circle"></i><span>Customers</span>
+                </a>
+            </li>
+             <li class="side-nav-item">
+                <a href="{{ route('superadmin.vehicles.index') }}" class="side-nav-link">
+                    <i class="bi bi-car-front"></i><span>Vehicle Management</span>
+                </a>
+            </li>
+
 
             <li class="side-nav-item">
                 <a href="{{ route('superadmin.leads.index') }}" class="side-nav-link">
@@ -35,11 +46,7 @@
                 </a>
             </li>
 
-            <li class="side-nav-item">
-                <a href="{{ route('superadmin.customers.index') }}" class="side-nav-link">
-                    <i class="bi bi-person-circle"></i><span>Customers</span>
-                </a>
-            </li>
+
 
             <li class="side-nav-item">
                 <a href="{{ route('superadmin.tasks.index') }}" class="side-nav-link">
@@ -53,11 +60,7 @@
                 </a>
             </li>
 
-            <li class="side-nav-item">
-                <a href="{{ route('superadmin.vehicles.index') }}" class="side-nav-link">
-                    <i class="bi bi-car-front"></i><span>Vehicle Management</span>
-                </a>
-            </li>
+
 
 
 

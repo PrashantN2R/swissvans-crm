@@ -29,7 +29,7 @@ class CustomerController extends Controller
         $filter['status']       = $request->status;
 
         $users            = User::query();
-        $users            = isset($filter['name']) ? $users->where(DB::raw("concat(firstname, ' ', lastname)"), 'LIKE', '%' . $filter['name'] . '%') : $users;
+        $users            = isset($filter['name']) ? $users->where('name', 'LIKE', '%' . $filter['name'] . '%') : $users;
         $users            = isset($filter['email']) ? $users->where('email', 'LIKE', '%' . $filter['email'] . '%') : $users;
         $users            = isset($filter['phone']) ? $users->where('phone', 'LIKE', '%' . $filter['phone'] . '%') : $users;
 
@@ -62,7 +62,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname' => ['required', 'string', 'max:255'],
+            'name'      => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone'     => ['required', 'min:8', 'unique:users'],
             'gender'    => ['required'],
@@ -70,8 +70,7 @@ class CustomerController extends Controller
         ]);
 
         $user                         = new User();
-        $user->firstname              = $request->firstname;
-        $user->lastname               = $request->lastname;
+        $user->name                   = $request->name;
         $user->email                  = $request->email;
         $user->password               = Hash::make('Temp#@785612');
         $user->dialcode               = $request->dialcode;
@@ -120,7 +119,7 @@ class CustomerController extends Controller
         $user->avatar  = isset($user->avatar_path) ? $user->avatar_path : "https://placehold.co/150x150/E3E1FF/0266DA?text=" . $user->initials;
         $user->country = Country::where('code', $user->iso2)->first()->name;
 
-        return view('superadmin.customer-management.show', compact('user'));
+        return view('superadmin.customer-management.show.index', compact('user'));
     }
 
     /**
@@ -140,7 +139,7 @@ class CustomerController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request, [
-            'firstname' => ['required', 'string', 'max:255'],
+            'name'      => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $id],
             'phone'     => ['required', 'min:8', 'unique:users,phone,' . $id],
             'gender'    => ['required'],
@@ -148,8 +147,7 @@ class CustomerController extends Controller
         ]);
 
         $user                  = User::find($id);
-        $user->firstname       = $request->firstname;
-        $user->lastname        = $request->lastname;
+        $user->name            = $request->name;
         $user->email           = $request->email;
         $user->dialcode        = $request->dialcode;
         $user->phone           = $request->phone;

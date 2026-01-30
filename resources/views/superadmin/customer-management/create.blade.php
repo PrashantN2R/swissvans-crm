@@ -38,19 +38,11 @@
                                 <div class="col-lg-12 mb-2">
                                     <h4 class="text-dark">Personal Details</h4>
                                 </div>
-                                <div class="col-lg-6 mb-2 {{ $errors->has('firstname') ? 'has-error' : '' }}">
-                                    <label class="col-form-label" for="firstname">First Name</label>
-                                    <input type="text" class="form-control" id="firstname" name="firstname"
-                                        placeholder="Enter First Name" value="{{ old('firstname') }}">
-                                    @error('firstname')
-                                        <span id="firstname-error" class="error invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-lg-6 mb-2 {{ $errors->has('lastname') ? 'has-error' : '' }}">
-                                    <label class="col-form-label" for="lastname">Last Name</label>
-                                    <input type="text" class="form-control" id="lastname" name="lastname"
-                                        placeholder="Enter Last Name" value="{{ old('lastname') }}">
-                                    @error('lastname')
+                                <div class="col-lg-12 mb-2 {{ $errors->has('name') ? 'has-error' : '' }}">
+                                    <label class="col-form-label" for="name">Name / Company</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Enter Your Name or Company Name" value="{{ old('name') }}">
+                                    @error('name')
                                         <span id="name-error" class="error invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>

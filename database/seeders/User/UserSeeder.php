@@ -40,8 +40,7 @@ class UserSeeder extends Seeder
         foreach ($users as $row) {
             $insertData[]           = [
                 'slug'              => Str::slug($row['firstname'] . '-' . $row['lastname']),
-                'firstname'         => $row['firstname'],
-                'lastname'          => $row['lastname'],
+                'name'              => $row['firstname'].' '.$row['lastname'],
                 'email'             => $row['email'],
                 'dialcode'          => $row['dialcode'],
                 'phone'             => $row['phone'],
