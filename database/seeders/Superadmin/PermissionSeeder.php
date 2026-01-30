@@ -48,6 +48,6 @@ class PermissionSeeder extends Seeder
         }
 
         $progressBar->finish();
-        $output->writeln("<info> Permissions (" . count($permissions) . ") seeded and permission given to roles successfully. </info>");
+        $output->writeln("<info>🚀 Permissions (" . count($permissions) . ") seeded and permission given to roles successfully. </info>");
     }
 }

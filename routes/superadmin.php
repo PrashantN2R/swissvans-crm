@@ -8,6 +8,7 @@ use App\Http\Controllers\Superadmin\Auth\ResetPasswordController;
 use App\Http\Controllers\Superadmin\Auth\ChangePasswordController;
 use App\Http\Controllers\Superadmin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Superadmin\CustomerManagement\CustomerController;
+use App\Http\Controllers\Superadmin\DealManagement\DealController;
 use App\Http\Controllers\Superadmin\LeadManagement\LeadController;
 use App\Http\Controllers\Superadmin\QuotationManagement\QuotationController;
 use App\Http\Controllers\Superadmin\TaskManagement\TaskController;
@@ -89,7 +90,7 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
 
     Route::put('lead-management/leads/{id}/upload-attachments', [LeadController::class, 'uploadAttachments'])->name('leads.upload-attachments');
 
-     /*
+    /*
     |--------------------------------------------------------------------------
     | Customer Management > Users Route
     |--------------------------------------------------------------------------
@@ -109,7 +110,53 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::get('customer-management/customers/change-status/{id}', [CustomerController::class, 'changeStatus'])->name('customers.change-status');
     Route::post('customer-management/customers/reset-password', [CustomerController::class, 'resetPassword'])->name('customers.reset-password');
     Route::post('customer-management/customers/bulk-delete', [CustomerController::class, 'bulkDelete'])->name('customers.bulk-delete');
+    Route::put('customer-management/customers/{id}/save-note', [CustomerController::class, 'saveNote'])->name('customers.save-note');
 
+    /*
+    |--------------------------------------------------------------------------
+    | Vehicle Management > Vehicles Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('vehicle-management/vehicles', VehicleController::class, [
+        'names' => [
+            'index'         => 'vehicles.index',
+            'create'        => 'vehicles.create',
+            'update'        => 'vehicles.update',
+            'edit'          => 'vehicles.edit',
+            'store'         => 'vehicles.store',
+            'show'          => 'vehicles.show',
+            'destroy'       => 'vehicles.destroy',
+        ]
+    ]);
+
+    Route::post('vehicle-management/vehicles/bulk-delete', [VehicleController::class, 'bulkDelete'])->name('vehicles.bulk-delete');
+    Route::post('vehicle-management/vehicles/content-images/upload', [VehicleController::class, 'upload'])->name('vehicles.content-images-upload');
+    Route::put('vehicle-management/vehicles/attachment/delete', [VehicleController::class, 'deleteAttachment'])
+        ->name('vehicles.delete-attachment');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Deal Management > Deals Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('deal-management/deals', DealController::class, [
+        'names' => [
+            'index'         => 'deals.index',
+            'create'        => 'deals.create',
+            'update'        => 'deals.update',
+            'edit'          => 'deals.edit',
+            'store'         => 'deals.store',
+            'show'          => 'deals.show',
+            'destroy'       => 'deals.destroy',
+        ]
+    ]);
+
+    Route::post('deal-management/deals/bulk-delete', [DealController::class, 'bulkDelete'])->name('deals.bulk-delete');
+    Route::post('deal-management/deals/content-images/upload', [DealController::class, 'upload'])->name('deals.content-images-upload');
+    Route::put('deal-management/deals/attachment/delete', [DealController::class, 'deleteAttachment'])
+        ->name('deals.delete-attachment');
+    Route::put('deal-management/deals/{id}/complete', [DealController::class, 'lockDeal'])
+        ->name('deals.complete');
     /*
     |--------------------------------------------------------------------------
     | Task Management > Tasks Route
@@ -170,27 +217,7 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::get('vehicle-management/manufacturers/change-status/{id}', [ManufacturerController::class, 'changeStatus'])->name('manufacturers.change-status');
     Route::post('vehicle-management/manufacturers/update-delivery-charge/{id}', [ManufacturerController::class, 'updateDeliveryCharge'])->name('manufacturers.update-delivery-charge');
 
-    /*
-    |--------------------------------------------------------------------------
-    | Vehicle Management > Models Route
-    |--------------------------------------------------------------------------
-    */
-    Route::resource('vehicle-management/vehicles', VehicleController::class, [
-        'names' => [
-            'index'         => 'vehicles.index',
-            'create'        => 'vehicles.create',
-            'update'        => 'vehicles.update',
-            'edit'          => 'vehicles.edit',
-            'store'         => 'vehicles.store',
-            'show'          => 'vehicles.show',
-            'destroy'       => 'vehicles.destroy',
-        ]
-    ]);
 
-    Route::post('vehicle-management/vehicles/bulk-delete', [VehicleController::class, 'bulkDelete'])->name('vehicles.bulk-delete');
-    Route::post('vehicle-management/vehicles/content-images/upload', [VehicleController::class, 'upload'])->name('vehicles.content-images-upload');
-    Route::put('vehicle-management/vehicles/attachment/delete', [VehicleController::class, 'deleteAttachment'])
-        ->name('vehicles.delete-attachment');
     /*
     |--------------------------------------------------------------------------
     | Vehicle Management > Models Route

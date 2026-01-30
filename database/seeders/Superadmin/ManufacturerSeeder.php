@@ -4,6 +4,8 @@ namespace Database\Seeders\Superadmin;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ManufacturerSeeder extends Seeder
 {
@@ -16,9 +18,10 @@ class ManufacturerSeeder extends Seeder
     public function run()
     {
 
-
+        $output = new ConsoleOutput();
         DB::table('manufacturers')->delete();
-
+        $progressBar = new ProgressBar($output, 100);
+        $progressBar->start();
         DB::table('manufacturers')->insert(array(
             0 =>
             array(
@@ -291,5 +294,12 @@ class ManufacturerSeeder extends Seeder
                 'updated_at' => now(),
             ),
         ));
+// 3. Flash it to 100%
+        usleep(100000); // Tiny pause so the user sees it start
+        $progressBar->advance(100);
+
+        // 4. Finish
+        $progressBar->finish();
+        $output->writeln("<info>🚀 Manufacturers (27) seeded successfully. </info>");
     }
 }

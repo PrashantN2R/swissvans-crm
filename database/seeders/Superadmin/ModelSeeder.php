@@ -4,6 +4,8 @@ namespace Database\Seeders\Superadmin;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class ModelSeeder extends Seeder
 {
@@ -16,9 +18,10 @@ class ModelSeeder extends Seeder
     public function run()
     {
 
-
+        $output = new ConsoleOutput();
         DB::table('models')->delete();
-
+        $progressBar = new ProgressBar($output, 100);
+        $progressBar->start();
         DB::table('models')->insert(array(
             0 =>
             array(
@@ -4893,5 +4896,9 @@ class ModelSeeder extends Seeder
                 'name' => 'TRANSPORTER T34 LWB ELECTRIC',
             ),
         ));
+        usleep(100000);
+        $progressBar->advance(100);
+        $progressBar->finish();
+        $output->writeln("<info>🚀 Models (406) seeded successfully. </info>");
     }
 }

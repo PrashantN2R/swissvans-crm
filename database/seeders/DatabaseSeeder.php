@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Manufacturer;
 use App\Models\User;
+use Database\Seeders\Superadmin\DealSeeder;
 use Database\Seeders\Superadmin\DerivativeSeeder;
 use Database\Seeders\Superadmin\LeadSeeder;
 use Database\Seeders\Superadmin\ManufacturerSeeder;
@@ -28,17 +29,31 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(RoleSeeder::class);
+
         $this->call(SuperadminSeeder::class);
+
         $this->call(PermissionSeeder::class);
-        $this->call(LeadSeeder::class);
+
         $this->call(UserSeeder::class);
-        $this->call(TaskSeeder::class);
-        $this->call(QuotationSeeder::class);
+
         $this->call(ManufacturerSeeder::class);
+
         $this->call(ModelSeeder::class);
+
         $this->call(DerivativeSeeder::class);
+
         $this->call(VanTypeSeeder::class);
+
         $this->call(VehicleSeeder::class);
+
+        $this->call(LeadSeeder::class);
+
+        $this->call(DealSeeder::class);
+
+        $this->call(TaskSeeder::class);
+
+        $this->call(QuotationSeeder::class);
+
         $this->call(CountrySeeder::class);
     }
 }

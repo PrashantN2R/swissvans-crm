@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Superadmin\CustomerManagement;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\User;
+use App\Models\UserNote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -214,5 +215,19 @@ class CustomerController extends Controller
     {
         User::whereIn('id', $request->customers)->delete();
         return response()->json(['success' => 'Customers deleted successfully!'], 200);
+    }
+
+    public function saveNote(Request $request, $id)
+    {
+        $user               = $request->user();
+
+        $note               = UserNote::create([
+            'user_id'       => $id,
+            'note'          => $request->note,
+            'created_by'    => $user->roles->first()->name,
+            'created_by_id' => $user->id
+        ]);
+
+        return redirect()->back()->with('success', 'Note added sucessfully!');
     }
 }

@@ -275,7 +275,7 @@
                                             @foreach ($customers as $customer)
                                                 <option value="{{ $customer->id }}"
                                                     {{ old('owner') == $customer->id ? 'selected' : '' }}>
-                                                    {{ $customer->firstname }} {{ $customer->lastname }}
+                                                    {{ $customer->name }}
                                                 </option>
                                             @endforeach
                                         </select>

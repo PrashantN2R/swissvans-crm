@@ -59,6 +59,6 @@ class LeadSeeder extends Seeder
         }
 
         $progressBar->finish();
-        $output->writeln("<info> Leads (" . count($leads) . ") seeded successfully. </info>");
+        $output->writeln("<info>🚀 Leads (" . count($leads) . ") seeded successfully. </info>");
     }
 }

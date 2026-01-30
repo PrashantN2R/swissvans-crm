@@ -121,6 +121,6 @@ class SuperadminSeeder extends Seeder
         }
 
         $progressBar->finish();
-        $output->writeln("<info> Superadmin (" . count($staffUsers) . ") seeded and roles assigned to superadmins successfully. </info>");
+        $output->writeln("<info>🚀 Superadmin (" . count($staffUsers) . ") seeded and roles assigned to superadmins successfully. </info>");
     }
 }

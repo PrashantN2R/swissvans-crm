@@ -35,14 +35,20 @@
             </li>
              <li class="side-nav-item">
                 <a href="{{ route('superadmin.vehicles.index') }}" class="side-nav-link">
-                    <i class="bi bi-car-front"></i><span>Vehicle Management</span>
+                    <i class="bi bi-car-front"></i><span>Vehicles</span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('superadmin.deals.index') }}" class="side-nav-link">
+                    <i class="bi bi-bag-heart"></i><span>Deals</span>
                 </a>
             </li>
 
 
             <li class="side-nav-item">
                 <a href="{{ route('superadmin.leads.index') }}" class="side-nav-link">
-                    <i class="bi bi-rocket"></i><span>Lead Management</span>
+                    <i class="bi bi-rocket"></i><span>Leads</span>
                 </a>
             </li>
 
@@ -50,7 +56,7 @@
 
             <li class="side-nav-item">
                 <a href="{{ route('superadmin.tasks.index') }}" class="side-nav-link">
-                    <i class="bi bi-list-task"></i><span>Task Management</span>
+                    <i class="bi bi-list-task"></i><span>Tasks</span>
                 </a>
             </li>
 
@@ -67,8 +73,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#vehicle-management" aria-expanded="false"
                     aria-controls="vehicle-management" class="side-nav-link">
-                    <i class="bi bi-sliders"></i>
-                    <span>Vehicle Settings</span>
+                    <i class="bi bi-sliders"></i><span>Vehicle Settings</span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="vehicle-management">

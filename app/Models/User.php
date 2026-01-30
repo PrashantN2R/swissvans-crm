@@ -60,7 +60,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
         ];
     }
 
@@ -91,12 +91,22 @@ class User extends Authenticatable
     }
 
     /**
-     * Get all of the linkedVehicles for the User
+     * Get all of the linkedVehicles for the User.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function linkedVehicles(): HasMany
     {
         return $this->hasMany(Vehicle::class, 'user_id', 'id');
+    }
+
+     /**
+     * Get all of the notes for the User.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notes(): HasMany
+    {
+        return $this->hasMany(UserNote::class, 'user_id', 'id');
     }
 }

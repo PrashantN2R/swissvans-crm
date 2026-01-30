@@ -53,7 +53,7 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        $customers          = User::get(['id', 'firstname', 'lastname']);
+        $customers          = User::get(['id', 'name']);
         $manufacturers      = Manufacturer::orderBy('name')->get(['cap_id', 'name']);
         $van_type           = VanType::get(['name']);
         return view('superadmin.vehicles.create', compact('manufacturers', 'van_type', 'customers'));
@@ -65,56 +65,56 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'registration'      => 'required|string|max:20',
-            'vin'               => 'required|string|max:50',
-            'year'              => 'required|string|max:4',
-            'hpi_mancode'       => 'required',
-            'hpi_modcode'       => 'required',
-            'hpi_derivative'    => 'required',
-            'title'             => 'required|string|max:255',
-            'short_description' => 'required|string',
-            'description'       => 'required|string',
-            'status'            => 'required|in:0,1',
-            'stock_status'      => 'required|in:in_stock,out_of_stock',
-            'is_business_lease' => 'required|in:0,1',
-            'is_hire_purchase'  => 'required|in:0,1',
+            'registration'                  => 'required|string|max:20',
+            'vin'                           => 'required|string|max:50',
+            'year'                          => 'required|string|max:4',
+            'hpi_mancode'                   => 'required',
+            'hpi_modcode'                   => 'required',
+            'hpi_derivative'                => 'required',
+            'title'                         => 'required|string|max:255',
+            'short_description'             => 'required|string',
+            'description'                   => 'required|string',
+            'status'                        => 'required|in:0,1',
+            'stock_status'                  => 'required|in:in_stock,out_of_stock',
+            'is_business_lease'             => 'required|in:0,1',
+            'is_hire_purchase'              => 'required|in:0,1',
         ]);
 
-        $vehicle                = Vehicle::create([
-            'user_id'           => $request->owner ? $request->owner : null,
-            'title'             => $request->title,
-            'registration'      => $request->registration,
-            'vin'               => $request->vin,
-            'model'             => $request->model,
-            'year'              => $request->year,
-            'short_description' => $request->short_description,
-            'description'       => $request->description,
-            'price'             => $request->price,
-            'sale_price'        => $request->sale_price,
-            'vat'               => $request->vat,
-            'interest_rate'     => $request->interest_rate,
-            'is_business_lease' => $request->is_business_lease,
+        $vehicle                            = Vehicle::create([
+            'user_id'                       => $request->owner ? $request->owner : null,
+            'title'                         => $request->title,
+            'registration'                  => $request->registration,
+            'vin'                           => $request->vin,
+            'model'                         => $request->model,
+            'year'                          => $request->year,
+            'short_description'             => $request->short_description,
+            'description'                   => $request->description,
+            'price'                         => $request->price,
+            'sale_price'                    => $request->sale_price,
+            'vat'                           => $request->vat,
+            'interest_rate'                 => $request->interest_rate,
+            'is_business_lease'             => $request->is_business_lease,
             'business_lease_price'          => $request->is_business_lease ? $request->business_lease_price : null,
             'business_lease_discount_price' => $request->is_business_lease ?  $request->business_lease_discount_price : null,
             'is_hire_purchase'              => $request->is_hire_purchase,
             'hire_purchase_price'           => $request->is_hire_purchase ? $request->hire_purchase_price : null,
-            'hire_purchase_discount_price'  => $request->is_hire_purchase ?$request->hire_purchase_discount_price : null,
-            'van_type'          => $request->van_type,
-            'hpi_mancode'       => $request->hpi_mancode,
-            'hpi_modcode'       => $request->hpi_modcode,
-            'hpi_derivative'    => $request->hpi_derivative,
-            'meta_title'        => $request->meta_title,
-            'meta_description'  => $request->meta_description,
-            'meta_keywords'     => $request->meta_keywords,
-            'status'            => $request->status,
-            'stock_status'      => $request->stock_status,
+            'hire_purchase_discount_price'  => $request->is_hire_purchase ? $request->hire_purchase_discount_price : null,
+            'van_type'                      => $request->van_type,
+            'hpi_mancode'                   => $request->hpi_mancode,
+            'hpi_modcode'                   => $request->hpi_modcode,
+            'hpi_derivative'                => $request->hpi_derivative,
+            'meta_title'                    => $request->meta_title,
+            'meta_description'              => $request->meta_description,
+            'meta_keywords'                 => $request->meta_keywords,
+            'status'                        => $request->status,
+            'stock_status'                  => $request->stock_status,
         ]);
 
-       if ($request->hasFile('thumbnail')) {
-            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $vehicle->id . '/thumbnails');
+        if ($request->hasFile('thumbnail')) {
+            $upload                         = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $vehicle->id . '/thumbnails');
 
-            // basename() strips away the directory path and returns just the file name
-            $filename = basename($upload['destinationPath']);
+            # basename() strips away the directory path and returns just the file name
+            $filename                       = basename($upload['destinationPath']);
 
             $vehicle->update(['thumbnail' => $filename]);
         }
@@ -129,9 +129,8 @@ class VehicleController extends Controller
      */
     public function show($id)
     {
-        // Load with images relationship to show them in the edit gallery
-        $vehicle = Vehicle::with('images')->findOrFail($id);
-
+        # Load with images relationship to show them in the edit gallery.
+        $vehicle            = Vehicle::with('images')->findOrFail($id);
         return view('superadmin.vehicles.show', compact('vehicle'));
     }
 
@@ -140,11 +139,11 @@ class VehicleController extends Controller
      */
     public function edit($id)
     {
-        // Load with images relationship to show them in the edit gallery
+        # Load with images relationship to show them in the edit gallery.
         $vehicle            = Vehicle::with('images')->findOrFail($id);
         $manufacturers      = Manufacturer::orderBy('name')->get(['cap_id', 'name']);
         $van_type           = VanType::get(['name']);
-        $customers          = User::get(['id', 'firstname', 'lastname']);
+        $customers          = User::get(['id', 'name']);
         return view('superadmin.vehicles.edit', compact('vehicle', 'manufacturers', 'van_type', 'customers'));
     }
 
@@ -156,57 +155,60 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
 
         $request->validate([
-            'registration'      => 'required|string|max:20',
-            'vin'               => 'required|string|max:50',
-            'year'              => 'required|string|max:4',
-            'hpi_mancode'       => 'required',
-            'hpi_modcode'       => 'required',
-            'hpi_derivative'    => 'required',
-            'title'             => 'required|string|max:255',
-            'short_description' => 'required|string',
-            'description'       => 'required|string',
-            'status'            => 'required|in:0,1',
-            'stock_status'      => 'required|in:in_stock,out_of_stock',
-            'is_business_lease' => 'required|in:0,1',
-            'is_hire_purchase'  => 'required|in:0,1',
+            'registration'                   => 'required|string|max:20',
+            'vin'                            => 'required|string|max:50',
+            'year'                           => 'required|string|max:4',
+            'hpi_mancode'                    => 'required',
+            'hpi_modcode'                    => 'required',
+            'hpi_derivative'                 => 'required',
+            'title'                          => 'required|string|max:255',
+            'short_description'              => 'required|string',
+            'description'                    => 'required|string',
+            'status'                         => 'required|in:0,1',
+            'stock_status'                   => 'required|in:in_stock,out_of_stock',
+            'is_business_lease'              => 'required|in:0,1',
+            'is_hire_purchase'               => 'required|in:0,1',
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            if ($vehicle->thumbnail) Storage::disk('public')->delete($vehicle->thumbnail);
-            $upload = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $id . '/thumbnails');
-              $filename = basename($upload['destinationPath']);
 
-                $vehicle->update(['thumbnail' => $filename]);
+            if ($vehicle->thumbnail) Storage::disk('public')->delete($vehicle->thumbnail);
+
+            $upload                          = $this->handleImageUpload($request->thumbnail, 'uploads/vehicles/' . $id . '/thumbnails');
+
+            $filename                        = basename($upload['destinationPath']);
+
+            $vehicle->update(['thumbnail'    => $filename]);
         }
 
-       $vehicle->update([
-            'user_id'           => $request->owner ? $request->owner : null,
-            'title'             => $request->title,
-            'registration'      => $request->registration,
-            'vin'               => $request->vin,
-            'model'             => $request->model,
-            'year'              => $request->year,
-            'short_description' => $request->short_description,
-            'description'       => $request->description,
-            'price'             => $request->price,
-            'sale_price'        => $request->sale_price,
-            'vat'               => $request->vat,
-            'interest_rate'     => $request->interest_rate,
-            'is_business_lease' => $request->is_business_lease,
+        $vehicle->update([
+            'user_id'                       => $request->owner ? $request->owner : null,
+            'title'                         => $request->title,
+            'registration'                  => $request->registration,
+            'vin'                           => $request->vin,
+            'model'                         => $request->model,
+            'year'                          => $request->year,
+            'short_description'             => $request->short_description,
+            'description'                   => $request->description,
+            'price'                         => $request->price,
+            'sale_price'                    => $request->sale_price,
+            'vat'                           => $request->vat,
+            'interest_rate'                 => $request->interest_rate,
+            'is_business_lease'             => $request->is_business_lease,
             'business_lease_price'          => $request->is_business_lease ? $request->business_lease_price : null,
             'business_lease_discount_price' => $request->is_business_lease ?  $request->business_lease_discount_price : null,
             'is_hire_purchase'              => $request->is_hire_purchase,
             'hire_purchase_price'           => $request->is_hire_purchase ? $request->hire_purchase_price : null,
-            'hire_purchase_discount_price'  => $request->is_hire_purchase ?$request->hire_purchase_discount_price : null,
-            'van_type'          => $request->van_type,
-            'hpi_mancode'       => $request->hpi_mancode,
-            'hpi_modcode'       => $request->hpi_modcode,
-            'hpi_derivative'    => $request->hpi_derivative,
-            'meta_title'        => $request->meta_title,
-            'meta_description'  => $request->meta_description,
-            'meta_keywords'     => $request->meta_keywords,
-            'status'            => $request->status,
-            'stock_status'      => $request->stock_status,
+            'hire_purchase_discount_price'  => $request->is_hire_purchase ? $request->hire_purchase_discount_price : null,
+            'van_type'                      => $request->van_type,
+            'hpi_mancode'                   => $request->hpi_mancode,
+            'hpi_modcode'                   => $request->hpi_modcode,
+            'hpi_derivative'                => $request->hpi_derivative,
+            'meta_title'                    => $request->meta_title,
+            'meta_description'              => $request->meta_description,
+            'meta_keywords'                 => $request->meta_keywords,
+            'status'                        => $request->status,
+            'stock_status'                  => $request->stock_status,
         ]);
 
         $this->processGalleryImages($request, $vehicle);
@@ -221,12 +223,16 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        $vehicle = Vehicle::with('images')->findOrFail($id);
+        $vehicle                = Vehicle::with('images')->findOrFail($id);
+
         if ($vehicle->thumbnail) Storage::disk('public')->delete($vehicle->thumbnail);
+
         foreach ($vehicle->images as $img) {
             Storage::disk('public')->delete($img->path);
         }
+
         Storage::disk('public')->deleteDirectory("uploads/vehicles/{$vehicle->id}");
+
         $vehicle->delete();
 
         return back()->with('success', 'Vehicle deleted.');
@@ -253,21 +259,32 @@ class VehicleController extends Controller
         ]);
 
         if ($request->hasFile('file')) {
-            $file       = $request->file('file');
-            $filename   = time() . '_' . $file->getClientOriginalName();
-            $path       = $file->storeAs('uploads/vehicles/content', $filename, 'public');
+
+            $file               = $request->file('file');
+
+            $filename           = time() . '_' . $file->getClientOriginalName();
+
+            $path               = $file->storeAs('uploads/vehicles/content', $filename, 'public');
 
             return response()->json([
-                'success'   => true,
-                'location'  => asset('storage/' . $path),
-                'filename'  => $filename,
-                'path'      => $path
+
+                'success'       => true,
+
+                'location'      => asset('storage/' . $path),
+
+                'filename'      => $filename,
+
+                'path'          => $path
+
             ]);
         }
 
         return response()->json([
-            'success' => false,
-            'message' => 'No file uploaded'
+
+            'success'           => false,
+
+            'message'           => 'No file uploaded'
+
         ], 400);
     }
 
@@ -276,13 +293,13 @@ class VehicleController extends Controller
      */
     public function deleteAttachment(Request $request)
     {
-        // Validate that the ID was actually passed in the request body
+        # Validate that the ID was actually passed in the request body
         $request->validate([
             'id' => 'required|exists:vehicle_images,id'
         ]);
 
         try {
-            // Access ID via $request->id
+            # Access ID via $request->id
             $image = VehicleImage::findOrFail($request->id);
 
             if (Storage::disk('public')->exists($image->path)) {
@@ -325,9 +342,9 @@ class VehicleController extends Controller
 
     private function handleImageUpload($file, $path)
     {
-        $extension = is_object($file) ? $file->getClientOriginalExtension() : 'webp';
-        $uniqueName = Str::uuid() . '.' . $extension;
-        $destinationPath = $path . '/' . $uniqueName;
+        $extension                  = is_object($file) ? $file->getClientOriginalExtension() : 'webp';
+        $uniqueName                 = Str::uuid() . '.' . $extension;
+        $destinationPath            = $path . '/' . $uniqueName;
 
         if (is_object($file)) {
             Storage::disk('public')->putFileAs($path, $file, $uniqueName);

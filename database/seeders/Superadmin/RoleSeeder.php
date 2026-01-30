@@ -47,6 +47,6 @@ class RoleSeeder extends Seeder
         }
 
         $progressBar->finish();
-        $output->writeln("<info> Roles (" . count($roles) . ") seeded successfully. </info>");
+        $output->writeln("<info>🚀 Roles (" . count($roles) . ") seeded successfully. </info>");
     }
 }

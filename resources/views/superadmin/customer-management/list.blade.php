@@ -111,7 +111,7 @@
                                             </div>
                                         </td>
                                         <td class="table-user">
-                                            <a href="{{ route('superadmin.users.show', $user->slug) }}"
+                                            <a href="{{ route('superadmin.customers.show', $user->slug) }}"
                                                 class="text-body fw-semibold">{{ $user->fullname }}</a>
                                         </td>
                                         <td>
@@ -144,7 +144,7 @@
                                         <td class="text-end">
                                             <a href="#" class="dropdown-toggle arrow-none card-drop"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="dripicons-dots-3 text-primary fs-3"></i>
+                                               <i class="bi bi-three-dots-vertical fs-4"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-end">
 

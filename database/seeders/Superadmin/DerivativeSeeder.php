@@ -3,6 +3,8 @@
 namespace Database\Seeders\Superadmin;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Symfony\Component\Console\Helper\ProgressBar;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class DerivativeSeeder extends Seeder
 {
@@ -15,9 +17,11 @@ class DerivativeSeeder extends Seeder
     public function run()
     {
 
-
+        $output = new ConsoleOutput();
         DB::table('derivatives')->delete();
 
+        $progressBar = new ProgressBar($output, 100);
+        $progressBar->start();
         DB::table('derivatives')->insert(array (
             0 =>
             array (
@@ -82808,7 +82812,10 @@ class DerivativeSeeder extends Seeder
                 'name' => '160kW 65kWh Commerce Pro Van Auto',
             ),
         ));
-
+         usleep(100000);
+        $progressBar->advance(100);
+        $progressBar->finish();
+            $output->writeln("<info>🚀 Derivatives (5173) seeded successfully. </info>");
 
     }
 }
