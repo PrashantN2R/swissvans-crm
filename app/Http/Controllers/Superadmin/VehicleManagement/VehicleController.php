@@ -364,4 +364,55 @@ class VehicleController extends Controller
             "destinationPath" => $destinationPath,
         ];
     }
+
+    public function getDetails($id)
+    {
+        // Fetch the user with necessary relationships
+        $vehicle = Vehicle::find($id);
+
+        if (!$vehicle) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Vehicle not found'
+            ], 404);
+        }
+
+        // Format data for the frontend
+        $data = [
+            'customer'                          => $vehicle->user->name,
+            'title'                             => $vehicle->title,
+            'slug'                              => $vehicle->slug,
+            'registration'                      => $vehicle->registration,
+            'vin'                               => $vehicle->vin,
+            'model'                             => $vehicle->model,
+            'year'                              => $vehicle->year,
+            'short_description'                 => $vehicle->short_description,
+            'description'                       => $vehicle->description,
+            'price'                             => $vehicle->price,
+            'sale_price'                        => $vehicle->sale_price,
+            'vat'                               => $vehicle->vat,
+            'interest_rate'                     => $vehicle->interest_rate,
+            'is_business_lease'                 => $vehicle->is_business_lease,
+            'business_lease_price'              => $vehicle->business_lease_price,
+            'business_lease_discount_price'     => $vehicle->business_lease_discount_price,
+            'is_hire_purchase'                  => $vehicle->is_hire_purchase,
+            'hire_purchase_price'               => $vehicle->hire_purchase_price,
+            'hire_purchase_discount_price'      => $vehicle->hire_purchase_discount_price,
+            'van_type'                          => $vehicle->van_type,
+            'manufacturer'                      => $vehicle->manufacturerData->name,
+            'model'                             => $vehicle->modelData->name,
+            'variant'                           => $vehicle->variantData->name,
+            'thumbnail'                         => $vehicle->thumbnail_path,
+            'meta_title'                        => $vehicle->meta_title,
+            'meta_description'                  => $vehicle->meta_description,
+            'meta_keywords'                     => $vehicle->meta_keywords,
+            'status'                            => $vehicle->status,
+            'stock_status'                      => $vehicle->stock_status == "in_stock" ? "In Stock" : "Out of Stock"
+        ];
+
+        return response()->json([
+            'status' => 'success',
+            'data'   => $data
+        ]);
+    }
 }

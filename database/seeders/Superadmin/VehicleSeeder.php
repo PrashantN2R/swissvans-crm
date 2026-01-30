@@ -8,21 +8,18 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Output\ConsoleOutput;
-
 use Carbon\Carbon;
 
 class VehicleSeeder extends Seeder
 {
     public function run(): void
     {
-        $output = new ConsoleOutput();
+
         # Delete the entire vehicles folder to ensure a fresh start
         $rootUploadPath = storage_path("app/public/uploads/vehicles");
 
         if (File::isDirectory($rootUploadPath)) {
-            $output->writeln("<info>1️⃣ Cleaning Up Old Vehicle Image Directory... </info>");
+            $this->command->warn("1️⃣ Cleaning Up Old Vehicle Image Directoty...");
             File::deleteDirectory($rootUploadPath);
         }
 
@@ -30,7 +27,7 @@ class VehicleSeeder extends Seeder
         File::makeDirectory($rootUploadPath, 0755, true);
 
         # Get All Derivatives Columns: ['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']
-        $derivatives        = Derivative::take(100)->get(['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']);
+        $derivatives        = Derivative::all(['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']);
 
         # Get Random Van Type:
         $vanTypeName        = VanType::inRandomOrder()->first()?->name ?? 'Panel Van';
@@ -47,7 +44,7 @@ class VehicleSeeder extends Seeder
         DB::beginTransaction();
 
         try {
-            foreach ($derivatives as $derivative) {
+            foreach ($derivatives as $key => $derivative) {
                 $slug           = (string)mt_rand(10000000, 99999999) . (string)mt_rand(10000000, 99999999);
                 $registration   = strtoupper(Str::random(3)) . rand(1000, 9999);
                 $year           = $derivative->model_ref_year ? Carbon::parse($derivative->model_ref_year)->year : $now->year;
@@ -70,7 +67,7 @@ class VehicleSeeder extends Seeder
                         </tr>
                     </table>';
                 $vehiclesToInsert[] = [
-                    'user_id'                           => $derivative->id,
+                    'user_id'                           => $key + 1,
                     'title'                             => "{$derivative->manufacturer} {$derivative->model} {$derivative->name}",
                     'slug'                              => $slug,
                     'registration'                      => $registration,
@@ -131,10 +128,8 @@ class VehicleSeeder extends Seeder
 
     private function seedImagesAndFolders()
     {
-        $output = new ConsoleOutput();
         $vehicles = DB::table('vehicles')->get(['id']);
-        $output->writeln("<info>2️⃣ Creating Vehicle Image Directories and Copying Images...</info>");
-
+        $this->command->info("2️⃣ Creating Vehicle Image Directories and Copying Images...");
         $bar      = $this->command->getOutput()->createProgressBar($vehicles->count());
 
         $imagesToInsert = [];

@@ -58,14 +58,14 @@ class DealSeeder extends Seeder
                 'interest_rate'      => 7.9, // Fixed as per reference
 
                 // Business Lease Fields
-                'is_business_lease'             => $isLease ? 1 : 0,
-                'business_lease_price'          => $isLease ? $faker->numberBetween(430, 480) : null,
-                'business_lease_discount_price' => $isLease ? $faker->numberBetween(400, 425) : null,
+                'is_business_lease'             => 1,
+                'business_lease_price'          => $faker->numberBetween(430, 480),
+                'business_lease_discount_price' => $faker->numberBetween(400, 425),
 
                 // Hire Purchase Fields
-                'is_hire_purchase'              => $isHP ? 1 : 0,
-                'hire_purchase_price'           => $isHP ? $faker->numberBetween(560, 600) : null,
-                'hire_purchase_discount_price'  => $isHP ? $faker->numberBetween(520, 550) : null,
+                'is_hire_purchase'              => 1,
+                'hire_purchase_price'           => $faker->numberBetween(560, 600),
+                'hire_purchase_discount_price'  => $faker->numberBetween(520, 550),
 
                 'type'               => $isLease ? 'Lease' : 'Sale',
                 'status'             => $status,

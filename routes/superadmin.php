@@ -133,6 +133,7 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::post('vehicle-management/vehicles/content-images/upload', [VehicleController::class, 'upload'])->name('vehicles.content-images-upload');
     Route::put('vehicle-management/vehicles/attachment/delete', [VehicleController::class, 'deleteAttachment'])
         ->name('vehicles.delete-attachment');
+        Route::get('vehicle-management/vehicles/{id}/get-details', [VehicleController::class, 'getDetails'])->name('vehicles.get-details');
 
     /*
     |--------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 @extends('layouts.superadmin')
-@section('title', 'Add Deal | Superadmin')
+@section('title', 'Edit Deal | Superadmin')
 
 @section('head')
 
@@ -16,12 +16,12 @@
                         <button type="submit" class="btn btn-sm btn-primary" form="dealForm"><i
                                 class="bi bi-floppy me-1"></i>Save</button>
                     </div>
-                    <h4 class="page-title">Add Deal</h4>
+                    <h4 class="page-title">Edit Deal</h4>
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('superadmin.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item">Deal Management</li>
                         <li class="breadcrumb-item"><a href="{{ route('superadmin.vehicles.index') }}">Deals</a></li>
-                        <li class="breadcrumb-item active">Add Deal</li>
+                        <li class="breadcrumb-item active">Edit Deal</li>
                     </ol>
                 </div>
             </div>
@@ -43,8 +43,9 @@
             </div>
         </div>
 
-        <form action="{{ route('superadmin.deals.store') }}" method="POST" id="dealForm" enctype="multipart/form-data">
+        <form action="{{ route('superadmin.deals.update', $deal->id) }}" method="POST" id="dealForm" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="row">
                 <div class="col-md-9">
                     <div class="row g-2">
@@ -58,7 +59,7 @@
                                         <option value="">Select Customer</option>
                                         @foreach ($customers as $customer)
                                             <option value="{{ $customer->id }}"
-                                                {{ old('customer') == $customer->id ? 'selected' : '' }}>
+                                                {{ old('customer', $deal->user_id) == $customer->id ? 'selected' : '' }}>
                                                 {{ $customer->name }}
                                             </option>
                                         @endforeach
@@ -80,7 +81,7 @@
                                         <option value="">Select Vehicle</option>
                                         @foreach ($vehicles as $vehicle)
                                             <option value="{{ $vehicle->id }}"
-                                                {{ old('vehicle') == $vehicle->id ? 'selected' : '' }}>
+                                                {{ old('vehicle', $deal->vehicle_id) == $vehicle->id ? 'selected' : '' }}>
                                                 {{ $vehicle->registration }}
                                             </option>
                                         @endforeach
@@ -101,7 +102,7 @@
                                         <option value="">Select Salesperson</option>
                                         @foreach ($salespeople as $sale)
                                             <option value="{{ $sale->id }}"
-                                                {{ old('salesperson') == $sale->id ? 'selected' : '' }}>
+                                                {{ old('salesperson', $deal->salesperson_id) == $sale->id ? 'selected' : '' }}>
                                                 {{ $sale->firstname }} {{ $sale->lastname }}
                                             </option>
                                         @endforeach
@@ -119,8 +120,8 @@
                                     <select name="type" id="type"
                                         class="form-select form-select-sm @error('type') is-invalid @enderror">
                                         <option value="">Select Deal Type</option>
-                                        <option value="Sale">Sale</option>
-                                        <option value="Lease">Lease</option>
+                                        <option value="Sale" {{ old('type', $deal->type) == "Sale" ? "selected" : "" }}>Sale</option>
+                                        <option value="Lease" {{ old('type', $deal->type) == "Lease" ? "selected" : "" }}>Lease</option>
                                     </select>
                                     @error('type')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -138,7 +139,7 @@
                                         <option value="">Select Status</option>
                                         @foreach ($statuses as $status)
                                             <option value="{{ $status }}"
-                                                {{ old('status', 'Draft') == $status ? 'selected' : '' }}>
+                                                {{ old('status', $deal->status) == $status ? 'selected' : '' }}>
                                                 {{ $status }}
                                             </option>
                                         @endforeach
@@ -155,7 +156,7 @@
                                     <label for="commission" class="form-label">Commission</label>
                                     <input type="number" step="0.01" name="commission" id="commission"
                                         class="form-control form-control-sm @error('commission') is-invalid @enderror"
-                                        value="{{ old('commission', 0) }}">
+                                        value="{{ old('commission', $deal->commission) }}">
                                     @error('commission')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -172,7 +173,7 @@
                                         <label class="form-label">Regular Price<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="price"
-                                            class="form-control form-control-sm" value="{{ old('price') }}">
+                                            class="form-control form-control-sm" value="{{ old('price', $deal->price) }}">
                                         @error('price')
                                             <span id="price-error" class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -182,7 +183,7 @@
                                         <label class="form-label">Sale Price<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="sale_price"
-                                            class="form-control form-control-sm" value="{{ old('sale_price') }}">
+                                            class="form-control form-control-sm" value="{{ old('sale_price', $deal->sale_price) }}">
                                         @error('sale_price')
                                             <span id="sale_price-error"
                                                 class="error invalid-feedback">{{ $message }}</span>
@@ -193,7 +194,7 @@
                                     <div class="col-md-6 mb-2">
                                         <label class="form-label">VAT<span class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="vat"
-                                            class="form-control form-control-sm" value="{{ old('vat') }}">
+                                            class="form-control form-control-sm" value="{{ old('vat', $deal->vat) }}">
                                         @error('vat')
                                             <span id="vat-error" class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -203,7 +204,7 @@
                                         <label class="form-label">Interest Rate<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="interest_rate"
-                                            class="form-control form-control-sm" value="{{ old('interest_rate') }}">
+                                            class="form-control form-control-sm" value="{{ old('interest_rate', $deal->interest_rate) }}">
                                         @error('interest_rate')
                                             <span id="interest-rate-error"
                                                 class="error invalid-feedback">{{ $message }}</span>
@@ -226,10 +227,10 @@
                                         <select name="is_business_lease" id="is_business_lease"
                                             class="form-select form-select-sm @error('is_business_lease') is-invalid @enderror">
                                             <option value="0"
-                                                {{ old('is_business_lease') == '0' ? 'selected' : '' }}>No
+                                                {{ old('is_business_lease', $deal->is_business_lease) == '0' ? 'selected' : '' }}>No
                                             </option>
                                             <option value="1"
-                                                {{ old('is_business_lease') == '1' ? 'selected' : '' }}>Yes
+                                                {{ old('is_business_lease', $deal->is_business_lease) == '1' ? 'selected' : '' }}>Yes
                                             </option>
                                         </select>
                                         @error('is_business_lease')
@@ -244,7 +245,7 @@
                                         <input type="number" step="0.01" name="business_lease_price"
                                             id="business_lease_price"
                                             class="form-control form-control-sm @error('business_lease_price') is-invalid @enderror"
-                                            value="{{ old('business_lease_price') }}">
+                                            value="{{ old('business_lease_price', $deal->business_lease_price) }}">
                                         @error('business_lease_price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -258,7 +259,7 @@
                                         <input type="number" step="0.01" name="business_lease_discount_price"
                                             id="business_lease_discount_price"
                                             class="form-control form-control-sm @error('business_lease_discount_price') is-invalid @enderror"
-                                            value="{{ old('business_lease_discount_price') }}">
+                                            value="{{ old('business_lease_discount_price', $deal->business_lease_discount_price) }}">
                                         @error('business_lease_discount_price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -278,10 +279,10 @@
                                             Purchase<span class="text-danger ms-1">*</span></label>
                                         <select name="is_hire_purchase" id="is_hire_purchase"
                                             class="form-select form-select-sm @error('is_hire_purchase') is-invalid @enderror">
-                                            <option value="0" {{ old('is_hire_purchase') == '0' ? 'selected' : '' }}>
+                                            <option value="0" {{ old('is_hire_purchase', $deal->is_hire_purchase) == '0' ? 'selected' : '' }}>
                                                 No
                                             </option>
-                                            <option value="1" {{ old('is_hire_purchase') == '1' ? 'selected' : '' }}>
+                                            <option value="1" {{ old('is_hire_purchase', $deal->is_hire_purchase) == '1' ? 'selected' : '' }}>
                                                 Yes
                                             </option>
                                         </select>
@@ -297,7 +298,7 @@
                                         <input type="number" step="0.01" name="hire_purchase_price"
                                             id="hire_purchase_price"
                                             class="form-control form-control-sm @error('hire_purchase_price') is-invalid @enderror"
-                                            value="{{ old('hire_purchase_price') }}">
+                                            value="{{ old('hire_purchase_price', $deal->hire_purchase_price) }}">
                                         @error('hire_purchase_price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -310,7 +311,7 @@
                                         <input type="number" step="0.01" name="hire_purchase_discount_price"
                                             id="hire_purchase_discount_price"
                                             class="form-control form-control-sm @error('hire_purchase_discount_price') is-invalid @enderror"
-                                            value="{{ old('hire_purchase_discount_price') }}">
+                                            value="{{ old('hire_purchase_discount_price', $deal->hire_purchase_discount_price) }}">
                                         @error('hire_purchase_discount_price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

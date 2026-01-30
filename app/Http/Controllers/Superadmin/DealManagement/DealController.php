@@ -20,6 +20,24 @@ class DealController extends Controller
         $this->middleware('auth:superadmin');
     }
 
+    /**
+ * Check if the deal is in a state where it can no longer be modified.
+ * * @param  \App\Models\Deal  $deal
+ * @return bool
+ */
+protected function checkImmutable($deal)
+{
+    // Common logic: If a deal is 'completed', 'cancelled', or 'sold',
+    // it should probably be immutable (unchangeable).
+    $immutableStatuses = ['completed', 'sold', 'cancelled'];
+
+    if (in_array(strtolower($deal->status), $immutableStatuses)) {
+        return true;
+    }
+
+    return false;
+}
+
     public function index(Request $request)
 {
     $deals = Deal::with(['vehicle', 'user', 'salesperson'])
@@ -106,7 +124,11 @@ class DealController extends Controller
     public function edit(Deal $deal)
     {
         $this->checkImmutable($deal);
-        return view('superadmin.deal-management.edit', compact('deal'));
+        $customers      = User::orderBy('name')->get();
+        $salespeople    = Superadmin::orderBy('firstname')->get();
+        $statuses       = ['Draft', 'Pending', 'Completed', 'Cancelled'];
+        $vehicles       = Vehicle::get(['id', 'registration', 'model']);
+        return view('superadmin.deal-management.edit', compact('deal', 'customers', 'salespeople', 'statuses', 'vehicles'));
     }
 
     public function update(Request $request, Deal $deal)
