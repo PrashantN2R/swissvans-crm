@@ -72,7 +72,7 @@
             enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-9">
+                <div class="col-md-9">
                     <div class="row">
 
                         {{-- CAP Manufacturer Starts Here --}}
@@ -261,7 +261,7 @@
                         {{-- Vehicle Long Description Ends Here --}}
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-md-3">
                     <div class="row">
                         {{-- Owner Starts Here --}}
                         <div class="col-md-12">

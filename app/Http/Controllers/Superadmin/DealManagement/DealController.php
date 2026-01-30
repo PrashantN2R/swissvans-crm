@@ -8,6 +8,7 @@ use App\Models\Manufacturer;
 use App\Models\Model;
 use App\Models\Superadmin;
 use App\Models\User;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -69,8 +70,11 @@ class DealController extends Controller
 
     public function create()
     {
-        // Logic to fetch customers and available vehicles for dropdowns
-        return view('superadmin.deal-management.create');
+        $customers      = User::orderBy('name')->get();
+        $salespeople    = Superadmin::orderBy('firstname')->get();
+        $statuses       = ['Draft', 'Pending', 'Completed', 'Cancelled'];
+        $vehicles       = Vehicle::get(['id', 'registration', 'model']);
+        return view('superadmin.deal-management.create', compact('customers', 'salespeople', 'statuses', 'vehicles'));
     }
 
     public function store(Request $request)

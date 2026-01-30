@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\User;
 use App\Models\UserNote;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -230,4 +231,37 @@ class CustomerController extends Controller
 
         return redirect()->back()->with('success', 'Note added sucessfully!');
     }
+
+    public function getDetails($id)
+{
+    // Fetch the user with necessary relationships
+    $user = User::find($id);
+
+    if (!$user) {
+        return response()->json([
+            'status'  => 'error',
+            'message' => 'Customer not found'
+        ], 404);
+    }
+
+    // Format data for the frontend
+    $data = [
+        'name'       => $user->name,
+        'email'      => $user->email,
+        'dialcode'   => $user->dialcode,
+        'phone'      => $user->phone,
+        'address'    => $user->address,
+        'city'       => $user->city,
+        'zipcode'    => $user->zipcode,
+        'avatar'     => $user->avatar_path ?? "https://placehold.co/150x150?text=" . $user->initials,
+        'created_at' => Carbon::parse($user->created_at)->format('d-m-Y'),
+        'country'    => $user->iso2,
+        'flag'       => asset('assets/images/flags/'.$user->iso2.'.svg')
+    ];
+
+    return response()->json([
+        'status' => 'success',
+        'data'   => $data
+    ]);
+}
 }

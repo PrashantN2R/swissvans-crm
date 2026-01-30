@@ -111,7 +111,7 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     Route::post('customer-management/customers/reset-password', [CustomerController::class, 'resetPassword'])->name('customers.reset-password');
     Route::post('customer-management/customers/bulk-delete', [CustomerController::class, 'bulkDelete'])->name('customers.bulk-delete');
     Route::put('customer-management/customers/{id}/save-note', [CustomerController::class, 'saveNote'])->name('customers.save-note');
-
+    Route::get('customer-management/customers/{id}/get-details', [CustomerController::class, 'getDetails'])->name('customers.get-details');
     /*
     |--------------------------------------------------------------------------
     | Vehicle Management > Vehicles Route
