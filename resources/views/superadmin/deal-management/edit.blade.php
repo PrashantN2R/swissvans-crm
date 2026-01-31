@@ -20,7 +20,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('superadmin.dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item">Deal Management</li>
-                        <li class="breadcrumb-item"><a href="{{ route('superadmin.vehicles.index') }}">Deals</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('superadmin.deals.index') }}">Deals</a></li>
                         <li class="breadcrumb-item active">Edit Deal</li>
                     </ol>
                 </div>
@@ -153,11 +153,14 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <label for="commission" class="form-label">Commission</label>
-                                    <input type="number" step="0.01" name="commission" id="commission"
-                                        class="form-control form-control-sm @error('commission') is-invalid @enderror"
-                                        value="{{ old('commission', $deal->commission) }}">
-                                    @error('commission')
+                                    <label for="commission_amount" class="form-label">Commission</label>
+                                     <div class="input-group flex-nowrap">
+                                         <span class="input-group-text" id="basic-addon1">%</span>
+                                        <input type="number" step="0.01" name="commission_amount" id="commission_amount"
+                                            class="form-control form-control-sm @error('commission_amount') is-invalid @enderror"
+                                            value="{{ old('commission_amount', $deal->commission_amount) }}">
+                                     </div>
+                                    @error('commission_amount')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -192,7 +195,7 @@
                                 </div>
                                 <div class="card-body row mt-0 pt-0">
                                     <div class="col-md-6 mb-2">
-                                        <label class="form-label">VAT<span class="text-danger ms-1">*</span></label>
+                                        <label class="form-label">VAT %<span class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="vat"
                                             class="form-control form-control-sm" value="{{ old('vat', $deal->vat) }}">
                                         @error('vat')
@@ -201,7 +204,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label">Interest Rate<span
+                                        <label class="form-label">Interest Rate %<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="interest_rate"
                                             class="form-control form-control-sm" value="{{ old('interest_rate', $deal->interest_rate) }}">

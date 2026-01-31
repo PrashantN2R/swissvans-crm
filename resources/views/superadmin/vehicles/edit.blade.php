@@ -459,7 +459,7 @@
                                 </div>
                                 <div class="card-body row mt-0 pt-0">
                                     <div class="col-md-6 mb-2">
-                                        <label class="form-label">VAT<span class="text-danger ms-1">*</span></label>
+                                        <label class="form-label">VAT %<span class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="vat"
                                             class="form-control form-control-sm" value="{{ old('vat', $vehicle->vat) }}">
                                         @error('vat')
@@ -468,7 +468,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label">Interest Rate<span
+                                        <label class="form-label">Interest Rate %<span
                                                 class="text-danger ms-1">*</span></label>
                                         <input type="number" step="0.01" name="interest_rate"
                                             class="form-control form-control-sm"

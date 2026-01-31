@@ -36,10 +36,10 @@ class DealSeeder extends Seeder
             if (empty($potentialBuyers)) continue;
 
             // --- Financial Logic Based on Reference ---
-            $basePrice = $faker->randomFloat(2, 35000, 55000); // Reference: 40,000
-            $discount = $faker->randomFloat(2, 1000, 3000);   // Reference: 2,000 discount
-            $salePrice = $basePrice - $discount;
-            $vat = $salePrice * 0.20;                          // 20% VAT
+            $basePrice  = $faker->randomFloat(2, 35000, 55000); // Reference: 40,000
+            $discount   = $faker->randomFloat(2, 1000, 3000);   // Reference: 2,000 discount
+            $salePrice  = $basePrice - $discount;
+            $vat        = 20;                          // 20% VAT
 
             // Randomize Finance Path
             $isLease = $faker->boolean(50);
@@ -50,7 +50,7 @@ class DealSeeder extends Seeder
                 'user_id'            => $faker->randomElement($potentialBuyers),
                 'vehicle_id'         => $vehicle->id,
                 'salesperson_id'     => $faker->randomElement($adminIds),
-
+                'commission_amount'  => 1,
                 // Core Pricing
                 'price'              => $basePrice,
                 'sale_price'         => $salePrice,

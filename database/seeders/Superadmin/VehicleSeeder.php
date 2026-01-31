@@ -27,7 +27,7 @@ class VehicleSeeder extends Seeder
         File::makeDirectory($rootUploadPath, 0755, true);
 
         # Get All Derivatives Columns: ['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']
-        $derivatives        = Derivative::all(['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']);
+        $derivatives        = Derivative::take(40)->get(['cap_id', 'manufacturer', 'capmod_id', 'model', 'derivative_id', 'name', 'introduced', 'model_ref_year']);
 
         # Get Random Van Type:
         $vanTypeName        = VanType::inRandomOrder()->first()?->name ?? 'Panel Van';
@@ -79,7 +79,7 @@ class VehicleSeeder extends Seeder
                     // Base Pricing
                     'price'                             => 40000,
                     'sale_price'                        => 38000,
-                    'vat'                               => 7600, // 20% of sale_price
+                    'vat'                               => 20, // 20% of sale_price
                     'interest_rate'                     => 7.9,
 
                     // Business Lease Fields
